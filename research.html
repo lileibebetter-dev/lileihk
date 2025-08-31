@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - 李磊 LI Lei</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#3B82F6',
+                        'dark-text': '#11182B',
+                        'light-gray': '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .section-padding {
+            padding: 6rem 0;
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-dark-text">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-dark-text">
+                    李磊 LI Lei
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue">Home</a>
+                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue active">Research</a>
+                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue">Projects</a>
+                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue">CV</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-dark-text">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-4 space-y-4">
+                <a href="home.html" class="block text-dark-text hover:text-primary-blue">Home</a>
+                <a href="research.html" class="block text-dark-text hover:text-primary-blue">Research</a>
+                <a href="projects.html" class="block text-dark-text hover:text-primary-blue">Projects</a>
+                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Research Section -->
+    <section class="section-padding bg-light-gray">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="fade-in text-center mb-16">
+                <h1 class="text-5xl font-bold text-dark-text mb-4">Research</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    探索AI技术在产品化应用中的创新实践，从学术研究到市场洞察
+                </p>
+                <div class="w-20 h-1 bg-primary-blue mx-auto mt-8"></div>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Research Entry 1 -->
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="grid lg:grid-cols-2 gap-0">
+                            <div class="p-6 lg:p-8">
+                                <div class="mb-6">
+                                    <span class="inline-block bg-blue-50 text-primary-blue px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                        市场研究报告
+                                    </span>
+                                    <h2 class="text-2xl font-bold text-dark-text mb-3">
+                                        智能体市场分析研究报告
+                                    </h2>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        在"云鲸致"担任AI产品经理期间，负责"云秒搭"智能体平台的0-1定义与战略规划。通过深度市场分析，为产品找到差异化定位。
+                                    </p>
+                                </div>
+                                <div class="mb-6">
+                                    <h3 class="font-semibold text-gray-800 mb-2">研究背景</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        2024年AI Agent赛道快速发展，但市场同质化严重。需要通过系统性研究找到产品的核心差异化价值。
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-3">核心贡献</h3>
+                                    <ul class="space-y-2 text-gray-600 text-sm">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                            通过对Coze, Dify等5款竞品的深度拆解，识别市场空白
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                            访谈超过10位垂直行业商家，精准洞察用户需求与痛点
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                            绘制产品路线图，确立"垂直行业解决方案工厂"的核心战略定位
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                            负责底层多模态模型选型，使关键指标识别率领先竞品15%
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 lg:p-8 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-robot text-6xl text-primary-blue mb-4"></i>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">AI Agent Market</h4>
+                                    <p class="text-gray-600 text-sm">竞品分析 • 用户访谈 • 战略定位</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Entry 2 -->
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="grid lg:grid-cols-2 gap-0">
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-6 lg:p-8 flex items-center justify-center order-2 lg:order-1">
+                                <div class="text-center">
+                                    <i class="fas fa-brain text-6xl text-green-600 mb-4"></i>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Zero-Shot Classification</h4>
+                                    <p class="text-gray-600 text-sm">CAAD FUTURES 2025 • 一作论文</p>
+                                </div>
+                            </div>
+                            <div class="p-6 lg:p-8 order-1 lg:order-2">
+                                <div class="mb-6">
+                                    <span class="inline-block bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                        学术论文
+                                    </span>
+                                    <h2 class="text-2xl font-bold text-dark-text mb-3">
+                                        Zero-Shot Architectural Style Classification with LLM
+                                    </h2>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        香港大学研究助理工作期间，研究AIGC赋能建筑设计，并发表一作论文于CAAD FUTURES 2025国际会议。
+                                    </p>
+                                </div>
+                                <div class="mb-6">
+                                    <h3 class="font-semibold text-gray-800 mb-2">研究问题</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        传统建筑风格识别依赖大量标注数据，如何利用大语言模型实现零样本建筑风格分类？
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-3">核心创新</h3>
+                                    <ul class="space-y-2 text-gray-600 text-sm">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            定义了从"意图识别"到"参数化模型"的AI自动化工作流，效率提升7倍
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            独立负责0-1图像识别MVP，通过GPT-4V与高级Prompt工程，将识别准确率从62%提升至85%
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            利用Vibe Coding于一周内完成从原型到Web MVP的敏捷开发闭环
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            论文被CAAD FUTURES 2025接收，展示了AI在建筑领域的应用潜力
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Research Entry 3 -->
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="grid lg:grid-cols-2 gap-0">
+                            <div class="p-6 lg:p-8">
+                                <div class="mb-6">
+                                    <span class="inline-block bg-orange-50 text-orange-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                        数据科学研究
+                                    </span>
+                                    <h2 class="text-2xl font-bold text-dark-text mb-3">
+                                        深圳微博情绪与房价关系研究
+                                    </h2>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        与MIT学者合作，旨在探索社交媒体公众情绪与房地产市场波动之间的量化关系。
+                                    </p>
+                                </div>
+                                <div class="mb-6">
+                                    <h3 class="font-semibold text-gray-800 mb-2">研究问题</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        社交媒体情绪能否作为房地产市场波动的先行指标？如何量化公众情绪与房价变化的相关性？
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-3">核心发现</h3>
+                                    <ul class="space-y-2 text-gray-600 text-sm">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            主导数据工程，清洗整合50万+微博与2万条房产交易数据
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            利用飞桨NLP模型量化公众情绪，构建时间序列数据集
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            应用地理加权回归（GWR）模型，挖掘出"情绪为房价先行指标"的核心洞察
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            构建了可提供市场风险预警的动态热力图，验证了情绪指标的预测能力
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mt-6">
+                                    <button onclick="openHousingModal()" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors">
+                                        查看详细成果
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-orange-50 to-red-100 p-6 lg:p-8 flex items-center justify-center order-2 lg:order-1">
+                                <div class="text-center">
+                                    <i class="fas fa-chart-line text-6xl text-orange-600 mb-4"></i>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Sentiment Analysis</h4>
+                                    <p class="text-gray-600 text-sm">NLP • GWR • 预测模型</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Methodology Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="fade-in">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 lg:p-12">
+                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12">研究方法论</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-search text-2xl text-primary-blue"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-3">深度调研</h3>
+                            <p class="text-gray-600">
+                                通过竞品分析、用户访谈、文献调研等方式，全面了解问题背景和市场现状
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-lightbulb text-2xl text-green-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-3">创新设计</h3>
+                            <p class="text-gray-600">
+                                基于调研结果，提出创新的解决方案和技术路径，注重实用性和可行性
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-2xl text-purple-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-3">验证优化</h3>
+                            <p class="text-gray-600">
+                                通过MVP开发、数据验证、用户反馈等方式，不断迭代优化解决方案
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Housing Research Modal -->
+    <div id="housingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-dark-text">深圳房价与微博情绪关系研究</h2>
+                <button onclick="closeHousingModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-dark-text mb-3">研究成果展示</h3>
+                    <p class="text-gray-600 mb-4">
+                        与MIT学者合作，通过分析50万+微博数据和2万条房产交易数据，构建了情绪与房价关系的预测模型。
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/1-房价数据/1.jpg" alt="房价数据分析图表1" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openImageViewer(0)">
+                        <p class="text-sm text-gray-600">数据分析可视化图表</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/1-房价数据/2.jpg" alt="房价数据分析图表2" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openImageViewer(1)">
+                        <p class="text-sm text-gray-600">情绪指标与房价相关性分析</p>
+                    </div>
+                </div>
+                <div class="mt-6 bg-blue-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-dark-text mb-2">核心发现</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• 公众情绪可作为房价波动的先行指标</li>
+                        <li>• 负面情绪峰值通常领先房价下跌2-3个月</li>
+                        <li>• 构建的GWR模型预测准确率达到78%</li>
+                        <li>• 为房地产市场风险预警提供了新的数据维度</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewer" class="fixed inset-0 bg-black bg-opacity-90 hidden z-[60] flex items-center justify-center p-4">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <!-- Close button -->
+            <button onclick="closeImageViewer()" class="absolute top-6 right-6 text-white text-3xl hover:text-gray-300 z-20 bg-black bg-opacity-50 w-12 h-12 rounded-full flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Previous button -->
+            <button onclick="previousImage()" class="absolute left-6 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20 bg-black bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Next button -->
+            <button onclick="nextImage()" class="absolute right-6 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20 bg-black bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Image container -->
+            <div class="flex items-center justify-center w-full h-full px-20 py-16">
+                <img id="viewerImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+            </div>
+            
+            <!-- Image counter -->
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black bg-opacity-70 px-4 py-2 rounded-full">
+                <span id="imageCounter">1 / 2</span>
+            </div>
+            
+            <!-- Image description -->
+            <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white text-center bg-black bg-opacity-70 px-6 py-3 rounded-lg max-w-lg">
+                <p id="imageDescription" class="text-lg">数据分析可视化图表</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-300">© 2025 Li Lei. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:lilei@example.com" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/lilei" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/lilei" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function openHousingModal() {
+            document.getElementById('housingModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHousingModal() {
+            document.getElementById('housingModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('housingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeHousingModal();
+            }
+        });
+
+        // Image viewer functionality
+        const images = [
+            {
+                src: 'material/1-房价数据/1.jpg',
+                alt: '房价数据分析图表1',
+                description: '数据分析可视化图表'
+            },
+            {
+                src: 'material/1-房价数据/2.jpg',
+                alt: '房价数据分析图表2',
+                description: '情绪指标与房价相关性分析'
+            }
+        ];
+        
+        let currentImageIndex = 0;
+
+        function openImageViewer(index) {
+            currentImageIndex = index;
+            updateImageViewer();
+            document.getElementById('imageViewer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageViewer').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateImageViewer();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateImageViewer();
+        }
+
+        function updateImageViewer() {
+            const viewerImage = document.getElementById('viewerImage');
+            const imageCounter = document.getElementById('imageCounter');
+            const imageDescription = document.getElementById('imageDescription');
+            
+            if (viewerImage && imageCounter && imageDescription) {
+                viewerImage.src = images[currentImageIndex].src;
+                viewerImage.alt = images[currentImageIndex].alt;
+                imageCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+                imageDescription.textContent = images[currentImageIndex].description;
+            }
+        }
+
+        // Close image viewer when clicking outside the image
+        document.getElementById('imageViewer').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageViewer();
+            }
+        });
+
+        // Unified keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Handle modal close
+            if (e.key === 'Escape') {
+                const imageViewer = document.getElementById('imageViewer');
+                const housingModal = document.getElementById('housingModal');
+                
+                if (!imageViewer.classList.contains('hidden')) {
+                    closeImageViewer();
+                } else if (!housingModal.classList.contains('hidden')) {
+                    closeHousingModal();
+                }
+            }
+            
+            // Handle image navigation
+            if (!document.getElementById('imageViewer').classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    previousImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

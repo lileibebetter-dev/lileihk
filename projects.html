@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - 李磊 LI Lei</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#3B82F6',
+                        'dark-text': '#11182B',
+                        'light-gray': '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .section-padding {
+            padding: 6rem 0;
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 4rem 0;
+            }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-dark-text">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-dark-text">
+                    李磊 LI Lei
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue">Home</a>
+                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue">Research</a>
+                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue active">Projects</a>
+                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue">CV</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-dark-text">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-4 space-y-4">
+                <a href="home.html" class="block text-dark-text hover:text-primary-blue">Home</a>
+                <a href="research.html" class="block text-dark-text hover:text-primary-blue">Research</a>
+                <a href="projects.html" class="block text-dark-text hover:text-primary-blue">Projects</a>
+                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="fade-in text-center mb-16">
+                <h1 class="text-5xl font-bold text-dark-text mb-4">Projects</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    从产品规划到技术实现，展示完整的项目交付能力
+                </p>
+                <div class="w-20 h-1 bg-primary-blue mx-auto mt-8"></div>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Project Entry 1 -->
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="grid lg:grid-cols-2 gap-0">
+                            <div class="p-8 lg:p-12">
+                                <div class="mb-6">
+                                    <span class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                        产品设计与开发
+                                    </span>
+                                    <h2 class="text-3xl font-bold text-dark-text mb-4">
+                                        建筑参数化协同设计平台
+                                    </h2>
+                                    <p class="text-lg text-gray-600 leading-relaxed">
+                                        在深圳市建筑设计总院担任建筑师期间，旨在解决超高层项目中多专业协作效率低、数据孤岛等痛点。
+                                    </p>
+                                </div>
+                                <div class="mb-8">
+                                    <h3 class="font-semibold text-gray-800 mb-2 text-lg">项目背景</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        超高层建筑项目涉及建筑、结构、机电等多个专业，传统协作方式效率低下，方案迭代周期长，亟需数字化解决方案。
+                                    </p>
+                                </div>
+                                <div class="mb-8">
+                                    <h3 class="font-semibold text-gray-800 mb-4 text-lg">核心功能</h3>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <i class="fas fa-cube text-purple-600 mb-2"></i>
+                                            <h4 class="font-medium text-sm">参数化建模</h4>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <i class="fas fa-users text-purple-600 mb-2"></i>
+                                            <h4 class="font-medium text-sm">多专业协同</h4>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <i class="fas fa-sync text-purple-600 mb-2"></i>
+                                            <h4 class="font-medium text-sm">实时同步</h4>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <i class="fas fa-chart-bar text-purple-600 mb-2"></i>
+                                            <h4 class="font-medium text-sm">性能分析</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-4 text-lg">项目成果</h3>
+                                    <ul class="space-y-3 text-gray-600">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            负责从需求分析、数据建模到系统架构的完整规划
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            基于Rhino/Grasshopper并用Python扩展核心功能，落地五大核心模块
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            成功将核心方案协同周期从8天缩短至5天(-37%)
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
+                                            平台已成功复用至2个以上大型项目，赋能团队提效
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-purple-50 to-violet-100 p-8 lg:p-12 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-building text-8xl text-purple-600 mb-6"></i>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Parametric Design</h4>
+                                    <p class="text-gray-600">Rhino • Grasshopper • Python</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Additional Projects Grid -->
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12">其他项目</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Mini Project 1 -->
+                        <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                            <div class="mb-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="fas fa-mobile-alt text-2xl text-primary-blue"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-dark-text mb-2">
+                                    AI建筑设计助手
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    基于GPT-4V的建筑风格识别与设计建议系统
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">React</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">GPT-4V</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">
+                                准确率85%，一周内完成MVP开发
+                            </p>
+                        </div>
+
+                        <!-- Mini Project 2 -->
+                        <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                            <div class="mb-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="fas fa-database text-2xl text-green-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-dark-text mb-2">
+                                    智能数据分析平台
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    自动化数据清洗、分析和可视化的一体化平台
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Pandas</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Plotly</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Flask</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">
+                                处理50万+数据记录，效率提升3倍
+                            </p>
+                        </div>
+
+                        <!-- Mini Project 3 -->
+                        <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                            <div class="mb-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="fas fa-code text-2xl text-purple-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-dark-text mb-2">
+                                    参数化设计工具包
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    基于Grasshopper的建筑参数化设计扩展插件
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">C#</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Rhino SDK</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Grasshopper</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">
+                                复用于2+大型项目，设计效率提升40%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-300">© 2025 Li Lei. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:lilei@example.com" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/lilei" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/lilei" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

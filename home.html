@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李磊 LI Lei - AI Product Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#3B82F6',
+                        'dark-text': '#11182B',
+                        'light-gray': '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .section-padding {
+            padding: 6rem 0;
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-dark-text">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-dark-text">
+                    李磊 LI Lei
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue active">Home</a>
+                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue">Research</a>
+                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue">Projects</a>
+                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue">CV</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-dark-text">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-4 space-y-4">
+                <a href="home.html" class="block text-dark-text hover:text-primary-blue">Home</a>
+                <a href="research.html" class="block text-dark-text hover:text-primary-blue">Research</a>
+                <a href="projects.html" class="block text-dark-text hover:text-primary-blue">Projects</a>
+                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Hero Area -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="fade-in order-2 lg:order-1">
+                    <div class="w-80 h-80 mx-auto lg:mx-0 rounded-lg overflow-hidden shadow-lg">
+                        <img src="证件照20246.jpg" alt="李磊 Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="fade-in order-1 lg:order-2 text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-dark-text mb-4">
+                        李磊 <span class="text-primary-blue">LI Lei</span>
+                    </h1>
+                    <h2 class="text-2xl lg:text-3xl text-gray-600 mb-6 font-medium">
+                        AI Product Manager
+                    </h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                        香港大学硕士，具备AI产品从研究到落地的全链路能力。拥有AI应用国际会议一作论文，擅长以产品化方法探索前沿应用；曾在"云秒搭"AI Agent平台主导0-1建设，负责战略定位、架构设计与技术选型，成功推动平台3个月内上线。
+                    </p>
+                    <div class="flex justify-center lg:justify-start space-x-6">
+                        <a href="mailto:lilei@example.com" class="text-2xl text-gray-600 hover:text-primary-blue transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/lilei" class="text-2xl text-gray-600 hover:text-primary-blue transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/lilei" class="text-2xl text-gray-600 hover:text-primary-blue transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Works -->
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold text-dark-text text-center mb-12">Featured Works</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Card 1: Agent Market Analysis -->
+                    <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-8 flex flex-col">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-block bg-blue-50 text-primary-blue px-3 py-1 rounded-full text-sm font-medium">
+                                    市场研究报告
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-4">
+                                智能体（AI Agent）市场分析与产品战略
+                            </h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                主导AI Agent平台"云秒搭"的0-1建设，通过深度竞品分析与用户访谈，确立了"垂直行业解决方案工厂"的核心战略。
+                            </p>
+                        </div>
+                        <a href="research.html" class="mt-auto self-start bg-blue-100 text-blue-800 px-3 py-1.5 rounded-md hover:bg-blue-200 transition-colors font-medium text-sm">
+                            查看详细
+                        </a>
+                    </div>
+
+                    <!-- Card 2: Zero-Shot Paper -->
+                    <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-8 flex flex-col">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-block bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm font-medium">
+                                    学术论文
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-4">
+                                Zero-Shot Architectural Style Classification with LLM
+                            </h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                CAAD FUTRUES 2025 一作论文。通过技术选型与高级Prompt工程，将建筑风格识别准确率从62%提升至85%。
+                            </p>
+                        </div>
+                        <a href="research.html" class="mt-auto self-start bg-green-100 text-green-800 px-3 py-1.5 rounded-md hover:bg-green-200 transition-colors font-medium text-sm">
+                            查看详细
+                        </a>
+                    </div>
+
+                    <!-- Card 3: Parametric Design Platform -->
+                    <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-8 flex flex-col">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-block bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
+                                    产品设计与开发
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-4">
+                                建筑参数化协同设计平台
+                            </h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                针对超高层项目协作痛点，规划并参与研发了一款参数化协同平台，将核心方案协同周期缩短37%。
+                            </p>
+                        </div>
+                        <a href="projects.html" class="mt-auto self-start bg-purple-100 text-purple-800 px-3 py-1.5 rounded-md hover:bg-purple-200 transition-colors font-medium text-sm">
+                            查看详细
+                        </a>
+                    </div>
+
+                    <!-- Card 4: Housing Price Study -->
+                    <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-8 flex flex-col">
+                        <div>
+                            <div class="mb-4">
+                                <span class="inline-block bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-sm font-medium">
+                                    数据科学
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-text mb-4">
+                                深圳房价与微博情绪关系研究
+                            </h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                与MIT学者合作，应用NLP与GWR模型分析50万+条数据，挖掘出"公众情绪为房价先行指标"的核心洞察。
+                            </p>
+                        </div>
+                        <button onclick="openHousingModal()" class="mt-auto self-start bg-orange-100 text-orange-800 px-3 py-1.5 rounded-md hover:bg-orange-200 transition-colors font-medium text-sm">
+                            查看详细
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Housing Research Modal -->
+    <div id="housingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-dark-text">深圳房价与微博情绪关系研究</h2>
+                <button onclick="closeHousingModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-dark-text mb-3">研究成果展示</h3>
+                    <p class="text-gray-600 mb-4">
+                        与MIT学者合作，通过分析50万+微博数据和2万条房产交易数据，构建了情绪与房价关系的预测模型。
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/1-房价数据/1.jpg" alt="房价数据分析图表1" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openImageViewer(0)">
+                        <p class="text-sm text-gray-600">数据分析可视化图表</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/1-房价数据/2.jpg" alt="房价数据分析图表2" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openImageViewer(1)">
+                        <p class="text-sm text-gray-600">情绪指标与房价相关性分析</p>
+                    </div>
+                </div>
+                <div class="mt-6 bg-blue-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-dark-text mb-2">核心发现</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• 公众情绪可作为房价波动的先行指标</li>
+                        <li>• 负面情绪峰值通常领先房价下跌2-3个月</li>
+                        <li>• 构建的GWR模型预测准确率达到78%</li>
+                        <li>• 为房地产市场风险预警提供了新的数据维度</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewer" class="fixed inset-0 bg-black bg-opacity-90 hidden z-[60] flex items-center justify-center p-4">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <!-- Close button -->
+            <button onclick="closeImageViewer()" class="absolute top-6 right-6 text-white text-3xl hover:text-gray-300 z-20 bg-black bg-opacity-50 w-12 h-12 rounded-full flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Previous button -->
+            <button onclick="previousImage()" class="absolute left-6 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20 bg-black bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Next button -->
+            <button onclick="nextImage()" class="absolute right-6 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20 bg-black bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Image container -->
+            <div class="flex items-center justify-center w-full h-full px-20 py-16">
+                <img id="viewerImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+            </div>
+            
+            <!-- Image counter -->
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black bg-opacity-70 px-4 py-2 rounded-full">
+                <span id="imageCounter">1 / 2</span>
+            </div>
+            
+            <!-- Image description -->
+            <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white text-center bg-black bg-opacity-70 px-6 py-3 rounded-lg max-w-lg">
+                <p id="imageDescription" class="text-lg">数据分析可视化图表</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-300">© 2025 Li Lei. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:lilei@example.com" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/lilei" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/lilei" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function openHousingModal() {
+            document.getElementById('housingModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHousingModal() {
+            document.getElementById('housingModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('housingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeHousingModal();
+            }
+        });
+
+        // Image viewer functionality
+        const images = [
+            {
+                src: 'material/1-房价数据/1.jpg',
+                alt: '房价数据分析图表1',
+                description: '数据分析可视化图表'
+            },
+            {
+                src: 'material/1-房价数据/2.jpg',
+                alt: '房价数据分析图表2',
+                description: '情绪指标与房价相关性分析'
+            }
+        ];
+        
+        let currentImageIndex = 0;
+
+        function openImageViewer(index) {
+            currentImageIndex = index;
+            updateImageViewer();
+            document.getElementById('imageViewer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageViewer').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateImageViewer();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateImageViewer();
+        }
+
+        function updateImageViewer() {
+            const viewerImage = document.getElementById('viewerImage');
+            const imageCounter = document.getElementById('imageCounter');
+            const imageDescription = document.getElementById('imageDescription');
+            
+            if (viewerImage && imageCounter && imageDescription) {
+                viewerImage.src = images[currentImageIndex].src;
+                viewerImage.alt = images[currentImageIndex].alt;
+                imageCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+                imageDescription.textContent = images[currentImageIndex].description;
+            }
+        }
+
+        // Close image viewer when clicking outside the image
+        document.getElementById('imageViewer').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageViewer();
+            }
+        });
+
+        // Unified keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Handle modal close
+            if (e.key === 'Escape') {
+                const imageViewer = document.getElementById('imageViewer');
+                const housingModal = document.getElementById('housingModal');
+                
+                if (!imageViewer.classList.contains('hidden')) {
+                    closeImageViewer();
+                } else if (!housingModal.classList.contains('hidden')) {
+                    closeHousingModal();
+                }
+            }
+            
+            // Handle image navigation
+            if (!document.getElementById('imageViewer').classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    previousImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
