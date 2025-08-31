@@ -80,11 +80,16 @@
                 <div class="text-xl font-bold text-dark-text">
                     李磊 LI Lei
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue">Home</a>
-                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue">Research</a>
-                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue active">Projects</a>
-                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue">CV</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue" data-zh="首页" data-en="Home">Home</a>
+                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue" data-zh="研究" data-en="Research">Research</a>
+                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue active" data-zh="项目" data-en="Projects">Projects</a>
+                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue" data-zh="简历" data-en="CV">CV</a>
+                    <!-- Language Toggle -->
+                    <button id="langToggle" class="ml-4 flex items-center space-x-1 text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors">
+                        <i class="fas fa-globe text-primary-blue"></i>
+                        <span id="currentLang">中</span>
+                    </button>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
@@ -97,10 +102,15 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <div class="px-4 py-4 space-y-4">
-                <a href="home.html" class="block text-dark-text hover:text-primary-blue">Home</a>
-                <a href="research.html" class="block text-dark-text hover:text-primary-blue">Research</a>
-                <a href="projects.html" class="block text-dark-text hover:text-primary-blue">Projects</a>
-                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue">CV</a>
+                <a href="home.html" class="block text-dark-text hover:text-primary-blue" data-zh="首页" data-en="Home">Home</a>
+                <a href="research.html" class="block text-dark-text hover:text-primary-blue" data-zh="研究" data-en="Research">Research</a>
+                <a href="projects.html" class="block text-dark-text hover:text-primary-blue" data-zh="项目" data-en="Projects">Projects</a>
+                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue" data-zh="简历" data-en="CV">CV</a>
+                <button id="langToggleMobile" class="block w-full text-left text-dark-text hover:text-primary-blue flex items-center space-x-2">
+                    <i class="fas fa-globe text-primary-blue"></i>
+                    <span data-zh="切换语言" data-en="Language">切换语言</span>
+                    <span id="currentLangMobile">中</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -109,8 +119,8 @@
     <section class="section-padding bg-white">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
             <div class="fade-in text-center mb-16">
-                <h1 class="text-5xl font-bold text-dark-text mb-4">Projects</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-5xl font-bold text-dark-text mb-4" data-zh="项目" data-en="Projects">Projects</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-zh="从产品规划到技术实现，展示完整的项目交付能力" data-en="From product planning to technical implementation, showcasing comprehensive project delivery capabilities">
                     从产品规划到技术实现，展示完整的项目交付能力
                 </p>
                 <div class="w-20 h-1 bg-primary-blue mx-auto mt-8"></div>
@@ -123,10 +133,10 @@
                         <div class="grid lg:grid-cols-2 gap-0">
                             <div class="p-8 lg:p-12">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    <span class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="产品设计与开发" data-en="Product Design & Development">
                                         产品设计与开发
                                     </span>
-                                    <h2 class="text-3xl font-bold text-dark-text mb-4">
+                                    <h2 class="text-3xl font-bold text-dark-text mb-4" data-zh="建筑参数化协同设计平台" data-en="Parametric Collaborative Design Platform">
                                         建筑参数化协同设计平台
                                     </h2>
                                     <p class="text-lg text-gray-600 leading-relaxed">
@@ -181,6 +191,11 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <div class="mt-8">
+                                    <button onclick="openParametricModal()" class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-300 font-medium" data-zh="查看详细" data-en="View Details">
+                                        查看详细
+                                    </button>
+                                </div>
                             </div>
                             <div class="bg-gradient-to-br from-purple-50 to-violet-100 p-8 lg:p-12 flex items-center justify-center">
                                 <div class="text-center">
@@ -197,7 +212,7 @@
 
                 <!-- Additional Projects Grid -->
                 <div class="fade-in">
-                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12">其他项目</h2>
+                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12" data-zh="其他项目" data-en="Other Projects">其他项目</h2>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Mini Project 1 -->
                         <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
@@ -205,10 +220,10 @@
                                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                                     <i class="fas fa-mobile-alt text-2xl text-primary-blue"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold text-dark-text mb-2">
+                                <h3 class="text-xl font-semibold text-dark-text mb-2" data-zh="AI建筑设计助手" data-en="AI Architecture Design Assistant">
                                     AI建筑设计助手
                                 </h3>
-                                <p class="text-gray-600 text-sm mb-4">
+                                <p class="text-gray-600 text-sm mb-4" data-zh="基于GPT-4V的建筑风格识别与设计建议系统" data-en="Architectural style recognition and design recommendation system based on GPT-4V">
                                     基于GPT-4V的建筑风格识别与设计建议系统
                                 </p>
                             </div>
@@ -217,7 +232,7 @@
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">GPT-4V</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
                             </div>
-                            <p class="text-gray-600 text-sm">
+                            <p class="text-gray-600 text-sm" data-zh="准确率85%，一周内完成MVP开发" data-en="85% accuracy, MVP completed within one week">
                                 准确率85%，一周内完成MVP开发
                             </p>
                         </div>
@@ -228,10 +243,10 @@
                                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                                     <i class="fas fa-database text-2xl text-green-600"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold text-dark-text mb-2">
+                                <h3 class="text-xl font-semibold text-dark-text mb-2" data-zh="智能数据分析平台" data-en="Intelligent Data Analytics Platform">
                                     智能数据分析平台
                                 </h3>
-                                <p class="text-gray-600 text-sm mb-4">
+                                <p class="text-gray-600 text-sm mb-4" data-zh="自动化数据清洗、分析和可视化的一体化平台" data-en="Integrated platform for automated data cleaning, analysis and visualization">
                                     自动化数据清洗、分析和可视化的一体化平台
                                 </p>
                             </div>
@@ -240,7 +255,7 @@
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Plotly</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Flask</span>
                             </div>
-                            <p class="text-gray-600 text-sm">
+                            <p class="text-gray-600 text-sm" data-zh="处理50万+数据记录，效率提升3倍" data-en="Processed 500k+ data records, 3x efficiency improvement">
                                 处理50万+数据记录，效率提升3倍
                             </p>
                         </div>
@@ -251,10 +266,10 @@
                                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                                     <i class="fas fa-code text-2xl text-purple-600"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold text-dark-text mb-2">
+                                <h3 class="text-xl font-semibold text-dark-text mb-2" data-zh="参数化设计工具包" data-en="Parametric Design Toolkit">
                                     参数化设计工具包
                                 </h3>
-                                <p class="text-gray-600 text-sm mb-4">
+                                <p class="text-gray-600 text-sm mb-4" data-zh="基于Grasshopper的建筑参数化设计扩展插件" data-en="Grasshopper-based parametric design extension plugin for architecture">
                                     基于Grasshopper的建筑参数化设计扩展插件
                                 </p>
                             </div>
@@ -263,7 +278,7 @@
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Rhino SDK</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Grasshopper</span>
                             </div>
-                            <p class="text-gray-600 text-sm">
+                            <p class="text-gray-600 text-sm" data-zh="复用于2+大型项目，设计效率提升40%" data-en="Reused in 2+ large projects, 40% design efficiency improvement">
                                 复用于2+大型项目，设计效率提升40%
                             </p>
                         </div>
@@ -295,6 +310,91 @@
         </div>
     </footer>
 
+    <!-- Parametric Platform Modal -->
+    <div id="parametricModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-[70] flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto p-6 relative">
+            <!-- Fixed close button -->
+            <button onclick="closeParametricModal()" class="fixed top-4 right-4 text-gray-500 hover:text-gray-700 z-[75] bg-white rounded-full p-2 shadow-lg">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2" data-zh="建筑参数化协同设计平台" data-en="Parametric Collaborative Design Platform">建筑参数化协同设计平台</h2>
+                <p class="text-gray-600 mb-4" data-zh="在深圳市建筑设计研究总院担任建筑师期间，基于Grasshopper开发的建筑参数化设计扩展插件，旨在提升多专业协作效率。" data-en="Grasshopper-based parametric design extension developed during my tenure as architect at SZADI, aimed at improving multi-disciplinary collaboration efficiency.">在深圳市建筑设计研究总院担任建筑师期间，基于Grasshopper开发的建筑参数化设计扩展插件，旨在提升多专业协作效率。</p>
+            </div>
+
+            <!-- Project showcase images -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3" data-zh="项目成果展示" data-en="Project Showcase">项目成果展示</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/3-parametric-design/Jobs-20250328-打印_页面_03.jpg" alt="参数化设计平台概述" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openParametricImageViewer(0)">
+                        <p class="text-sm text-gray-600" data-zh="参数化设计平台概述与核心功能" data-en="Platform Overview & Core Features">参数化设计平台概述与核心功能</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/3-parametric-design/Jobs-20250328-打印_页面_04.jpg" alt="Grasshopper插件架构" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openParametricImageViewer(1)">
+                        <p class="text-sm text-gray-600" data-zh="Grasshopper插件架构与工作流程" data-en="Grasshopper Plugin Architecture">Grasshopper插件架构与工作流程</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/3-parametric-design/Jobs-20250328-打印_页面_05.jpg" alt="多专业协同界面" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openParametricImageViewer(2)">
+                        <p class="text-sm text-gray-600" data-zh="多专业协同设计界面" data-en="Multi-disciplinary Collaboration Interface">多专业协同设计界面</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/3-parametric-design/Jobs-20250328-打印_页面_06.jpg" alt="参数化建模工具" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openParametricImageViewer(3)">
+                        <p class="text-sm text-gray-600" data-zh="参数化建模工具与算法" data-en="Parametric Modeling Tools & Algorithms">参数化建模工具与算法</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto">
+                        <img src="material/3-parametric-design/Jobs-20250328-打印_页面_07.jpg" alt="项目实施效果" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openParametricImageViewer(4)">
+                        <p class="text-sm text-gray-600 text-center" data-zh="项目实施效果与成果总结" data-en="Implementation Results & Summary">项目实施效果与成果总结</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key achievements -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3" data-zh="核心成果" data-en="Key Achievements">核心成果</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li data-zh="• 成功将核心方案协同周期从8天缩短至5天（-37%）" data-en="• Reduced core design collaboration cycle from 8 days to 5 days (-37%)">• 成功将核心方案协同周期从8天缩短至5天（-37%）</li>
+                    <li data-zh="• 基于Rhino/Grasshopper开发五大核心功能模块" data-en="• Developed 5 core functional modules based on Rhino/Grasshopper">• 基于Rhino/Grasshopper开发五大核心功能模块</li>
+                    <li data-zh="• 平台已成功复用至2+个大型项目，显著提升团队效率" data-en="• Platform successfully reused in 2+ large projects, significantly improving team efficiency">• 平台已成功复用至2+个大型项目，显著提升团队效率</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer -->
+    <div id="imageViewer" class="fixed inset-0 bg-black bg-opacity-90 hidden z-[80] flex items-center justify-center">
+        <div class="relative max-w-full max-h-full p-4">
+            <!-- Navigation buttons -->
+            <button onclick="previousImage()" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 transition-all z-10">
+                <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+            <button onclick="nextImage()" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 transition-all z-10">
+                <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+            
+            <!-- Close button -->
+            <button onclick="closeImageViewer()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 transition-all z-10">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <!-- Image -->
+            <img id="viewerImage" src="" alt="" class="max-w-full max-h-[85vh] object-contain">
+            
+            <!-- Image counter -->
+            <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-70 px-4 py-2 rounded-lg">
+                <span id="imageCounter">1 / 5</span>
+            </div>
+            
+            <!-- Image description -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-center bg-black bg-opacity-70 px-6 py-3 rounded-lg max-w-lg">
+                <p id="imageDescription" class="text-lg">参数化设计平台概述</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -303,6 +403,38 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // Parametric design images array
+        const parametricImages = [
+            {
+                src: 'material/3-parametric-design/Jobs-20250328-打印_页面_03.jpg',
+                alt: '参数化设计平台概述',
+                description: '参数化设计平台概述与核心功能'
+            },
+            {
+                src: 'material/3-parametric-design/Jobs-20250328-打印_页面_04.jpg',
+                alt: 'Grasshopper插件架构',
+                description: 'Grasshopper插件架构与工作流程'
+            },
+            {
+                src: 'material/3-parametric-design/Jobs-20250328-打印_页面_05.jpg',
+                alt: '多专业协同界面',
+                description: '多专业协同设计界面'
+            },
+            {
+                src: 'material/3-parametric-design/Jobs-20250328-打印_页面_06.jpg',
+                alt: '参数化建模工具',
+                description: '参数化建模工具与算法'
+            },
+            {
+                src: 'material/3-parametric-design/Jobs-20250328-打印_页面_07.jpg',
+                alt: '项目实施效果',
+                description: '项目实施效果与成果总结'
+            }
+        ];
+
+        let currentImageIndex = 0;
+        let currentImageSet = [];
 
         // Fade in animation on scroll
         const observerOptions = {
@@ -321,6 +453,142 @@
         // Observe all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // Language switching functionality
+        let currentLanguage = localStorage.getItem('preferred-language') || 'zh';
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+            localStorage.setItem('preferred-language', currentLanguage);
+            updateLanguageDisplay();
+        }
+        
+        function updateLanguageDisplay() {
+            // Update all elements with data-zh and data-en attributes
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            elements.forEach(element => {
+                if (currentLanguage === 'zh') {
+                    element.innerHTML = element.getAttribute('data-zh');
+                } else {
+                    element.innerHTML = element.getAttribute('data-en');
+                }
+            });
+            
+            // Update language toggle button text
+            const currentLang = document.getElementById('currentLang');
+            const currentLangMobile = document.getElementById('currentLangMobile');
+            if (currentLang) {
+                currentLang.textContent = currentLanguage === 'zh' ? '中' : 'EN';
+            }
+            if (currentLangMobile) {
+                currentLangMobile.textContent = currentLanguage === 'zh' ? '中' : 'EN';
+            }
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : 'en';
+        }
+        
+        // Modal functions
+        function openParametricModal() {
+            document.getElementById('parametricModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeParametricModal() {
+            document.getElementById('parametricModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Image viewer functions
+        function openParametricImageViewer(index) {
+            currentImageSet = parametricImages;
+            currentImageIndex = index;
+            updateImageViewer();
+            document.getElementById('imageViewer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageViewer').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentImageSet.length;
+            updateImageViewer();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentImageSet.length) % currentImageSet.length;
+            updateImageViewer();
+        }
+
+        function updateImageViewer() {
+            const viewerImage = document.getElementById('viewerImage');
+            const imageCounter = document.getElementById('imageCounter');
+            const imageDescription = document.getElementById('imageDescription');
+            
+            if (viewerImage && imageCounter && imageDescription) {
+                viewerImage.src = currentImageSet[currentImageIndex].src;
+                viewerImage.alt = currentImageSet[currentImageIndex].alt;
+                imageCounter.textContent = `${currentImageIndex + 1} / ${currentImageSet.length}`;
+                imageDescription.textContent = currentImageSet[currentImageIndex].description;
+            }
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguageDisplay();
+            
+            // Add event listeners for language toggle buttons
+            const langToggle = document.getElementById('langToggle');
+            const langToggleMobile = document.getElementById('langToggleMobile');
+            
+            if (langToggle) {
+                langToggle.addEventListener('click', toggleLanguage);
+            }
+            if (langToggleMobile) {
+                langToggleMobile.addEventListener('click', toggleLanguage);
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('parametricModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeParametricModal();
+            }
+        });
+
+        // Close image viewer when clicking outside the image
+        document.getElementById('imageViewer').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageViewer();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const imageViewer = document.getElementById('imageViewer');
+            const parametricModal = document.getElementById('parametricModal');
+            
+            // Handle modal close
+            if (e.key === 'Escape') {
+                if (!imageViewer.classList.contains('hidden')) {
+                    closeImageViewer();
+                } else if (!parametricModal.classList.contains('hidden')) {
+                    closeParametricModal();
+                }
+            }
+            
+            // Handle image navigation
+            if (!imageViewer.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    previousImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            }
         });
     </script>
 </body>

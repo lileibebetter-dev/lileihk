@@ -73,11 +73,16 @@
                 <div class="text-xl font-bold text-dark-text">
                     李磊 LI Lei
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue">Home</a>
-                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue active">Research</a>
-                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue">Projects</a>
-                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue">CV</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue" data-zh="首页" data-en="Home">Home</a>
+                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue active" data-zh="研究" data-en="Research">Research</a>
+                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue" data-zh="项目" data-en="Projects">Projects</a>
+                    <a href="产品简历_李磊_250831.pdf" download class="nav-link text-dark-text hover:text-primary-blue" data-zh="简历" data-en="CV">CV</a>
+                    <!-- Language Toggle -->
+                    <button id="langToggle" class="ml-4 flex items-center space-x-1 text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors">
+                        <i class="fas fa-globe text-primary-blue"></i>
+                        <span id="currentLang">中</span>
+                    </button>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
@@ -90,10 +95,15 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <div class="px-4 py-4 space-y-4">
-                <a href="home.html" class="block text-dark-text hover:text-primary-blue">Home</a>
-                <a href="research.html" class="block text-dark-text hover:text-primary-blue">Research</a>
-                <a href="projects.html" class="block text-dark-text hover:text-primary-blue">Projects</a>
-                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue">CV</a>
+                <a href="home.html" class="block text-dark-text hover:text-primary-blue" data-zh="首页" data-en="Home">Home</a>
+                <a href="research.html" class="block text-dark-text hover:text-primary-blue" data-zh="研究" data-en="Research">Research</a>
+                <a href="projects.html" class="block text-dark-text hover:text-primary-blue" data-zh="项目" data-en="Projects">Projects</a>
+                <a href="产品简历_李磊_250831.pdf" download class="block text-dark-text hover:text-primary-blue" data-zh="简历" data-en="CV">CV</a>
+                <button id="langToggleMobile" class="block w-full text-left text-dark-text hover:text-primary-blue flex items-center space-x-2">
+                    <i class="fas fa-globe text-primary-blue"></i>
+                    <span data-zh="切换语言" data-en="Language">切换语言</span>
+                    <span id="currentLangMobile">中</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -102,8 +112,8 @@
     <section class="section-padding bg-light-gray">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
             <div class="fade-in text-center mb-16">
-                <h1 class="text-5xl font-bold text-dark-text mb-4">Research</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-5xl font-bold text-dark-text mb-4" data-zh="研究" data-en="Research">Research</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-zh="探索AI技术在产品化应用中的创新实践，从学术研究到市场洞察" data-en="Exploring innovative practices of AI technology in product applications, from academic research to market insights">
                     探索AI技术在产品化应用中的创新实践，从学术研究到市场洞察
                 </p>
                 <div class="w-20 h-1 bg-primary-blue mx-auto mt-8"></div>
@@ -116,10 +126,10 @@
                         <div class="grid lg:grid-cols-2 gap-0">
                             <div class="p-6 lg:p-8">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-blue-50 text-primary-blue px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    <span class="inline-block bg-blue-50 text-primary-blue px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="市场研究报告" data-en="Market Research">
                                         市场研究报告
                                     </span>
-                                    <h2 class="text-2xl font-bold text-dark-text mb-3">
+                                    <h2 class="text-2xl font-bold text-dark-text mb-3" data-zh="智能体市场分析研究报告" data-en="AI Agent Market Analysis Report">
                                         智能体市场分析研究报告
                                     </h2>
                                     <p class="text-gray-600 leading-relaxed">
@@ -178,10 +188,10 @@
                             </div>
                             <div class="p-6 lg:p-8 order-1 lg:order-2">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    <span class="inline-block bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="学术论文" data-en="Academic Paper">
                                         学术论文
                                     </span>
-                                    <h2 class="text-2xl font-bold text-dark-text mb-3">
+                                    <h2 class="text-2xl font-bold text-dark-text mb-3" data-zh="Zero-Shot建筑风格分类与大语言模型" data-en="Zero-Shot Architectural Style Classification with LLM">
                                         Zero-Shot Architectural Style Classification with LLM
                                     </h2>
                                     <p class="text-gray-600 leading-relaxed">
@@ -215,6 +225,11 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <div class="mt-6">
+                                    <button onclick="openPaperModal()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors" data-zh="查看论文" data-en="View Paper">
+                                        查看论文
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,10 +243,10 @@
                         <div class="grid lg:grid-cols-2 gap-0">
                             <div class="p-6 lg:p-8">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-orange-50 text-orange-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    <span class="inline-block bg-orange-50 text-orange-600 px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="数据科学研究" data-en="Data Science Research">
                                         数据科学研究
                                     </span>
-                                    <h2 class="text-2xl font-bold text-dark-text mb-3">
+                                    <h2 class="text-2xl font-bold text-dark-text mb-3" data-zh="深圳微博情绪与房价关系研究" data-en="Shenzhen Weibo Sentiment & Housing Price Research">
                                         深圳微博情绪与房价关系研究
                                     </h2>
                                     <p class="text-gray-600 leading-relaxed">
@@ -266,9 +281,9 @@
                                     </ul>
                                 </div>
                                 <div class="mt-6">
-                                    <button onclick="openHousingModal()" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors">
-                                        查看详细成果
-                                    </button>
+                                                        <button onclick="openHousingModal()" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors" data-zh="查看详细成果" data-en="View Detailed Results">
+                        查看详细成果
+                    </button>
                                 </div>
                             </div>
                             <div class="bg-gradient-to-br from-orange-50 to-red-100 p-6 lg:p-8 flex items-center justify-center order-2 lg:order-1">
@@ -290,14 +305,14 @@
         <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
             <div class="fade-in">
                 <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 lg:p-12">
-                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12">研究方法论</h2>
+                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12" data-zh="研究方法论" data-en="Research Methodology">研究方法论</h2>
                     <div class="grid md:grid-cols-3 gap-8">
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-search text-2xl text-primary-blue"></i>
                             </div>
-                            <h3 class="text-xl font-semibold text-dark-text mb-3">深度调研</h3>
-                            <p class="text-gray-600">
+                            <h3 class="text-xl font-semibold text-dark-text mb-3" data-zh="深度调研" data-en="In-depth Research">深度调研</h3>
+                            <p class="text-gray-600" data-zh="通过竞品分析、用户访谈、文献调研等方式，全面了解问题背景和市场现状" data-en="Comprehensive understanding of problem context and market status through competitive analysis, user interviews, literature research and other methods">
                                 通过竞品分析、用户访谈、文献调研等方式，全面了解问题背景和市场现状
                             </p>
                         </div>
@@ -305,8 +320,8 @@
                             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-lightbulb text-2xl text-green-600"></i>
                             </div>
-                            <h3 class="text-xl font-semibold text-dark-text mb-3">创新设计</h3>
-                            <p class="text-gray-600">
+                            <h3 class="text-xl font-semibold text-dark-text mb-3" data-zh="创新设计" data-en="Innovative Design">创新设计</h3>
+                            <p class="text-gray-600" data-zh="基于调研结果，提出创新的解决方案和技术路径，注重实用性和可行性" data-en="Based on research results, propose innovative solutions and technical approaches with focus on practicality and feasibility">
                                 基于调研结果，提出创新的解决方案和技术路径，注重实用性和可行性
                             </p>
                         </div>
@@ -314,8 +329,8 @@
                             <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-chart-line text-2xl text-purple-600"></i>
                             </div>
-                            <h3 class="text-xl font-semibold text-dark-text mb-3">验证优化</h3>
-                            <p class="text-gray-600">
+                            <h3 class="text-xl font-semibold text-dark-text mb-3" data-zh="验证优化" data-en="Validation & Optimization">验证优化</h3>
+                            <p class="text-gray-600" data-zh="通过MVP开发、数据验证、用户反馈等方式，不断迭代优化解决方案" data-en="Continuously iterate and optimize solutions through MVP development, data validation, user feedback and other methods">
                                 通过MVP开发、数据验证、用户反馈等方式，不断迭代优化解决方案
                             </p>
                         </div>
@@ -329,35 +344,49 @@
     <div id="housingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6 border-b border-gray-200 flex justify-between items-center">
-                <h2 class="text-2xl font-bold text-dark-text">深圳房价与微博情绪关系研究</h2>
+                <h2 class="text-2xl font-bold text-dark-text" data-zh="深圳房价与微博情绪关系研究" data-en="Shenzhen Housing Prices & Weibo Sentiment Analysis">深圳房价与微博情绪关系研究</h2>
                 <button onclick="closeHousingModal()" class="text-gray-500 hover:text-gray-700">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
             <div class="p-6">
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-dark-text mb-3">研究成果展示</h3>
-                    <p class="text-gray-600 mb-4">
+                    <h3 class="text-lg font-semibold text-dark-text mb-3" data-zh="研究成果展示" data-en="Research Results">研究成果展示</h3>
+                    <p class="text-gray-600 mb-4" data-zh="与MIT学者合作，通过分析50万+微博数据和2万条房产交易数据，构建了情绪与房价关系的预测模型。" data-en="Collaborated with MIT scholars to analyze 500k+ Weibo data and 20k real estate transaction records, building a predictive model for the relationship between sentiment and housing prices.">
                         与MIT学者合作，通过分析50万+微博数据和2万条房产交易数据，构建了情绪与房价关系的预测模型。
                     </p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <img src="material/1-房价数据/1.jpg" alt="房价数据分析图表1" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openImageViewer(0)">
-                        <p class="text-sm text-gray-600">数据分析可视化图表</p>
+                        <img src="material/1-房价数据/Jobs-20250328-打印_页面_16.jpg" alt="研究项目概述" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openHousingImageViewer(0)">
+                        <p class="text-sm text-gray-600" data-zh="研究项目概述与背景介绍" data-en="Research Overview & Background">研究项目概述与背景介绍</p>
                     </div>
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <img src="material/1-房价数据/2.jpg" alt="房价数据分析图表2" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openImageViewer(1)">
-                        <p class="text-sm text-gray-600">情绪指标与房价相关性分析</p>
+                        <img src="material/1-房价数据/Jobs-20250328-打印_页面_17.jpg" alt="微博情绪分析工作流程" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openHousingImageViewer(1)">
+                        <p class="text-sm text-gray-600" data-zh="Bi-LSTM模型与情绪分析方法" data-en="Bi-LSTM Model & Sentiment Analysis">Bi-LSTM模型与情绪分析方法</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/1-房价数据/Jobs-20250328-打印_页面_18.jpg" alt="空间分布系数分析" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openHousingImageViewer(2)">
+                        <p class="text-sm text-gray-600" data-zh="深圳各区域情绪与房价相关性分析" data-en="Regional Sentiment-Price Correlation">深圳各区域情绪与房价相关性分析</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/1-房价数据/Jobs-20250328-打印_页面_19.jpg" alt="微博与房价数据框架" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openHousingImageViewer(3)">
+                        <p class="text-sm text-gray-600" data-zh="数据处理框架与POI分类" data-en="Data Processing Framework & POI Classification">数据处理框架与POI分类</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto">
+                        <img src="material/1-房价数据/Jobs-20250328-打印_页面_20.jpg" alt="GWR建模相关性分析" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openHousingImageViewer(4)">
+                        <p class="text-sm text-gray-600 text-center" data-zh="地理加权回归模型分析结果" data-en="GWR Model Analysis Results">地理加权回归模型分析结果</p>
                     </div>
                 </div>
                 <div class="mt-6 bg-blue-50 rounded-lg p-4">
-                    <h4 class="font-semibold text-dark-text mb-2">核心发现</h4>
+                    <h4 class="font-semibold text-dark-text mb-2" data-zh="核心发现" data-en="Key Findings">核心发现</h4>
                     <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• 公众情绪可作为房价波动的先行指标</li>
-                        <li>• 负面情绪峰值通常领先房价下跌2-3个月</li>
-                        <li>• 构建的GWR模型预测准确率达到78%</li>
-                        <li>• 为房地产市场风险预警提供了新的数据维度</li>
+                        <li data-zh="• 公众情绪可作为房价波动的先行指标" data-en="• Public sentiment serves as a leading indicator for housing price fluctuations">• 公众情绪可作为房价波动的先行指标</li>
+                        <li data-zh="• 负面情绪峰值通常领先房价下跌2-3个月" data-en="• Negative sentiment peaks typically precede housing price declines by 2-3 months">• 负面情绪峰值通常领先房价下跌2-3个月</li>
+                        <li data-zh="• 构建的GWR模型预测准确率达到78%" data-en="• The developed GWR model achieved 78% prediction accuracy">• 构建的GWR模型预测准确率达到78%</li>
+                        <li data-zh="• 为房地产市场风险预警提供了新的数据维度" data-en="• Provides a new data dimension for real estate market risk warning">• 为房地产市场风险预警提供了新的数据维度</li>
                     </ul>
                 </div>
             </div>
@@ -395,6 +424,47 @@
             <!-- Image description -->
             <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white text-center bg-black bg-opacity-70 px-6 py-3 rounded-lg max-w-lg">
                 <p id="imageDescription" class="text-lg">数据分析可视化图表</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paper PDF Modal -->
+    <div id="paperModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-[70] flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto p-6 relative">
+            <button onclick="closePaperModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2" data-zh="Zero-Shot 建筑风格分类研究" data-en="Zero-Shot Architectural Style Classification">Zero-Shot 建筑风格分类研究</h2>
+                <p class="text-gray-600 mb-4" data-zh="基于大语言模型的建筑风格分类研究，发表于CAAD FUTURES 2025国际会议。" data-en="Research on architectural style classification using LLM, published at CAAD FUTURES 2025.">基于大语言模型的建筑风格分类研究，发表于CAAD FUTURES 2025国际会议。</p>
+            </div>
+
+            <!-- Poster展示 -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3" data-zh="研究成果展示" data-en="Research Showcase">研究成果展示</h3>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <img src="./material/2-paper/poster.png" alt="Research Poster" class="w-full h-auto rounded-lg shadow-lg cursor-pointer" onclick="openPaperImageViewer(0)">
+                    <p class="text-center text-sm text-gray-500 mt-2" data-zh="CAAD FUTURES 2025 会议海报" data-en="CAAD FUTURES 2025 Conference Poster">CAAD FUTURES 2025 会议海报</p>
+                </div>
+            </div>
+
+            <!-- 核心发现 -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3" data-zh="核心发现" data-en="Key Findings">核心发现</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li data-zh="• 开发了基于大语言模型的零样本建筑风格分类方法" data-en="• Developed zero-shot architectural style classification using LLM">• 开发了基于大语言模型的零样本建筑风格分类方法</li>
+                    <li data-zh="• 在多个建筑数据集上实现了优秀的分类性能" data-en="• Achieved excellent classification performance on multiple datasets">• 在多个建筑数据集上实现了优秀的分类性能</li>
+                    <li data-zh="• 为建筑设计智能化提供了新的技术路径" data-en="• Provided new technical approaches for architectural design intelligence">• 为建筑设计智能化提供了新的技术路径</li>
+                </ul>
+            </div>
+
+            <!-- 下载按钮 -->
+            <div class="flex justify-center">
+                <a href="./material/2-paper/CAAD_FUTURE2025-304-Final_Camera-Ready.pdf" download="CAAD_FUTURE2025_ZeroShot_Paper.pdf" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    <i class="fas fa-download mr-2"></i>
+                    <span data-zh="下载完整论文" data-en="Download Full Paper">下载完整论文</span>
+                </a>
             </div>
         </div>
     </div>
@@ -467,23 +537,59 @@
             }
         });
 
-        // Image viewer functionality
-        const images = [
+        // Image viewer functionality for housing research
+        const housingImages = [
             {
-                src: 'material/1-房价数据/1.jpg',
-                alt: '房价数据分析图表1',
-                description: '数据分析可视化图表'
+                src: 'material/1-房价数据/Jobs-20250328-打印_页面_16.jpg',
+                alt: '深圳房价与微博情绪关系研究',
+                description: '研究项目概述与背景介绍'
             },
             {
-                src: 'material/1-房价数据/2.jpg',
-                alt: '房价数据分析图表2',
-                description: '情绪指标与房价相关性分析'
+                src: 'material/1-房价数据/Jobs-20250328-打印_页面_17.jpg',
+                alt: '微博情绪分析工作流程',
+                description: 'Bi-LSTM模型与情绪分析方法'
+            },
+            {
+                src: 'material/1-房价数据/Jobs-20250328-打印_页面_18.jpg',
+                alt: '空间分布系数分析',
+                description: '深圳各区域情绪与房价相关性分析'
+            },
+            {
+                src: 'material/1-房价数据/Jobs-20250328-打印_页面_19.jpg',
+                alt: '微博与房价数据框架',
+                description: '数据处理框架与POI分类'
+            },
+            {
+                src: 'material/1-房价数据/Jobs-20250328-打印_页面_20.jpg',
+                alt: 'GWR建模相关性分析',
+                description: '地理加权回归模型分析结果'
+            }
+        ];
+
+        // Paper images array
+        const paperImages = [
+            {
+                src: 'material/2-paper/poster.png',
+                alt: 'CAAD FUTURES 2025 会议海报',
+                description: 'Zero-Shot 建筑风格分类研究海报'
             }
         ];
         
         let currentImageIndex = 0;
+        let currentImageSet = [];
 
-        function openImageViewer(index) {
+        // Housing image viewer functions
+        function openHousingImageViewer(index) {
+            currentImageSet = housingImages;
+            currentImageIndex = index;
+            updateImageViewer();
+            document.getElementById('imageViewer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Paper image viewer functions
+        function openPaperImageViewer(index) {
+            currentImageSet = paperImages;
             currentImageIndex = index;
             updateImageViewer();
             document.getElementById('imageViewer').classList.remove('hidden');
@@ -496,12 +602,12 @@
         }
 
         function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
+            currentImageIndex = (currentImageIndex + 1) % currentImageSet.length;
             updateImageViewer();
         }
 
         function previousImage() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            currentImageIndex = (currentImageIndex - 1 + currentImageSet.length) % currentImageSet.length;
             updateImageViewer();
         }
 
@@ -511,10 +617,10 @@
             const imageDescription = document.getElementById('imageDescription');
             
             if (viewerImage && imageCounter && imageDescription) {
-                viewerImage.src = images[currentImageIndex].src;
-                viewerImage.alt = images[currentImageIndex].alt;
-                imageCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
-                imageDescription.textContent = images[currentImageIndex].description;
+                viewerImage.src = currentImageSet[currentImageIndex].src;
+                viewerImage.alt = currentImageSet[currentImageIndex].alt;
+                imageCounter.textContent = `${currentImageIndex + 1} / ${currentImageSet.length}`;
+                imageDescription.textContent = currentImageSet[currentImageIndex].description;
             }
         }
 
@@ -527,25 +633,180 @@
 
         // Unified keyboard navigation
         document.addEventListener('keydown', function(e) {
+            const imageViewer = document.getElementById('imageViewer');
+            const housingModal = document.getElementById('housingModal');
+            const paperModal = document.getElementById('paperModal');
+            
             // Handle modal close
             if (e.key === 'Escape') {
-                const imageViewer = document.getElementById('imageViewer');
-                const housingModal = document.getElementById('housingModal');
-                
                 if (!imageViewer.classList.contains('hidden')) {
                     closeImageViewer();
                 } else if (!housingModal.classList.contains('hidden')) {
                     closeHousingModal();
+                } else if (!paperModal.classList.contains('hidden')) {
+                    closePaperModal();
                 }
             }
             
             // Handle image navigation
-            if (!document.getElementById('imageViewer').classList.contains('hidden')) {
+            if (!imageViewer.classList.contains('hidden')) {
                 if (e.key === 'ArrowLeft') {
                     previousImage();
                 } else if (e.key === 'ArrowRight') {
                     nextImage();
                 }
+            }
+            
+            // Handle PDF navigation
+            if (!paperModal.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    previousPage();
+                } else if (e.key === 'ArrowRight') {
+                    nextPage();
+                } else if (e.key === '=' || e.key === '+') {
+                    zoomIn();
+                } else if (e.key === '-') {
+                    zoomOut();
+                }
+            }
+        });
+
+        // Language switching functionality
+        let currentLanguage = localStorage.getItem('preferred-language') || 'zh';
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+            localStorage.setItem('preferred-language', currentLanguage);
+            updateLanguageDisplay();
+        }
+        
+        function updateLanguageDisplay() {
+            // Update all elements with data-zh and data-en attributes
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            elements.forEach(element => {
+                if (currentLanguage === 'zh') {
+                    element.innerHTML = element.getAttribute('data-zh');
+                } else {
+                    element.innerHTML = element.getAttribute('data-en');
+                }
+            });
+            
+            // Update language toggle button text
+            const currentLang = document.getElementById('currentLang');
+            const currentLangMobile = document.getElementById('currentLangMobile');
+            if (currentLang) {
+                currentLang.textContent = currentLanguage === 'zh' ? '中' : 'EN';
+            }
+            if (currentLangMobile) {
+                currentLangMobile.textContent = currentLanguage === 'zh' ? '中' : 'EN';
+            }
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : 'en';
+        }
+        
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguageDisplay();
+            
+            // Add event listeners for language toggle buttons
+            const langToggle = document.getElementById('langToggle');
+            const langToggleMobile = document.getElementById('langToggleMobile');
+            
+            if (langToggle) {
+                langToggle.addEventListener('click', toggleLanguage);
+            }
+            if (langToggleMobile) {
+                langToggleMobile.addEventListener('click', toggleLanguage);
+            }
+        });
+
+        // PDF Viewer functionality
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageIsRendering = false;
+        let pageNumIsPending = null;
+        let scale = 1.2;
+        const canvas = document.getElementById('pdfCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Configure PDF.js worker
+        if (typeof pdfjsLib !== 'undefined') {
+
+        }
+
+        // Render page
+        const renderPage = (num) => {
+            pageIsRendering = true;
+            
+            // Get page
+            pdfDoc.getPage(num).then(page => {
+                const viewport = page.getViewport({ scale });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderCtx = {
+                    canvasContext: ctx,
+                    viewport
+                };
+
+                page.render(renderCtx).promise.then(() => {
+                    pageIsRendering = false;
+
+                    if (pageNumIsPending !== null) {
+                        renderPage(pageNumIsPending);
+                        pageNumIsPending = null;
+                    }
+                });
+
+                // Update page info
+                document.getElementById('pageInfo').textContent = 
+                    currentLanguage === 'zh' ? 
+                    `第 ${num} 页 / 共 ${pdfDoc.numPages} 页` : 
+                    `Page ${num} of ${pdfDoc.numPages}`;
+
+                // Update button states
+                document.getElementById('prevPageBtn').disabled = (num <= 1);
+                document.getElementById('nextPageBtn').disabled = (num >= pdfDoc.numPages);
+            });
+        };
+
+        // Check for pages rendering
+        const queueRenderPage = (num) => {
+            if (pageIsRendering) {
+                pageNumIsPending = num;
+            } else {
+                renderPage(num);
+            }
+        };
+
+
+
+        // Open PDF modal
+        function openPaperModal() {
+            const modal = document.getElementById('paperModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close PDF modal
+        function closePaperModal() {
+            document.getElementById('paperModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            
+            // Reset state
+            if (pdfDoc) {
+                pdfDoc = null;
+                pageNum = 1;
+                scale = 1.2;
+                document.getElementById('zoomLevel').textContent = '120%';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('paperModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePaperModal();
             }
         });
     </script>
