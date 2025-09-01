@@ -40,20 +40,16 @@
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #3B82F6;
-            transition: width 0.3s ease;
+        .nav-link:hover {
+            background-color: #FEF3C7;
+            color: #F97316 !important;
         }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
+        .nav-link.active {
+            background-color: #FEF3C7;
+            color: #F97316 !important;
         }
         .section-padding {
             padding: 6rem 0;
@@ -87,13 +83,13 @@
                     </div>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-blue" data-zh="首页" data-en="Home">Home</a>
-                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-blue" data-zh="研究" data-en="Research">Research</a>
-                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-blue active" data-zh="项目" data-en="Projects">Projects</a>
-                    <a href="material/0-personal/产品简历_李磊_2508311.pdf" download class="nav-link text-dark-text hover:text-primary-blue" data-zh="简历" data-en="CV">CV</a>
+                    <a href="home.html" class="nav-link text-dark-text hover:text-primary-orange" data-zh="首页" data-en="Home">Home</a>
+                    <a href="research.html" class="nav-link text-dark-text hover:text-primary-orange" data-zh="研究" data-en="Research">Research</a>
+                    <a href="projects.html" class="nav-link text-dark-text hover:text-primary-orange" data-zh="项目" data-en="Projects">Projects</a>
+                    <a href="material/0-personal/产品简历_李磊_2508311.pdf" download class="nav-link text-dark-text hover:text-primary-orange" data-zh="简历" data-en="CV">CV</a>
                     <!-- Language Toggle -->
                     <button id="langToggle" class="ml-4 flex items-center space-x-1 text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors">
-                        <i class="fas fa-globe text-primary-blue"></i>
+                        <i class="fas fa-globe text-primary-orange"></i>
                         <span id="currentLang">中</span>
                     </button>
                 </div>
@@ -108,12 +104,12 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <div class="px-4 py-4 space-y-4">
-                <a href="home.html" class="block text-dark-text hover:text-primary-blue" data-zh="首页" data-en="Home">Home</a>
-                <a href="research.html" class="block text-dark-text hover:text-primary-blue" data-zh="研究" data-en="Research">Research</a>
-                <a href="projects.html" class="block text-dark-text hover:text-primary-blue" data-zh="项目" data-en="Projects">Projects</a>
-                <a href="material/0-personal/产品简历_李磊_2508311.pdf" download class="block text-dark-text hover:text-primary-blue" data-zh="简历" data-en="CV">CV</a>
-                <button id="langToggleMobile" class="block w-full text-left text-dark-text hover:text-primary-blue flex items-center space-x-2">
-                    <i class="fas fa-globe text-primary-blue"></i>
+                <a href="home.html" class="block text-dark-text hover:text-primary-orange hover:bg-orange-50 px-3 py-2 rounded-lg transition-colors" data-zh="首页" data-en="Home">Home</a>
+                <a href="research.html" class="block text-dark-text hover:text-primary-orange hover:bg-orange-50 px-3 py-2 rounded-lg transition-colors" data-zh="研究" data-en="Research">Research</a>
+                <a href="projects.html" class="block text-dark-text hover:text-primary-orange hover:bg-orange-50 px-3 py-2 rounded-lg transition-colors" data-zh="项目" data-en="Projects">Projects</a>
+                <a href="material/0-personal/产品简历_李磊_2508311.pdf" download class="block text-dark-text hover:text-primary-orange hover:bg-orange-50 px-3 py-2 rounded-lg transition-colors" data-zh="简历" data-en="CV">CV</a>
+                <button id="langToggleMobile" class="block w-full text-left text-dark-text hover:text-primary-orange hover:bg-orange-50 px-3 py-2 rounded-lg transition-colors flex items-center space-x-2">
+                    <i class="fas fa-globe text-primary-orange"></i>
                     <span data-zh="切换语言" data-en="Language">切换语言</span>
                     <span id="currentLangMobile">中</span>
                 </button>
@@ -543,9 +539,24 @@
             }
         }
 
+        // Set active navigation link based on current page
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href && href.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateLanguageDisplay();
+            setActiveNavLink();
             
             // Add event listeners for language toggle buttons
             const langToggle = document.getElementById('langToggle');
