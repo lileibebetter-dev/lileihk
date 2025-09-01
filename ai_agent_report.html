@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 市场分析与产品策略</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 450px;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            line-height: 1;
+            color: #118AB2;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #118AB2;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item:nth-child(odd) {
+            padding-right: 2rem;
+            padding-left: 0;
+            text-align: right;
+            left: 0;
+        }
+        .timeline-item:nth-child(even) {
+            padding-left: 2rem;
+            padding-right: 0;
+            text-align: left;
+            left: 50%;
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            width: 20px;
+            height: 20px;
+            background-color: #FFD166;
+            border: 4px solid #118AB2;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+            transform: translateX(0%);
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+            transform: translateX(0%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 10px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 2.5rem;
+                padding-right: 0;
+                text-align: left;
+                left: 0 !important;
+            }
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+            .timeline-dot {
+                left: 0 !important;
+            }
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #06D6A0;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-[#073B4C]">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                <li>
+                    <a href="home.html" class="hover:text-[#118AB2] transition-colors duration-200" data-zh="首页" data-en="Home">首页</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700 font-medium" data-zh="智能体市场分析报告" data-en="AI Agent Market Analysis Report">智能体市场分析报告</span>
+                </li>
+            </ol>
+        </nav>
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#073B4C] mb-2">AI 智能体的崛起</h1>
+            <p class="text-lg md:text-xl text-[#118AB2] max-w-3xl mx-auto">一份深入的市场分析，探讨这项有望成为下一个主流 AI 范式、自动化复杂任务并重新定义人机交互的技术。</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <section id="market-growth" class="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-1">爆炸性的市场增长前景</h2>
+                <p class="text-gray-600 mb-4">在全球大语言模型技术进步和自动化需求增长的推动下，AI 智能体市场预计将实现指数级增长。这一趋势标志着企业和消费者利用 AI 提高生产力和解决复杂问题的方式将发生重大转变。</p>
+                <div class="chart-container">
+                    <canvas id="marketSizeChart"></canvas>
+                </div>
+            </section>
+            
+            <section id="tech-ecosystem" class="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-1">AI 智能体技术生态全景</h2>
+                 <p class="text-gray-600 mb-6">AI 智能体生态系统是一个多层次的技术栈，从底层的云基础设施到顶层的复杂应用。理解这一结构是识别市场中战略机遇和依赖关系的关键。</p>
+                <div class="space-y-4">
+                    <div class="border-2 border-[#118AB2] rounded-lg p-4 bg-[#118AB2]/5">
+                        <h3 class="font-bold text-lg text-[#118AB2]">1. 基础设施层</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div><h4 class="font-semibold">云计算平台</h4><p class="text-sm">AWS, Azure, Google Cloud</p></div>
+                            <div><h4 class="font-semibold">向量数据库</h4><p class="text-sm">Pinecone, Weaviate, Milvus</p></div>
+                        </div>
+                    </div>
+                    <div class="border-2 border-[#06D6A0] rounded-lg p-4 bg-[#06D6A0]/5">
+                        <h3 class="font-bold text-lg text-[#06D6A0]">2. 基础模型层</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div><h4 class="font-semibold">闭源模型</h4><p class="text-sm">OpenAI (GPT-4/5), Anthropic (Claude 3), Google (Gemini)</p></div>
+                            <div><h4 class="font-semibold">开源模型</h4><p class="text-sm">Llama 3, Mistral, Zhipu (GLM)</p></div>
+                        </div>
+                    </div>
+                    <div class="border-2 border-[#FFD166] rounded-lg p-4 bg-[#FFD166]/5">
+                        <h3 class="font-bold text-lg text-[#FFD166]">3. 智能体框架与平台层</h3>
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div><h4 class="font-semibold">开源开发框架</h4><p class="text-sm">LangChain, LlamaIndex</p></div>
+                            <div><h4 class="font-semibold">低代码/无代码平台</h4><p class="text-sm">Dify.ai, Coze, Microsoft Copilot Studio</p></div>
+                        </div>
+                    </div>
+                    <div class="border-2 border-[#FF6B6B] rounded-lg p-4 bg-[#FF6B6B]/5">
+                        <h3 class="font-bold text-lg text-[#FF6B6B]">4. 应用层</h3>
+                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
+                            <div><h4 class="font-semibold">通用助理</h4><p class="text-sm">ChatGPT, Perplexity</p></div>
+                            <div><h4 class="font-semibold">软件开发</h4><p class="text-sm">GitHub Copilot, Devin</p></div>
+                            <div><h4 class="font-semibold">数据分析</h4><p class="text-sm">Julius AI, Tableau Pulse</p></div>
+                             <div><h4 class="font-semibold">客户服务</h4><p class="text-sm">Intercom, Zendesk AI</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="competitor-matrix" class="bg-white rounded-lg shadow-lg p-6">
+                 <h2 class="text-2xl font-bold mb-1">竞争力分析矩阵</h2>
+                <p class="text-gray-600 mb-4">竞争格局中既有利用其规模优势的科技巨头，也有推动创新的敏捷创业公司。该矩阵根据主要参与者的当前技术成熟度和平台开放性进行绘制，气泡大小代表其市场影响力。</p>
+                <div class="chart-container h-[50vh] max-h-[500px]">
+                    <canvas id="competitorMatrixChart"></canvas>
+                </div>
+            </section>
+
+            <section id="core-architecture" class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-1">AI 智能体核心架构解析</h2>
+                <p class="text-gray-600 mb-6">典型的 AI 智能体通过模块化架构运行，使其能够感知、推理、记忆和行动。此工作流程让智能体能将复杂的用户请求分解为可管理的步骤，并使用可用工具来执行它们。</p>
+                <div class="space-y-4">
+                    <div class="text-center p-3 border rounded-lg bg-gray-50">
+                        <h4 class="font-bold">1. 感知模块</h4>
+                        <p class="text-sm">接收和理解多模态用户输入 (文本、语音、图像)。</p>
+                    </div>
+                    <div class="flex justify-center items-center"><span class="flow-arrow">&darr;</span></div>
+                    <div class="text-center p-3 border rounded-lg bg-gray-50">
+                        <h4 class="font-bold">2. 大脑与规划模块</h4>
+                        <p class="text-sm">利用大语言模型进行任务分解、推理和策略决策。</p>
+                    </div>
+                    <div class="flex justify-center items-center"><span class="flow-arrow">&darr;</span></div>
+                    <div class="grid grid-cols-2 gap-4 items-start">
+                         <div class="text-center p-3 border rounded-lg bg-gray-50 h-full">
+                            <h4 class="font-bold">3. 记忆模块</h4>
+                            <p class="text-sm">利用短期记忆 (上下文) 和长期记忆 (向量数据库) 进行信息调用。</p>
+                        </div>
+                        <div class="text-center p-3 border rounded-lg bg-gray-50 h-full">
+                            <h4 class="font-bold">4. 工具使用模块</h4>
+                            <p class="text-sm">调用外部 API、执行代码或查询数据库以获取信息或执行操作。</p>
+                        </div>
+                    </div>
+                     <div class="flex justify-center items-center"><span class="flow-arrow">&darr;</span></div>
+                     <div class="text-center p-3 border rounded-lg bg-gray-50">
+                        <h4 class="font-bold">5. 行动模块</h4>
+                        <p class="text-sm">执行最终任务并生成综合性的多模态响应。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="application-value" class="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-1">关键应用领域与商业价值</h2>
+                <p class="text-gray-600 mb-4">AI 智能体有望在各行各业创造巨大价值。本分析比较了关键领域的市场潜力与当前的技术成熟度，突出了近期和未来最具影响力的应用方向。</p>
+                 <div class="chart-container h-[50vh] max-h-[550px]">
+                    <canvas id="applicationValueChart"></canvas>
+                </div>
+                <div id="gemini-use-case-explorer" class="mt-8 pt-6 border-t">
+                    <h3 class="text-xl font-bold text-center mb-4">✨ 探索具体应用场景 (由 Gemini 驱动)</h3>
+                    <p class="text-gray-600 text-center mb-6 max-w-2xl mx-auto">点击下方按钮，利用 Gemini API 实时生成每个领域内具体、创新的 AI 智能体应用案例，将静态数据转化为动态洞察。</p>
+                    <div id="use-case-buttons" class="flex flex-wrap justify-center gap-4">
+                    </div>
+                </div>
+            </section>
+            
+            <section id="future-trends" class="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-1">未来之路：技术发展趋势</h2>
+                <p class="text-gray-600 mb-8">AI 智能体的演进将经历三个不同阶段。从短期内增强可靠性，到长期实现自主的通用问题解决能力，其技术能力将逐步扩展。</p>
+                <div class="relative timeline py-4">
+                    <div class="timeline-item mb-8">
+                        <div class="timeline-dot"></div>
+                        <div class="p-4 bg-[#118AB2]/10 border border-[#118AB2] rounded-lg">
+                            <h3 class="font-bold text-lg text-[#118AB2]">短期 (1-2年)</h3>
+                            <h4 class="font-semibold mt-1">功能深化与可靠性提升</h4>
+                            <p class="text-sm mt-1">智能体在特定任务上的表现将更稳定，工具调用更可靠，并更紧密地集成到企业级软件生态中。</p>
+                            <p class="text-xs mt-2 font-medium text-gray-500">技术突破点: 模型幻觉控制, 更强的函数调用能力。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item mb-8">
+                        <div class="timeline-dot"></div>
+                        <div class="p-4 bg-[#06D6A0]/10 border border-[#06D6A0] rounded-lg">
+                            <h3 class="font-bold text-lg text-[#06D6A0]">中期 (3-5年)</h3>
+                            <h4 class="font-semibold mt-1">多智能体协作系统</h4>
+                            <p class="text-sm mt-1">多个专长不同的智能体将协同工作，通过动态沟通和任务分配来解决复杂的系统性问题，形成智能体网络。</p>
+                             <p class="text-xs mt-2 font-medium text-gray-500">技术突破点: 智能体间通信协议, 任务协同分配算法。</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="p-4 bg-[#FF6B6B]/10 border border-[#FF6B6B] rounded-lg">
+                            <h3 class="font-bold text-lg text-[#FF6B6B]">长期 (5年以上)</h3>
+                            <h4 class="font-semibold mt-1">自主进化与通用性</h4>
+                            <p class="text-sm mt-1">智能体将具备自主学习和适应新环境的能力，从执行指令的工具演变为解决开放式问题的通用伙伴。</p>
+                            <p class="text-xs mt-2 font-medium text-gray-500">技术突破点: 持续学习 (Continual Learning), 世界模型。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <div id="gemini-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h4 id="modal-title" class="text-lg font-bold"></h4>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+            </div>
+            <div id="modal-content" class="p-6 overflow-y-auto">
+                <div class="flex justify-center items-center h-48">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const commonTooltipCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+    
+    const wrapLabel = (label) => {
+        if (typeof label === 'string' && label.length > 16) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16 && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+        return label;
+    };
+
+    const marketSizeCtx = document.getElementById('marketSizeChart').getContext('2d');
+    new Chart(marketSizeCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2023年', '2024年 (E)', '2025年 (F)', '2026年 (F)', '2027年 (F)', '2028年 (F)'],
+            datasets: [{
+                label: '市场规模 (十亿美元)',
+                data: [5.2, 7.5, 11.3, 17.8, 28.5, 45.0],
+                backgroundColor: '#118AB2',
+                yAxisID: 'y',
+                order: 2
+            }, {
+                label: '同比增长率 (%)',
+                data: [null, 44.2, 50.7, 57.5, 60.1, 57.9],
+                borderColor: '#FF6B6B',
+                backgroundColor: '#FF6B6B',
+                type: 'line',
+                yAxisID: 'y1',
+                order: 1,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...commonTooltipCallback.plugins,
+                title: { display: false },
+                subtitle: {
+                    display: true,
+                    text: '复合年均增长率 (CAGR) 2023-2028: 53.9% | 来源: MarketsandMarkets, Gartner (综合估算)',
+                    padding: { bottom: 10 },
+                    font: { size: 12, weight: 'normal' },
+                    color: '#6b7280'
+                },
+                legend: {
+                    position: 'bottom',
+                }
+            },
+            scales: {
+                x: {
+                    grid: { display: false }
+                },
+                y: {
+                    beginAtZero: true,
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: '市场规模 (十亿美元)'
+                    }
+                },
+                y1: {
+                    beginAtZero: true,
+                    type: 'linear',
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false,
+                    },
+                    title: {
+                        display: true,
+                        text: '同比增长率 (%)'
+                    }
+                }
+            }
+        }
+    });
+
+    const competitorMatrixCtx = document.getElementById('competitorMatrixChart').getContext('2d');
+    new Chart(competitorMatrixCtx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                label: 'OpenAI (Assistants API)',
+                data: [{ x: 5, y: 9, r: 25 }],
+                backgroundColor: 'rgba(255, 107, 107, 0.7)',
+                borderColor: '#FF6B6B'
+            }, {
+                label: 'Microsoft (Copilot/Studio)',
+                data: [{ x: 7, y: 8, r: 30 }],
+                backgroundColor: 'rgba(17, 138, 178, 0.7)',
+                borderColor: '#118AB2'
+            }, {
+                label: 'LangChain (Framework)',
+                data: [{ x: 10, y: 6, r: 20 }],
+                backgroundColor: 'rgba(6, 214, 160, 0.7)',
+                borderColor: '#06D6A0'
+            }, {
+                label: 'Google (Vertex AI Agent Builder)',
+                data: [{ x: 6, y: 7, r: 22 }],
+                backgroundColor: 'rgba(255, 209, 102, 0.7)',
+                borderColor: '#FFD166'
+            }, {
+                label: 'Dify.ai (Platform)',
+                data: [{ x: 8, y: 5, r: 15 }],
+                backgroundColor: 'rgba(7, 59, 76, 0.7)',
+                borderColor: '#073B4C'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: false,
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            const point = context.raw;
+                            return `${label} (开放性: ${point.x}, 技术能力: ${point.y}, 影响力: ${point.r})`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: '技术能力与成熟度 (1-10)'
+                    },
+                    min: 0,
+                    max: 10
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: '平台开放性与生态系统 (1-10)'
+                    },
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const applicationLabels = ['软件工程', '客户服务', '市场营销', '金融科技', '医疗健康'];
+    const applicationValueCtx = document.getElementById('applicationValueChart').getContext('2d');
+    new Chart(applicationValueCtx, {
+        type: 'bar',
+        data: {
+            labels: applicationLabels.map(wrapLabel),
+            datasets: [
+                {
+                    label: '市场潜力',
+                    data: [10, 9, 8, 8, 9],
+                    backgroundColor: '#06D6A0',
+                },
+                {
+                    label: '技术成熟度',
+                    data: [8, 9, 7, 6, 5],
+                    backgroundColor: '#FFD166',
+                }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...commonTooltipCallback.plugins,
+                title: { display: false },
+                legend: { position: 'bottom' }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: '评分 (1-10)'
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                     grid: {
+                        display: false
+                    }
+                }
+            },
+        }
+    });
+
+    const useCaseButtonsContainer = document.getElementById('use-case-buttons');
+    applicationLabels.forEach(label => {
+        const button = document.createElement('button');
+        button.className = "bg-[#118AB2] text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-[#073B4C] transition-colors duration-300";
+        button.textContent = `探索: ${label}`;
+        button.dataset.topic = label;
+        useCaseButtonsContainer.appendChild(button);
+    });
+
+    const modal = document.getElementById('gemini-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const loaderHtml = `<div class="flex justify-center items-center h-48"><div class="spinner"></div></div>`;
+
+    useCaseButtonsContainer.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON') {
+            const topic = event.target.dataset.topic;
+            modalTitle.textContent = `${topic}领域的 AI 智能体应用案例`;
+            modalContent.innerHTML = loaderHtml;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            callGemini(topic);
+        }
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    });
+
+    async function callGemini(topic, retries = 3, delay = 1000) {
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        const systemPrompt = "你是一名顶级的市场研究分析师，专注于AI前沿科技。你的回答需要专业、结构清晰且富有洞察力。";
+        const userQuery = `请为AI智能体在“${topic}”领域，生成5个具体、创新且有商业价值的应用场景。请以Markdown无序列表的格式返回，每个用例都包含一个加粗的标题和一段简洁的描述。`;
+        
+        const payload = {
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            contents: [{ parts: [{ text: userQuery }] }],
+        };
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+
+            if (candidate && candidate.content?.parts?.[0]?.text) {
+                const text = candidate.content.parts[0].text;
+                displayContent(text);
+            } else {
+                throw new Error("未能获取有效的生成内容。");
+            }
+        } catch (error) {
+            if (retries > 0) {
+                console.warn(`API 请求失败，正在重试... 剩余次数: ${retries - 1}`);
+                await new Promise(res => setTimeout(res, delay));
+                callGemini(topic, retries - 1, delay * 2); 
+            } else {
+                console.error("调用 Gemini API 失败:", error);
+                modalContent.innerHTML = `<div class="text-red-500 text-center p-4">内容加载失败。请稍后重试。</div>`;
+            }
+        }
+    }
+
+    function displayContent(markdownText) {
+        let html = markdownText
+            .split('\n')
+            .map(line => {
+                line = line.trim();
+                if (line.startsWith('* ')) {
+                    return `<li>${line.substring(2).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`;
+                }
+                 if (line.startsWith('- ')) {
+                    return `<li>${line.substring(2).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`;
+                }
+                return line;
+            })
+            .join('');
+        modalContent.innerHTML = `<ul class="list-disc pl-5 space-y-4 prose">${html}</ul>`;
+    }
+
+});
+</script>
+</body>
+</html>

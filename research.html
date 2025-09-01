@@ -48,8 +48,10 @@
             color: #F97316 !important;
         }
         .nav-link.active {
-            background-color: #FEF3C7;
-            color: #F97316 !important;
+            background-color: #F3F4F6;
+            color: #374151 !important;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
         }
         .section-padding {
             padding: 6rem 0;
@@ -128,9 +130,12 @@
                         <div class="grid lg:grid-cols-2 gap-0">
                             <div class="p-6 lg:p-8">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-blue-50 text-primary-blue px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="市场研究报告" data-en="Market Research">
-                                        市场研究报告
-                                    </span>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="inline-block bg-blue-50 text-primary-blue px-4 py-2 rounded-full text-sm font-medium" data-zh="市场研究报告" data-en="Market Research">
+                                            市场研究报告
+                                        </span>
+                                        <span class="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2025</span>
+                                    </div>
                                     <h2 class="text-2xl font-bold text-dark-text mb-3" data-zh="智能体市场分析研究报告" data-en="AI Agent Market Analysis Report">
                                         智能体市场分析研究报告
                                     </h2>
@@ -164,6 +169,7 @@
                                             负责底层多模态模型选型，使关键指标识别率领先竞品 <span class="font-semibold text-green-700">+15%</span>
                                         </li>
                                     </ul>
+                                    <button onclick="openAgentModal()" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-zh="查看详细" data-en="Learn More">查看详细</button>
                                 </div>
                             </div>
                             <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 lg:p-8 flex items-center justify-center">
@@ -190,9 +196,12 @@
                             </div>
                             <div class="p-6 lg:p-8 order-1 lg:order-2">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="学术论文" data-en="Academic Paper">
-                                        学术论文
-                                    </span>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="inline-block bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium" data-zh="学术论文" data-en="Academic Paper">
+                                            学术论文
+                                        </span>
+                                        <span class="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2025</span>
+                                    </div>
                                     <h2 class="text-2xl font-bold text-dark-text mb-3" data-zh="Zero-Shot建筑风格分类与大语言模型" data-en="Zero-Shot Architectural Style Classification with LLM">
                                         Zero-Shot Architectural Style Classification with LLM
                                     </h2>
@@ -245,9 +254,12 @@
                         <div class="grid lg:grid-cols-2 gap-0">
                             <div class="p-6 lg:p-8">
                                 <div class="mb-6">
-                                    <span class="inline-block bg-orange-50 text-orange-600 px-4 py-2 rounded-full text-sm font-medium mb-4" data-zh="数据科学研究" data-en="Data Science Research">
-                                        数据科学研究
-                                    </span>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="inline-block bg-orange-50 text-orange-600 px-4 py-2 rounded-full text-sm font-medium" data-zh="数据科学研究" data-en="Data Science Research">
+                                            数据科学研究
+                                        </span>
+                                        <span class="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2023</span>
+                                    </div>
                                     <h2 class="text-2xl font-bold text-dark-text mb-3" data-zh="深圳微博情绪与房价关系研究" data-en="Shenzhen Weibo Sentiment & Housing Price Research">
                                         深圳微博情绪与房价关系研究
                                     </h2>
@@ -426,6 +438,148 @@
             <!-- Image description -->
             <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white text-center bg-black bg-opacity-70 px-6 py-3 rounded-lg max-w-lg">
                 <p id="imageDescription" class="text-lg">数据分析可视化图表</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agent Modal -->
+    <div id="agentModal" class="modal fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center p-5 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-dark-text" data-zh="智能体市场分析与产品战略" data-en="AI Agent Market Analysis & Product Strategy">智能体市场分析与产品战略</h2>
+                <button class="text-gray-400 hover:text-red-500 transition-transform duration-300 transform hover:rotate-90" onclick="closeModal('agentModal')">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto flex-grow">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-dark-text mb-4" data-zh="项目概述" data-en="Project Overview">项目概述</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6" data-zh="在云鲸致担任AI产品经理期间，负责云秒搭智能体平台的0-1定义与战略规划。通过深度市场分析，为产品找到差异化定位。这份报告详细阐述了市场增长前景、技术生态、竞争力格局以及未来的发展趋势。" data-en="During my tenure as an AI Product Manager at YunJingZhi, I was responsible for the 0-to-1 definition and strategic planning of the Yunmiaoda AI Agent platform. Through in-depth market analysis, I identified a differentiated positioning for the product. This report elaborates on market growth prospects, the technological ecosystem, the competitive landscape, and future trends.">
+                            在云鲸致担任AI产品经理期间，负责云秒搭智能体平台的0-1定义与战略规划。通过深度市场分析，为产品找到差异化定位。这份报告详细阐述了市场增长前景、技术生态、竞争力格局以及未来的发展趋势。
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-dark-text mb-4" data-zh="核心贡献" data-en="Key Contributions">核心贡献</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                <span data-zh="通过对Coze, Dify等5款竞品的深度拆解，识别市场空白" data-en="Identified market gaps through in-depth analysis of 5 competitors including Coze and Dify">通过对Coze, Dify等5款竞品的深度拆解，识别市场空白</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                <span data-zh="访谈超过10位垂直行业商家，精准洞察用户需求与痛点" data-en="Interviewed over 10 vertical industry merchants to gain insights into user needs and pain points">访谈超过10位垂直行业商家，精准洞察用户需求与痛点</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                <span data-zh="绘制产品路线图，确立"垂直行业解决方案工厂"的核心战略定位" data-en="Drew product roadmap and established the core strategic positioning of 'Vertical Industry Solution Factory'">绘制产品路线图，确立"垂直行业解决方案工厂"的核心战略定位</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                                <span data-zh="负责底层多模态模型选型，使关键指标识别率领先竞品+15%" data-en="Responsible for underlying multimodal model selection, achieving 15% higher key indicator recognition rate than competitors">负责底层多模态模型选型，使关键指标识别率领先竞品+15%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-dark-text mb-4" data-zh="市场分析图表" data-en="Market Analysis Charts">市场分析图表</h3>
+                        <div class="space-y-4">
+                            <!-- 市场增长图表 -->
+                            <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-semibold text-gray-800">市场增长趋势</h4>
+                                    <span class="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded-full">2023-2028</span>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">2023年</span>
+                                        <span class="text-sm font-semibold text-blue-600">$5.2B</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">2024年</span>
+                                        <span class="text-sm font-semibold text-blue-600">$7.5B</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">2028年</span>
+                                        <span class="text-sm font-semibold text-blue-600">$45.0B</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-blue-200">
+                                    <p class="text-xs text-center text-blue-600 font-medium">CAGR: 53.9%</p>
+                                </div>
+                            </div>
+
+                            <!-- 技术生态架构 -->
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-semibold text-gray-800">技术生态</h4>
+                                    <span class="text-xs bg-green-200 text-green-800 px-2 py-1 rounded-full">4层架构</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center text-sm">
+                                        <div class="w-3 h-3 bg-red-400 rounded-full mr-2"></div>
+                                        <span class="text-gray-700">应用层</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <div class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
+                                        <span class="text-gray-700">框架平台层</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                                        <span class="text-gray-700">基础模型层</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <div class="w-3 h-3 bg-blue-400 rounded-full mr-2"></div>
+                                        <span class="text-gray-700">基础设施层</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 竞争格局 -->
+                            <div class="bg-gradient-to-br from-purple-50 to-pink-100 p-6 rounded-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-semibold text-gray-800">竞争格局</h4>
+                                    <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded-full">5大玩家</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-700">OpenAI</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-700">Microsoft</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-700">LangChain</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                            <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-8 pt-6 border-t border-gray-200">
+                    <a href="ai_agent_report.html" target="_blank" class="inline-block bg-primary-blue text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105" data-zh="查看完整报告" data-en="View Full Report">
+                        查看完整报告
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -798,6 +952,19 @@
         };
 
 
+
+        // Open Agent modal
+        function openAgentModal() {
+            document.getElementById('agentModal').classList.remove('hidden');
+            document.getElementById('agentModal').classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
 
         // Open PDF modal
         function openPaperModal() {
