@@ -130,164 +130,249 @@
                 <div class="w-20 h-1 bg-primary-blue mx-auto mt-8"></div>
             </div>
 
-            <div class="space-y-16">
-                <!-- Project Entry 1 -->
-                <div class="fade-in">
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="grid lg:grid-cols-2 gap-0">
-                            <div class="p-8 lg:p-12">
-                                <div class="mb-6">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <span class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-medium" data-zh="产品设计与开发" data-en="Product Design & Development">
-                                            产品设计与开发
-                                        </span>
-                                        <span class="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2019–2022</span>
-                                    </div>
-                                    <h2 class="text-3xl font-bold text-dark-text mb-4" data-zh="建筑参数化协同设计平台" data-en="Parametric Collaborative Design Platform">
-                                        建筑参数化协同设计平台
-                                    </h2>
-                                    <p class="text-lg text-gray-600 leading-relaxed">
-                                        在 <span class="font-semibold text-primary-blue">深圳市建筑设计研究总院</span> 担任建筑师期间，旨在解决超高层项目中 <span class="font-semibold">多专业协作效率低</span>、<span class="font-semibold">数据孤岛</span> 等痛点。
-                                    </p>
-                                </div>
-                                <div class="mb-8">
-                                    <h3 class="font-semibold text-gray-800 mb-2 text-lg">项目背景</h3>
-                                    <p class="text-gray-600 leading-relaxed">
-                                        超高层建筑项目涉及建筑、结构、机电等多个专业，传统协作方式效率低下、方案迭代周期长，亟需 <span class="font-semibold">数字化解决方案</span>。
-                                    </p>
-                                </div>
-                                <div class="mb-8">
-                                    <h3 class="font-semibold text-gray-800 mb-4 text-lg">核心功能</h3>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div class="bg-gray-50 p-4 rounded-lg">
-                                            <i class="fas fa-cube text-purple-600 mb-2"></i>
-                                            <h4 class="font-medium text-sm">参数化建模</h4>
-                                        </div>
-                                        <div class="bg-gray-50 p-4 rounded-lg">
-                                            <i class="fas fa-users text-purple-600 mb-2"></i>
-                                            <h4 class="font-medium text-sm">多专业协同</h4>
-                                        </div>
-                                        <div class="bg-gray-50 p-4 rounded-lg">
-                                            <i class="fas fa-sync text-purple-600 mb-2"></i>
-                                            <h4 class="font-medium text-sm">实时同步</h4>
-                                        </div>
-                                        <div class="bg-gray-50 p-4 rounded-lg">
-                                            <i class="fas fa-chart-bar text-purple-600 mb-2"></i>
-                                            <h4 class="font-medium text-sm">性能分析</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-gray-800 mb-4 text-lg">项目成果</h3>
-                                    <ul class="space-y-3 text-gray-600">
-                                        <li class="flex items-start">
-                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
-                                            负责从 <span class="font-semibold">需求分析</span>、<span class="font-semibold">数据建模</span> 到 <span class="font-semibold">系统架构</span> 的完整规划
-                                        </li>
-                                        <li class="flex items-start">
-                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
-                                            基于 <span class="font-semibold">Rhino/Grasshopper</span> 并用 <span class="font-semibold">Python</span> 扩展核心功能，落地五大核心模块
-                                        </li>
-                                        <li class="flex items-start">
-                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
-                                            成功将核心方案协同周期从 <span class="font-semibold">8天</span> 缩短至 <span class="font-semibold text-green-700">5天（-37%）</span>
-                                        </li>
-                                        <li class="flex items-start">
-                                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3 flex-shrink-0"></i>
-                                            平台已成功复用至 <span class="font-semibold">2+</span> 个大型项目，赋能团队提效
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="mt-8">
-                                    <button onclick="openParametricModal()" class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-300 font-medium" data-zh="查看详细" data-en="View Details">
-                                        查看详细
-                                    </button>
-                                </div>
+            <!-- Projects Grid - 九宫格布局 -->
+            <div class="fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1: 建筑参数化协同设计平台 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-purple-100 to-violet-200 flex items-center justify-center">
+                            <i class="fas fa-building text-6xl text-purple-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="产品设计" data-en="Product Design">产品设计</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2019-2022</span>
                             </div>
-                            <div class="bg-gradient-to-br from-purple-50 to-violet-100 p-8 lg:p-12 flex items-center justify-center">
-                                <div class="text-center">
-                                    <i class="fas fa-building text-8xl text-purple-600 mb-6"></i>
-                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Parametric Design</h4>
-                                    <p class="text-gray-600">Rhino • Grasshopper • Python</p>
-                                </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="建筑参数化协同设计平台" data-en="Parametric Collaborative Design Platform">
+                                建筑参数化协同设计平台
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="解决超高层项目多专业协作效率低、数据孤岛等痛点，将协同周期缩短37%" data-en="Solving collaboration efficiency issues in high-rise projects, reducing collaboration cycle by 37%">
+                                解决超高层项目多专业协作效率低、数据孤岛等痛点，将协同周期缩短37%
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Rhino</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Grasshopper</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
                             </div>
+                            <button onclick="openParametricModal()" class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
                         </div>
                     </div>
-                </div>
 
-
-
-                <!-- Additional Projects Grid -->
-                <div class="fade-in">
-                    <h2 class="text-3xl font-bold text-dark-text text-center mb-12" data-zh="其他项目" data-en="Other Projects">其他项目</h2>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Mini Project 1 -->
-                        <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
-                            <div class="mb-4">
-                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                    <i class="fas fa-mobile-alt text-2xl text-primary-blue"></i>
-                                </div>
-                                <h3 class="text-xl font-semibold text-dark-text mb-2" data-zh="AI建筑设计助手" data-en="AI Architecture Design Assistant">
-                                    AI建筑设计助手
-                                </h3>
-                                <p class="text-gray-600 text-sm mb-4" data-zh="基于GPT-4V的建筑风格识别与设计建议系统" data-en="Architectural style recognition and design recommendation system based on GPT-4V">
-                                    基于GPT-4V的建筑风格识别与设计建议系统
-                                </p>
+                    <!-- Project 2: AR/VR建筑设计应用 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-blue-100 to-cyan-200 flex items-center justify-center">
+                            <i class="fas fa-vr-cardboard text-6xl text-blue-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="AR/VR应用" data-en="AR/VR Application">AR/VR应用</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2023-2024</span>
                             </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="AR/VR建筑设计应用" data-en="AR/VR Architectural Design Application">
+                                AR/VR建筑设计应用
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果" data-en="Immersive architectural design platform based on Unity, supporting VR headsets and AR mobile devices">
+                                基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Unity</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">C#</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">AR/VR</span>
+                            </div>
+                            <button onclick="openVRARModal()" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: AI建筑设计助手 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                            <i class="fas fa-robot text-6xl text-green-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="AI应用" data-en="AI Application">AI应用</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2024</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="AI建筑设计助手" data-en="AI Architecture Design Assistant">
+                                AI建筑设计助手
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="基于GPT-4V的建筑风格识别与设计建议系统，准确率85%，一周内完成MVP开发" data-en="GPT-4V based architectural style recognition and design recommendation system, 85% accuracy">
+                                基于GPT-4V的建筑风格识别与设计建议系统，准确率85%，一周内完成MVP开发
+                            </p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">React</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">GPT-4V</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
                             </div>
-                            <p class="text-gray-600 text-sm" data-zh="准确率85%，一周内完成MVP开发" data-en="85% accuracy, MVP completed within one week">
-                                准确率85%，一周内完成MVP开发
-                            </p>
+                            <button onclick="openAIModal()" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
                         </div>
+                    </div>
 
-                        <!-- Mini Project 2 -->
-                        <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
-                            <div class="mb-4">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                                    <i class="fas fa-database text-2xl text-green-600"></i>
-                                </div>
-                                <h3 class="text-xl font-semibold text-dark-text mb-2" data-zh="智能数据分析平台" data-en="Intelligent Data Analytics Platform">
-                                    智能数据分析平台
-                                </h3>
-                                <p class="text-gray-600 text-sm mb-4" data-zh="自动化数据清洗、分析和可视化的一体化平台" data-en="Integrated platform for automated data cleaning, analysis and visualization">
-                                    自动化数据清洗、分析和可视化的一体化平台
-                                </p>
+                    <!-- Project 4: 智能数据分析平台 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-orange-100 to-red-200 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-6xl text-orange-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="数据科学" data-en="Data Science">数据科学</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2023</span>
                             </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="智能数据分析平台" data-en="Intelligent Data Analytics Platform">
+                                智能数据分析平台
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="自动化数据清洗、分析和可视化的一体化平台，处理50万+数据记录，效率提升3倍" data-en="Integrated platform for automated data cleaning, analysis and visualization">
+                                自动化数据清洗、分析和可视化的一体化平台，处理50万+数据记录，效率提升3倍
+                            </p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Pandas</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Plotly</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Flask</span>
                             </div>
-                            <p class="text-gray-600 text-sm" data-zh="处理50万+数据记录，效率提升3倍" data-en="Processed 500k+ data records, 3x efficiency improvement">
-                                处理50万+数据记录，效率提升3倍
-                            </p>
+                            <button onclick="openDataModal()" class="w-full bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
                         </div>
+                    </div>
 
-                        <!-- Mini Project 3 -->
-                        <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
-                            <div class="mb-4">
-                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                                    <i class="fas fa-code text-2xl text-purple-600"></i>
-                                </div>
-                                <h3 class="text-xl font-semibold text-dark-text mb-2" data-zh="参数化设计工具包" data-en="Parametric Design Toolkit">
-                                    参数化设计工具包
-                                </h3>
-                                <p class="text-gray-600 text-sm mb-4" data-zh="基于Grasshopper的建筑参数化设计扩展插件" data-en="Grasshopper-based parametric design extension plugin for architecture">
-                                    基于Grasshopper的建筑参数化设计扩展插件
-                                </p>
+                    <!-- Project 5: 参数化设计工具包 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-indigo-100 to-purple-200 flex items-center justify-center">
+                            <i class="fas fa-cube text-6xl text-indigo-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="工具开发" data-en="Tool Development">工具开发</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2020-2022</span>
                             </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="参数化设计工具包" data-en="Parametric Design Toolkit">
+                                参数化设计工具包
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="基于Grasshopper的建筑参数化设计扩展插件，复用于2+大型项目，设计效率提升40%" data-en="Grasshopper-based parametric design extension plugin for architecture">
+                                基于Grasshopper的建筑参数化设计扩展插件，复用于2+大型项目，设计效率提升40%
+                            </p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">C#</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Rhino SDK</span>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Grasshopper</span>
                             </div>
-                            <p class="text-gray-600 text-sm" data-zh="复用于2+大型项目，设计效率提升40%" data-en="Reused in 2+ large projects, 40% design efficiency improvement">
-                                复用于2+大型项目，设计效率提升40%
+                            <button onclick="openToolkitModal()" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: 深圳房价与微博情绪研究 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-pink-100 to-rose-200 flex items-center justify-center">
+                            <i class="fas fa-home text-6xl text-pink-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-pink-50 text-pink-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="学术研究" data-en="Academic Research">学术研究</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2023</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="深圳房价与微博情绪研究" data-en="Shenzhen Housing Prices & Weibo Sentiment">
+                                深圳房价与微博情绪研究
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="与MIT学者合作，应用NLP与GWR模型分析50万+条数据，挖掘公众情绪为房价先行指标" data-en="Collaborated with MIT scholars, analyzed 500k+ data points using NLP and GWR models">
+                                与MIT学者合作，应用NLP与GWR模型分析50万+条数据，挖掘公众情绪为房价先行指标
                             </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">NLP</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">GWR</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
+                            </div>
+                            <button onclick="openHousingModal()" class="w-full bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: 智能体市场分析 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-teal-100 to-cyan-200 flex items-center justify-center">
+                            <i class="fas fa-chart-bar text-6xl text-teal-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-teal-50 text-teal-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="市场研究" data-en="Market Research">市场研究</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="智能体市场分析" data-en="AI Agent Market Analysis">
+                                智能体市场分析
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="主导AI Agent平台云秒搭的0-1建设，通过深度竞品分析确立垂直行业解决方案工厂战略" data-en="Led 0-to-1 development of Yunmiaoda AI Agent platform, established vertical industry solution factory strategy">
+                                主导AI Agent平台云秒搭的0-1建设，通过深度竞品分析确立垂直行业解决方案工厂战略
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Strategy</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Analysis</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Product</span>
+                            </div>
+                            <button onclick="openAgentModal()" class="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Zero-Shot建筑风格分类 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-yellow-100 to-amber-200 flex items-center justify-center">
+                            <i class="fas fa-brain text-6xl text-yellow-600"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="学术论文" data-en="Academic Paper">学术论文</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="Zero-Shot建筑风格分类" data-en="Zero-Shot Architectural Style Classification">
+                                Zero-Shot建筑风格分类
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="CAAD FUTURES 2025一作论文，通过技术选型与高级Prompt工程，将识别准确率从62%提升至85%" data-en="First-author paper at CAAD FUTURES 2025, improved recognition accuracy from 62% to 85%">
+                                CAAD FUTURES 2025一作论文，通过技术选型与高级Prompt工程，将识别准确率从62%提升至85%
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">LLM</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Zero-Shot</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Architecture</span>
+                            </div>
+                            <button onclick="openPaperModal()" class="w-full bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
+                                查看详细
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 9: 更多项目 -->
+                    <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <i class="fas fa-plus text-6xl text-gray-500"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full text-sm font-medium" data-zh="更多项目" data-en="More Projects">更多项目</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">持续更新</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="更多精彩项目" data-en="More Exciting Projects">
+                                更多精彩项目
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="持续探索AI、建筑、产品设计等领域的创新项目，敬请期待更多精彩内容" data-en="Continuously exploring innovative projects in AI, architecture, and product design">
+                                持续探索AI、建筑、产品设计等领域的创新项目，敬请期待更多精彩内容
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Coming Soon</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Innovation</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Future</span>
+                            </div>
+                            <button onclick="openMoreModal()" class="w-full bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors font-medium text-sm" data-zh="敬请期待" data-en="Stay Tuned">
+                                敬请期待
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -371,6 +456,61 @@
         </div>
     </div>
 
+    <!-- VR/AR Modal -->
+    <div id="vrarModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-[70] flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto p-6 relative">
+            <!-- Fixed close button -->
+            <button onclick="closeVRARModal()" class="fixed top-4 right-4 text-gray-500 hover:text-gray-700 z-[75] bg-white rounded-full p-2 shadow-lg">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2" data-zh="AR/VR建筑设计应用" data-en="AR/VR Architectural Design Application">AR/VR建筑设计应用</h2>
+                <p class="text-gray-600 mb-4" data-zh="基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果和用户体验。" data-en="Immersive architectural design platform based on Unity, supporting VR headsets and AR mobile devices, enhancing design presentation and user experience.">基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果和用户体验。</p>
+            </div>
+
+            <!-- Project showcase images -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3" data-zh="项目成果展示" data-en="Project Showcase">项目成果展示</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/4-vrar/Jobs-20250328-打印_页面_11.jpg" alt="VR建筑设计界面" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openVRARImageViewer(0)">
+                        <p class="text-sm text-gray-600" data-zh="VR建筑设计界面与交互体验" data-en="VR Architectural Design Interface & Interaction">VR建筑设计界面与交互体验</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/4-vrar/Jobs-20250328-打印_页面_12.jpg" alt="AR移动端应用" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openVRARImageViewer(1)">
+                        <p class="text-sm text-gray-600" data-zh="AR移动端应用与空间定位" data-en="AR Mobile Application & Spatial Tracking">AR移动端应用与空间定位</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/4-vrar/Jobs-20250328-打印_页面_13.jpg" alt="沉浸式设计体验" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openVRARImageViewer(2)">
+                        <p class="text-sm text-gray-600" data-zh="沉浸式设计体验与用户交互" data-en="Immersive Design Experience & User Interaction">沉浸式设计体验与用户交互</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <img src="material/4-vrar/Jobs-20250328-打印_页面_14.jpg" alt="技术架构与实现" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openVRARImageViewer(3)">
+                        <p class="text-sm text-gray-600" data-zh="技术架构与实现方案" data-en="Technical Architecture & Implementation">技术架构与实现方案</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto">
+                        <img src="material/4-vrar/Jobs-20250328-打印_页面_15.jpg" alt="项目成果总结" class="w-full h-auto rounded-lg shadow-md mb-3 cursor-pointer hover:opacity-90 transition-opacity" onclick="openVRARImageViewer(4)">
+                        <p class="text-sm text-gray-600 text-center" data-zh="项目成果总结与未来展望" data-en="Project Results & Future Prospects">项目成果总结与未来展望</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key achievements -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3" data-zh="核心成果" data-en="Key Achievements">核心成果</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li data-zh="• 基于Unity引擎开发，支持Oculus Rift、HTC Vive等主流VR设备" data-en="• Developed based on Unity engine, supporting mainstream VR devices like Oculus Rift, HTC Vive">• 基于Unity引擎开发，支持Oculus Rift、HTC Vive等主流VR设备</li>
+                    <li data-zh="• 实现AR移动端应用，支持iOS和Android平台的空间定位与渲染" data-en="• Implemented AR mobile application with spatial tracking and rendering for iOS and Android">• 实现AR移动端应用，支持iOS和Android平台的空间定位与渲染</li>
+                    <li data-zh="• 提升设计展示效果，用户满意度提升40%，项目展示效率提升60%" data-en="• Enhanced design presentation, improved user satisfaction by 40%, increased presentation efficiency by 60%">• 提升设计展示效果，用户满意度提升40%，项目展示效率提升60%</li>
+                    <li data-zh="• 成功应用于3+个建筑项目，获得客户高度认可" data-en="• Successfully applied to 3+ architectural projects, received high client recognition">• 成功应用于3+个建筑项目，获得客户高度认可</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Viewer -->
     <div id="imageViewer" class="fixed inset-0 bg-black bg-opacity-90 hidden z-[80] flex items-center justify-center">
         <div class="relative max-w-full max-h-full p-4">
@@ -437,6 +577,35 @@
                 src: 'material/3-parametric-design/Jobs-20250328-打印_页面_07.jpg',
                 alt: '项目实施效果',
                 description: '项目实施效果与成果总结'
+            }
+        ];
+
+        // VR/AR images array
+        const vrarImages = [
+            {
+                src: 'material/4-vrar/Jobs-20250328-打印_页面_11.jpg',
+                alt: 'VR建筑设计界面',
+                description: 'VR建筑设计界面与交互体验'
+            },
+            {
+                src: 'material/4-vrar/Jobs-20250328-打印_页面_12.jpg',
+                alt: 'AR移动端应用',
+                description: 'AR移动端应用与空间定位'
+            },
+            {
+                src: 'material/4-vrar/Jobs-20250328-打印_页面_13.jpg',
+                alt: '沉浸式设计体验',
+                description: '沉浸式设计体验与用户交互'
+            },
+            {
+                src: 'material/4-vrar/Jobs-20250328-打印_页面_14.jpg',
+                alt: '技术架构与实现',
+                description: '技术架构与实现方案'
+            },
+            {
+                src: 'material/4-vrar/Jobs-20250328-打印_页面_15.jpg',
+                alt: '项目成果总结',
+                description: '项目成果总结与未来展望'
             }
         ];
 
@@ -507,9 +676,57 @@
             document.body.style.overflow = 'auto';
         }
 
+        // VR/AR Modal functions
+        function openVRARModal() {
+            document.getElementById('vrarModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVRARModal() {
+            document.getElementById('vrarModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Other modal functions (placeholder)
+        function openAIModal() {
+            alert('AI建筑设计助手项目详情即将推出！');
+        }
+
+        function openDataModal() {
+            alert('智能数据分析平台项目详情即将推出！');
+        }
+
+        function openToolkitModal() {
+            alert('参数化设计工具包项目详情即将推出！');
+        }
+
+        function openHousingModal() {
+            alert('深圳房价与微博情绪研究项目详情即将推出！');
+        }
+
+        function openAgentModal() {
+            alert('智能体市场分析项目详情即将推出！');
+        }
+
+        function openPaperModal() {
+            alert('Zero-Shot建筑风格分类项目详情即将推出！');
+        }
+
+        function openMoreModal() {
+            alert('更多精彩项目敬请期待！');
+        }
+
         // Image viewer functions
         function openParametricImageViewer(index) {
             currentImageSet = parametricImages;
+            currentImageIndex = index;
+            updateImageViewer();
+            document.getElementById('imageViewer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openVRARImageViewer(index) {
+            currentImageSet = vrarImages;
             currentImageIndex = index;
             updateImageViewer();
             document.getElementById('imageViewer').classList.remove('hidden');
@@ -582,6 +799,12 @@
             }
         });
 
+        document.getElementById('vrarModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVRARModal();
+            }
+        });
+
         // Close image viewer when clicking outside the image
         document.getElementById('imageViewer').addEventListener('click', function(e) {
             if (e.target === this) {
@@ -593,11 +816,14 @@
         document.addEventListener('keydown', function(e) {
             const imageViewer = document.getElementById('imageViewer');
             const parametricModal = document.getElementById('parametricModal');
+            const vrarModal = document.getElementById('vrarModal');
             
             // Handle modal close
             if (e.key === 'Escape') {
                 if (!imageViewer.classList.contains('hidden')) {
                     closeImageViewer();
+                } else if (!vrarModal.classList.contains('hidden')) {
+                    closeVRARModal();
                 } else if (!parametricModal.classList.contains('hidden')) {
                     closeParametricModal();
                 }
