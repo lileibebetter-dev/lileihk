@@ -129,7 +129,7 @@
                     <div class="w-[24rem] h-[36rem] mx-auto lg:mx-0 rounded-lg overflow-hidden shadow-lg relative">
                         <!-- 照片轮播容器 -->
                         <div id="profileCarousel" class="w-full h-full relative">
-                            <img id="profileImage" src="material/0-pic/DSC_7737.jpg" alt="李磊 Profile" class="w-full h-full object-cover object-center">
+                            <img id="profileImage" src="material/0-pic/DSC_0048-2.jpg" alt="李磊 Profile" class="w-full h-full object-cover object-center">
                             
                             <!-- 左半边点击区域 -->
                             <div class="absolute left-0 top-0 w-1/2 h-full cursor-pointer" onclick="changeProfileImage(-1)"></div>
@@ -144,8 +144,8 @@
                         
                         <!-- 轮播指示器 -->
                         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1.5">
-                            <div id="indicator0" class="w-2 h-2 bg-white rounded-full cursor-pointer opacity-50 shadow-md hover:scale-125 transition-all duration-200" onclick="goToImage(0)"></div>
-                            <div id="indicator1" class="w-2 h-2 bg-white rounded-full cursor-pointer opacity-100 shadow-md hover:scale-125 transition-all duration-200" onclick="goToImage(1)"></div>
+                            <div id="indicator0" class="w-2 h-2 bg-white rounded-full cursor-pointer opacity-100 shadow-md hover:scale-125 transition-all duration-200" onclick="goToImage(0)"></div>
+                            <div id="indicator1" class="w-2 h-2 bg-white rounded-full cursor-pointer opacity-50 shadow-md hover:scale-125 transition-all duration-200" onclick="goToImage(1)"></div>
                             <div id="indicator2" class="w-2 h-2 bg-white rounded-full cursor-pointer opacity-50 shadow-md hover:scale-125 transition-all duration-200" onclick="goToImage(2)"></div>
                             <div id="indicator3" class="w-2 h-2 bg-white rounded-full cursor-pointer opacity-50 shadow-md hover:scale-125 transition-all duration-200" onclick="goToImage(3)"></div>
                         </div>
@@ -769,7 +769,7 @@
             'material/0-pic/Snipaste_2025-09-01_00-09-51.png'
         ];
         
-        let currentProfileIndex = 1;
+        let currentProfileIndex = 0;
 
         function changeProfileImage(direction) {
             // 根据方向切换照片
