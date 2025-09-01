@@ -797,6 +797,7 @@
             if (profileImage) {
                 // 直接切换图片，无动画效果
                 profileImage.src = profileImages[currentProfileIndex];
+                console.log('Updated profile image to:', profileImages[currentProfileIndex], 'index:', currentProfileIndex);
             }
             
             // 更新指示器状态
@@ -804,15 +805,18 @@
         }
 
         function updateIndicators() {
+            console.log('Updating indicators, current index:', currentProfileIndex);
             for (let i = 0; i < profileImages.length; i++) {
                 const indicator = document.getElementById(`indicator${i}`);
                 if (indicator) {
                     if (i === currentProfileIndex) {
                         indicator.classList.remove('opacity-50');
                         indicator.classList.add('opacity-100');
+                        console.log('Activated indicator', i);
                     } else {
                         indicator.classList.remove('opacity-100');
                         indicator.classList.add('opacity-50');
+                        console.log('Deactivated indicator', i);
                     }
                 }
             }
@@ -1107,6 +1111,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateLanguageDisplay();
             setActiveNavLink();
+            
+            // Initialize profile image carousel
+            updateProfileImage();
             
             // Add event listeners for language toggle buttons
             const langToggle = document.getElementById('langToggle');
