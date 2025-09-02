@@ -68,6 +68,36 @@
             transform: translateY(-8px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @media (min-width: 768px) {
+            .modal-content {
+                max-width: 80vw;
+            }
+        }
+        @media (min-width: 1024px) {
+            .modal-content {
+                max-width: 70vw;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-dark-text">
@@ -132,7 +162,7 @@
 
             <!-- Projects Grid - 九宫格布局 -->
             <div class="fade-in">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="projects-grid">
                     <!-- Project 1: 建筑参数化协同设计平台 -->
                     <div class="card-hover bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                         <div class="h-48 bg-gradient-to-br from-purple-100 to-violet-200 flex items-center justify-center">
@@ -150,9 +180,12 @@
                                 解决超高层项目多专业协作效率低、数据孤岛等痛点，将协同周期缩短37%
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Rhino</span>
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Grasshopper</span>
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
+                                <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs font-medium">Rhino</span>
+                                <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs font-medium">Grasshopper</span>
+                                <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs font-medium">Python</span>
+                                <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs font-medium">C#</span>
+                                <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs font-medium">算法设计</span>
+                                <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs font-medium">BIM</span>
                             </div>
                             <button onclick="openParametricModal()" class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
                                 查看详细
@@ -173,13 +206,16 @@
                             <h3 class="text-xl font-bold text-dark-text mb-3" data-zh="AR/VR建筑设计应用" data-en="AR/VR Architectural Design Application">
                                 AR/VR建筑设计应用
                             </h3>
-                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果" data-en="Immersive architectural design platform based on Unity, supporting VR headsets and AR mobile devices">
-                                基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed" data-zh="基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果和用户体验" data-en="Immersive architectural design platform based on Unity, supporting VR headsets and AR mobile devices, enhancing design presentation effects and user experience">
+                                基于Unity开发的沉浸式建筑设计体验平台，支持VR头显和AR移动端，提升设计展示效果和用户体验
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Unity</span>
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">C#</span>
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">AR/VR</span>
+                                <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs font-medium">Unity</span>
+                                <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs font-medium">C#</span>
+                                <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs font-medium">AR/VR</span>
+                                <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs font-medium">Oculus SDK</span>
+                                <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs font-medium">ARCore</span>
+                                <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs font-medium">3D Graphics</span>
                             </div>
                             <button onclick="openVRARModal()" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
                                 查看详细
@@ -204,9 +240,12 @@
                                 基于GPT-4V的建筑风格识别与设计建议系统，准确率85%，一周内完成MVP开发
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">React</span>
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">GPT-4V</span>
-                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Python</span>
+                                <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs font-medium">React</span>
+                                <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs font-medium">GPT-4V</span>
+                                <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs font-medium">Python</span>
+                                <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs font-medium">OpenAI API</span>
+                                <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs font-medium">计算机视觉</span>
+                                <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs font-medium">机器学习</span>
                             </div>
                             <button onclick="openAIModal()" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium text-sm" data-zh="查看详细" data-en="View Details">
                                 查看详细
@@ -244,7 +283,7 @@
 
     <!-- Parametric Platform Modal -->
     <div id="parametricModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-[70] flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto p-6 relative">
+        <div class="modal-content bg-white rounded-xl p-6 relative">
             <!-- Fixed close button -->
             <button onclick="closeParametricModal()" class="fixed top-4 right-4 text-gray-500 hover:text-gray-700 z-[75] bg-white rounded-full p-2 shadow-lg">
                 <i class="fas fa-times text-xl"></i>
@@ -298,7 +337,7 @@
 
     <!-- VR/AR Modal -->
     <div id="vrarModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-[70] flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto p-6 relative">
+        <div class="modal-content bg-white rounded-xl p-6 relative">
             <!-- Fixed close button -->
             <button onclick="closeVRARModal()" class="fixed top-4 right-4 text-gray-500 hover:text-gray-700 z-[75] bg-white rounded-full p-2 shadow-lg">
                 <i class="fas fa-times text-xl"></i>
