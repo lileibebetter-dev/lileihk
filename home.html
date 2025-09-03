@@ -1544,35 +1544,50 @@
         }
 
         async function sendMessage() {
+            console.log('sendMessage 函数被调用');
             const input = document.getElementById('chatbotInput');
             const message = input.value.trim();
+            console.log('用户输入的消息:', message);
             
-            if (message === '') return;
+            if (message === '') {
+                console.log('消息为空，返回');
+                return;
+            }
             
             // 添加用户消息
+            console.log('添加用户消息到界面');
             addMessage(message, 'user');
             input.value = '';
             
             // 显示打字指示器
+            console.log('显示打字指示器');
             showTypingIndicator();
             
             try {
                 // 调用真实的OpenAI API
+                console.log('开始调用 OpenAI API');
                 const response = await callOpenAI(message);
+                console.log('API调用成功，响应:', response);
                 hideTypingIndicator();
                 addMessage(response, 'bot');
             } catch (error) {
                 console.error('API调用失败:', error);
+                console.error('错误详情:', error.message);
                 hideTypingIndicator();
                 // 如果API失败，回退到本地回复
+                console.log('使用本地回复作为备用');
                 const fallbackResponse = generateResponse(message);
+                console.log('本地回复:', fallbackResponse);
                 addMessage(fallbackResponse, 'bot');
             }
         }
 
         async function callOpenAI(message) {
+            console.log('callOpenAI 函数开始执行');
             const API_KEY = 'sk-u8uCPPzw8TXmcBHJ1pMOaBlI27AJMO4zlREVc4oNeBkHExLE';
             const API_URL = 'https://turingai.plus/v1/chat/completions';
+            console.log('API配置 - URL:', API_URL);
+            console.log('API配置 - Key前缀:', API_KEY.substring(0, 10) + '...');
             
             const systemPrompt = `你是李磊的AI助手，专门为访问他个人网站的用户提供服务。
 
@@ -1599,39 +1614,64 @@
 
 请以友好、专业的语气回答用户问题，重点介绍李磊的专业能力和项目经验。`;
 
+            console.log('准备发送API请求，消息内容:', message);
+            
+            const requestBody = {
+                model: 'gpt-5-nano-2025-08-07',
+                messages: [
+                    {
+                        role: 'system',
+                        content: systemPrompt
+                    },
+                    {
+                        role: 'user',
+                        content: message
+                    }
+                ],
+                max_tokens: 500,
+                temperature: 0.7
+            };
+            
+            console.log('请求体:', JSON.stringify(requestBody, null, 2));
+
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${API_KEY}`
                 },
-                body: JSON.stringify({
-                    model: 'gpt-5-nano-2025-08-07',
-                    messages: [
-                        {
-                            role: 'system',
-                            content: systemPrompt
-                        },
-                        {
-                            role: 'user',
-                            content: message
-                        }
-                    ],
-                    max_tokens: 500,
-                    temperature: 0.7
-                })
+                body: JSON.stringify(requestBody)
             });
 
+            console.log('收到响应，状态码:', response.status);
+            console.log('响应头:', response.headers);
+
             if (!response.ok) {
-                throw new Error(`API请求失败: ${response.status}`);
+                const errorText = await response.text();
+                console.error('API响应错误内容:', errorText);
+                throw new Error(`API请求失败: ${response.status} - ${errorText}`);
             }
 
             const data = await response.json();
+            console.log('API响应数据:', data);
+            
+            if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+                console.error('API响应格式异常:', data);
+                throw new Error('API响应格式异常');
+            }
+            
             return data.choices[0].message.content;
         }
 
         function addMessage(text, sender) {
+            console.log(`addMessage 被调用: sender=${sender}, text=${text}`);
             const messagesContainer = document.getElementById('chatbotMessages');
+            
+            if (!messagesContainer) {
+                console.error('无法找到 chatbotMessages 容器');
+                return;
+            }
+            
             const messageDiv = document.createElement('div');
             
             if (sender === 'user') {
@@ -1643,6 +1683,7 @@
             messageDiv.textContent = text;
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            console.log('消息已添加到界面');
             
             // 保存对话历史
             conversationHistory.push({ text, sender, timestamp: new Date() });
