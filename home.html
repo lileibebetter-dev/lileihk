@@ -84,7 +84,7 @@
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
-            z-index: 1000;
+            z-index: 9999;
             animation: float 3s ease-in-out infinite;
         }
         .chatbot-toggle:hover {
@@ -110,7 +110,7 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             display: none;
             flex-direction: column;
-            z-index: 1001;
+            z-index: 9998;
             overflow: hidden;
             transform: translateY(20px);
             opacity: 0;
@@ -961,7 +961,7 @@
     </footer>
 
     <!-- 小精灵聊天机器人 -->
-    <div class="chatbot-toggle" onclick="toggleChatbot()">
+    <div class="chatbot-toggle" id="chatbotToggle">
         <i class="fas fa-robot"></i>
     </div>
 
@@ -1382,6 +1382,15 @@
             if (langToggleMobile) {
                 langToggleMobile.addEventListener('click', toggleLanguage);
             }
+            
+            // Add event listener for chatbot toggle
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            if (chatbotToggle) {
+                chatbotToggle.addEventListener('click', toggleChatbot);
+                console.log('Chatbot toggle event listener added');
+            } else {
+                console.error('Chatbot toggle element not found');
+            }
         });
 
         // PDF Viewer functionality
@@ -1497,12 +1506,20 @@
         let conversationHistory = [];
 
         function toggleChatbot() {
+            console.log('toggleChatbot called'); // 调试日志
             const chatbotWindow = document.getElementById('chatbotWindow');
+            if (!chatbotWindow) {
+                console.error('chatbotWindow not found');
+                return;
+            }
             chatbotOpen = !chatbotOpen;
             
             if (chatbotOpen) {
                 chatbotWindow.classList.add('show');
-                document.getElementById('chatbotInput').focus();
+                const input = document.getElementById('chatbotInput');
+                if (input) {
+                    input.focus();
+                }
             } else {
                 chatbotWindow.classList.remove('show');
             }
