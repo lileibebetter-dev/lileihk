@@ -1631,7 +1631,8 @@
                     }
                 ],
                 max_tokens: 500,
-                temperature: 0.7
+                temperature: 0.7,
+                stream: false
             };
             
             console.log('请求体:', JSON.stringify(requestBody, null, 2));
@@ -1673,9 +1674,29 @@
                 throw new Error('API响应格式异常');
             }
             
-            const content = data.choices[0].message.content;
+            let content = data.choices[0].message.content;
             console.log('提取的content:', content);
             console.log('content类型:', typeof content);
+            console.log('content长度:', content ? content.length : 'null/undefined');
+            
+            // 如果content为空，尝试其他可能的字段
+            if (!content || content.trim() === '') {
+                console.log('content为空，检查其他字段...');
+                console.log('完整的message对象:', JSON.stringify(data.choices[0].message));
+                
+                // 尝试其他可能的字段名
+                if (data.choices[0].message.text) {
+                    content = data.choices[0].message.text;
+                    console.log('使用text字段:', content);
+                } else if (data.choices[0].text) {
+                    content = data.choices[0].text;
+                    console.log('使用choices[0].text字段:', content);
+                } else {
+                    content = '抱歉，我暂时无法回复您的问题。请稍后再试。';
+                    console.log('使用默认回复');
+                }
+            }
+            
             return content;
         }
 
