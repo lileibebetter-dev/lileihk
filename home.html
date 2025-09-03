@@ -69,6 +69,175 @@
                 padding: 4rem 0;
             }
         }
+        /* 小精灵聊天机器人样式 */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+        .chatbot-toggle i {
+            color: white;
+            font-size: 24px;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .chatbot-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .chatbot-window.show {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        .chatbot-close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .message.user {
+            background: #e3f2fd;
+            color: #1976d2;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        .message.bot {
+            background: #f5f5f5;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        .chatbot-input {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .chatbot-input input:focus {
+            border-color: #667eea;
+        }
+        .chatbot-send {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .chatbot-send:hover {
+            transform: scale(1.05);
+        }
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 16px;
+            background: #f5f5f5;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            max-width: 80px;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        @media (max-width: 480px) {
+            .chatbot-window {
+                width: calc(100vw - 40px);
+                right: 20px;
+                left: 20px;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-dark-text">
@@ -791,6 +960,36 @@
         </div>
     </footer>
 
+    <!-- 小精灵聊天机器人 -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <div id="chatbotWindow" class="chatbot-window">
+        <div class="chatbot-header">
+            <h3>🤖 AI助手</h3>
+            <button class="chatbot-close" onclick="toggleChatbot()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                你好！我是李磊的AI助手，很高兴为您服务！有什么想了解的吗？
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="输入您的问题..." onkeypress="handleKeyPress(event)">
+            <button class="chatbot-send" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1292,6 +1491,138 @@
             document.getElementById('parametricModal').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+
+        // 聊天机器人功能
+        let chatbotOpen = false;
+        let conversationHistory = [];
+
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotOpen = !chatbotOpen;
+            
+            if (chatbotOpen) {
+                chatbotWindow.classList.add('show');
+                document.getElementById('chatbotInput').focus();
+            } else {
+                chatbotWindow.classList.remove('show');
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // 添加用户消息
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // 显示打字指示器
+            showTypingIndicator();
+            
+            // 模拟AI回复
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = generateResponse(message);
+                addMessage(response, 'bot');
+            }, 1000 + Math.random() * 2000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // 保存对话历史
+            conversationHistory.push({ text, sender, timestamp: new Date() });
+        }
+
+        function showTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'flex';
+            const messagesContainer = document.getElementById('chatbotMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        function generateResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // 问候语
+            if (message.includes('你好') || message.includes('hi') || message.includes('hello')) {
+                return '你好！很高兴见到你！我是李磊的AI助手，可以为您介绍他的项目、研究经历和专业技能。有什么想了解的吗？';
+            }
+            
+            // 关于李磊
+            if (message.includes('李磊') || message.includes('介绍') || message.includes('背景')) {
+                return '李磊是一位AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学。他具备从前沿研究到产品落地的全链路能力，擅长以产品化方法探索和驱动AI技术的商业价值。';
+            }
+            
+            // 项目相关
+            if (message.includes('项目') || message.includes('云秒搭') || message.includes('智能体')) {
+                return '李磊主导了云秒搭智能体平台的0-1建设，基于"垂直行业解决方案工厂"的核心战略。通过深度竞品分析与用户访谈，将识别准确率做到领先竞品15%，同时降低了20%的推理成本。';
+            }
+            
+            // 研究相关
+            if (message.includes('研究') || message.includes('论文') || message.includes('caad')) {
+                return '李磊在香港大学担任研究助理期间，将产品化方法应用于AIGC赋能建筑设计的研究。他的研究成果以第一作者身份发表于CAAD FUTURES 2025，将设计方案的整体产出效率提升了7倍。';
+            }
+            
+            // 技能相关
+            if (message.includes('技能') || message.includes('技术') || message.includes('能力')) {
+                return '李磊具备AI产品设计、市场分析、用户研究、技术选型等核心能力。熟练掌握Python、React、GPT-4V、Unity等技术栈，在AI Agent、计算机视觉、机器学习等领域有丰富经验。';
+            }
+            
+            // 联系方式
+            if (message.includes('联系') || message.includes('邮箱') || message.includes('电话')) {
+                return '您可以通过以下方式联系李磊：\n📧 邮箱：lileiaad@connect.hku.hk\n📱 电话：(86) 15243684038\n💼 LinkedIn：linkedin.com/in/lilei\n💻 GitHub：github.com/lilei';
+            }
+            
+            // 工作经验
+            if (message.includes('工作') || message.includes('经验') || message.includes('云鲸致')) {
+                return '李磊在云鲸致人工智能担任AI产品经理，作为初创团队核心成员，主导了云秒搭智能体平台从0到1的建设。在深圳市建筑设计研究总院担任建筑师期间，开发了参数化协同设计平台，将协同周期缩短37%。';
+            }
+            
+            // 教育背景
+            if (message.includes('教育') || message.includes('学历') || message.includes('大学')) {
+                return '李磊硕士毕业于香港大学，本科毕业于长沙理工大学，曾获评湖南省优秀毕业生（前1%）。在香港大学期间专注于AIGC赋能建筑设计的研究。';
+            }
+            
+            // 默认回复
+            const defaultResponses = [
+                '这是一个很有趣的问题！李磊在AI产品管理方面有很多经验，您想了解他的哪个项目呢？',
+                '让我为您介绍一下李磊的专业背景。他是AI产品经理，在智能体平台、建筑参数化设计、数据科学等领域都有丰富经验。',
+                '您想了解李磊的哪个方面呢？我可以为您介绍他的项目经历、研究背景、专业技能或联系方式。',
+                '李磊是一位很有才华的AI产品经理，在多个领域都有出色表现。您对哪个方面比较感兴趣？'
+            ];
+            
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        }
+
+        // 点击外部关闭聊天窗口
+        document.addEventListener('click', function(event) {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotToggle = document.querySelector('.chatbot-toggle');
+            
+            if (chatbotOpen && 
+                !chatbotWindow.contains(event.target) && 
+                !chatbotToggle.contains(event.target)) {
+                toggleChatbot();
+            }
+        });
 
     </script>
 </body>
