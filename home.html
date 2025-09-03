@@ -1656,13 +1656,27 @@
 
             const data = await response.json();
             console.log('API响应数据:', data);
+            console.log('响应数据类型:', typeof data);
+            console.log('choices存在:', !!data.choices);
+            
+            if (data.choices && data.choices.length > 0) {
+                console.log('第一个choice:', data.choices[0]);
+                console.log('message存在:', !!data.choices[0].message);
+                if (data.choices[0].message) {
+                    console.log('message内容:', data.choices[0].message);
+                    console.log('content内容:', data.choices[0].message.content);
+                }
+            }
             
             if (!data.choices || !data.choices[0] || !data.choices[0].message) {
                 console.error('API响应格式异常:', data);
                 throw new Error('API响应格式异常');
             }
             
-            return data.choices[0].message.content;
+            const content = data.choices[0].message.content;
+            console.log('提取的content:', content);
+            console.log('content类型:', typeof content);
+            return content;
         }
 
         function addMessage(text, sender) {
