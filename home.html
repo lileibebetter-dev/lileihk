@@ -1515,16 +1515,18 @@
                 console.error('chatbotWindow not found');
                 return;
             }
-            chatbotOpen = !chatbotOpen;
             
-            if (chatbotOpen) {
+            // 检查当前状态
+            const isVisible = chatbotWindow.style.display === 'flex';
+            
+            if (isVisible) {
+                chatbotWindow.style.display = 'none';
+            } else {
                 chatbotWindow.style.display = 'flex';
                 const input = document.getElementById('chatbotInput');
                 if (input) {
                     setTimeout(() => input.focus(), 100);
                 }
-            } else {
-                chatbotWindow.style.display = 'none';
             }
         }
 
@@ -1532,7 +1534,6 @@
             const chatbotWindow = document.getElementById('chatbotWindow');
             if (chatbotWindow) {
                 chatbotWindow.style.display = 'none';
-                chatbotOpen = false;
             }
         }
 
@@ -1648,12 +1649,13 @@
         // 点击外部关闭聊天窗口
         document.addEventListener('click', function(event) {
             const chatbotWindow = document.getElementById('chatbotWindow');
-            const chatbotToggle = document.querySelector('.chatbot-toggle');
+            const chatbotToggle = document.getElementById('chatbotToggle');
             
-            if (chatbotOpen && 
+            if (chatbotWindow && chatbotToggle &&
+                chatbotWindow.style.display === 'flex' && 
                 !chatbotWindow.contains(event.target) && 
                 !chatbotToggle.contains(event.target)) {
-                toggleChatbot();
+                closeChatbot();
             }
         });
 
