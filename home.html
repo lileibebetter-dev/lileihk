@@ -961,30 +961,30 @@
     </footer>
 
     <!-- 小精灵聊天机器人 -->
-    <div class="chatbot-toggle" id="chatbotToggle">
-        <i class="fas fa-robot"></i>
+    <div class="chatbot-toggle" id="chatbotToggle" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); z-index: 99999;">
+        <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
     </div>
 
-    <div id="chatbotWindow" class="chatbot-window">
-        <div class="chatbot-header">
-            <h3>🤖 AI助手</h3>
-            <button class="chatbot-close" onclick="toggleChatbot()">
+    <div id="chatbotWindow" style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); display: none; flex-direction: column; z-index: 99998; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin: 0; font-size: 16px; font-weight: 600;">🤖 AI助手</h3>
+            <button class="chatbot-close" onclick="closeChatbot()" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px; padding: 5px; border-radius: 50%;">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <div class="message bot">
+        <div class="chatbot-messages" id="chatbotMessages" style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;">
+            <div style="max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.4; background: #f5f5f5; color: #333; align-self: flex-start; border-bottom-left-radius: 5px;">
                 你好！我是李磊的AI助手，很高兴为您服务！有什么想了解的吗？
             </div>
         </div>
-        <div class="typing-indicator" id="typingIndicator">
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
+        <div class="typing-indicator" id="typingIndicator" style="display: none; align-items: center; gap: 5px; padding: 12px 16px; background: #f5f5f5; border-radius: 18px; border-bottom-left-radius: 5px; max-width: 80px; margin-left: 20px;">
+            <div style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite;"></div>
+            <div style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite; animation-delay: 0.2s;"></div>
+            <div style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite; animation-delay: 0.4s;"></div>
         </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbotInput" placeholder="输入您的问题..." onkeypress="handleKeyPress(event)">
-            <button class="chatbot-send" onclick="sendMessage()">
+        <div style="padding: 15px 20px; border-top: 1px solid #eee; display: flex; gap: 10px;">
+            <input type="text" id="chatbotInput" placeholder="输入您的问题..." onkeypress="if(event.key==='Enter')sendMessage()" style="flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; font-size: 14px; outline: none;">
+            <button onclick="sendMessage()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
@@ -1386,7 +1386,10 @@
             // Add event listener for chatbot toggle
             const chatbotToggle = document.getElementById('chatbotToggle');
             if (chatbotToggle) {
-                chatbotToggle.addEventListener('click', toggleChatbot);
+                chatbotToggle.addEventListener('click', function() {
+                    console.log('Chatbot clicked!');
+                    toggleChatbot();
+                });
                 console.log('Chatbot toggle event listener added');
             } else {
                 console.error('Chatbot toggle element not found');
@@ -1506,7 +1509,7 @@
         let conversationHistory = [];
 
         function toggleChatbot() {
-            console.log('toggleChatbot called'); // 调试日志
+            console.log('toggleChatbot called');
             const chatbotWindow = document.getElementById('chatbotWindow');
             if (!chatbotWindow) {
                 console.error('chatbotWindow not found');
@@ -1515,13 +1518,21 @@
             chatbotOpen = !chatbotOpen;
             
             if (chatbotOpen) {
-                chatbotWindow.classList.add('show');
+                chatbotWindow.style.display = 'flex';
                 const input = document.getElementById('chatbotInput');
                 if (input) {
-                    input.focus();
+                    setTimeout(() => input.focus(), 100);
                 }
             } else {
-                chatbotWindow.classList.remove('show');
+                chatbotWindow.style.display = 'none';
+            }
+        }
+
+        function closeChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            if (chatbotWindow) {
+                chatbotWindow.style.display = 'none';
+                chatbotOpen = false;
             }
         }
 
@@ -1555,9 +1566,14 @@
         function addMessage(text, sender) {
             const messagesContainer = document.getElementById('chatbotMessages');
             const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = text;
             
+            if (sender === 'user') {
+                messageDiv.style.cssText = 'max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.4; background: #e3f2fd; color: #1976d2; align-self: flex-end; border-bottom-right-radius: 5px; margin-bottom: 10px;';
+            } else {
+                messageDiv.style.cssText = 'max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.4; background: #f5f5f5; color: #333; align-self: flex-start; border-bottom-left-radius: 5px; margin-bottom: 10px;';
+            }
+            
+            messageDiv.textContent = text;
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
             
