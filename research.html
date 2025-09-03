@@ -845,7 +845,7 @@
         </div>
         <div class="chatbot-messages" id="chatbotMessages">
             <div class="message bot">
-                你好！我是李磊的AI助手，很高兴为您服务！有什么想了解的吗？
+                你好！我是李磊的智能AI助手，基于GPT-5-nano模型为您提供服务！我可以详细介绍李磊的项目经历、研究背景、专业技能等信息。有什么想了解的吗？
             </div>
         </div>
         <div class="typing-indicator" id="typingIndicator">
@@ -1230,7 +1230,7 @@
             }
         }
 
-        function sendMessage() {
+        async function sendMessage() {
             const input = document.getElementById('chatbotInput');
             const message = input.value.trim();
             
@@ -1243,12 +1243,78 @@
             // 显示打字指示器
             showTypingIndicator();
             
-            // 模拟AI回复
-            setTimeout(() => {
+            try {
+                // 调用真实的OpenAI API
+                const response = await callOpenAI(message);
                 hideTypingIndicator();
-                const response = generateResponse(message);
                 addMessage(response, 'bot');
-            }, 1000 + Math.random() * 2000);
+            } catch (error) {
+                console.error('API调用失败:', error);
+                hideTypingIndicator();
+                // 如果API失败，回退到本地回复
+                const fallbackResponse = generateResponse(message);
+                addMessage(fallbackResponse, 'bot');
+            }
+        }
+
+        async function callOpenAI(message) {
+            const API_KEY = 'sk-u8uCPPzw8TXmcBHJ1pMOaBlI27AJMO4zlREVc4oNeBkHExLE';
+            const API_URL = 'https://turingai.plus/v1/chat/completions';
+            
+            const systemPrompt = `你是李磊的AI助手，专门为访问他个人网站的用户提供服务。
+
+关于李磊的基本信息：
+- AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学
+- 曾获评湖南省优秀毕业生（前1%）
+- 在云鲸致人工智能担任AI产品经理，主导云秒搭智能体平台0-1建设
+- 在香港大学担任研究助理，研究AIGC赋能建筑设计
+- 研究成果发表于CAAD FUTURES 2025国际会议（第一作者）
+
+主要项目经历：
+1. 云秒搭智能体平台 - 基于"垂直行业解决方案工厂"战略，识别准确率领先竞品15%
+2. 建筑参数化协同设计平台 - 将协同周期缩短37%
+3. AR/VR建筑设计应用 - 基于Unity开发的沉浸式平台
+4. 深圳房价与微博情绪关系研究 - 与MIT学者合作的数据科学项目
+
+技能领域：AI产品设计、市场分析、用户研究、Python、React、GPT-4V、Unity、机器学习
+
+联系方式：
+- 邮箱：lileiaad@connect.hku.hk
+- 电话：(86) 15243684038
+- LinkedIn：linkedin.com/in/lilei
+- GitHub：github.com/lilei
+
+请以友好、专业的语气回答用户问题，重点介绍李磊的专业能力和项目经验。`;
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: 'gpt-5-nano-2025-08-07',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: systemPrompt
+                        },
+                        {
+                            role: 'user',
+                            content: message
+                        }
+                    ],
+                    max_tokens: 500,
+                    temperature: 0.7
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API请求失败: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.choices[0].message.content;
         }
 
         function addMessage(text, sender) {
