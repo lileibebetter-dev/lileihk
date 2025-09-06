@@ -857,13 +857,26 @@
                     link.classList.add('active');
                 }
             });
+            
+            // Also handle mobile menu links
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href && href.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
         }
 
-        // 初始化对话历史数组
-        let conversationHistory = [];
+        // 初始化对话历史数组（如果未定义）
+        if (typeof conversationHistory === 'undefined') {
+            let conversationHistory = [];
+        }
 
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language first
             updateLanguageDisplay();
             setActiveNavLink();
             
@@ -928,7 +941,6 @@
 
         // 聊天机器人功能
         let chatbotOpen = false;
-        let conversationHistory = [];
 
         function toggleChatbot() {
             const chatbotWindow = document.getElementById('chatbotWindow');

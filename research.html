@@ -1087,6 +1087,16 @@
                     link.classList.add('active');
                 }
             });
+            
+            // Also handle mobile menu links
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href && href.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
         }
 
         // 初始化对话历史数组
@@ -1094,6 +1104,7 @@
 
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language first
             updateLanguageDisplay();
             setActiveNavLink();
             
@@ -1345,53 +1356,75 @@
 
         function generateResponse(userMessage) {
             const message = userMessage.toLowerCase();
+            const isChinese = currentLanguage === 'zh';
             
             // 问候语
             if (message.includes('你好') || message.includes('hi') || message.includes('hello')) {
-                return '你好！很高兴见到你！我是李磊的AI助手，可以为您介绍他的项目、研究经历和专业技能。有什么想了解的吗？';
+                return isChinese ? 
+                    '你好！很高兴见到你！我是李磊的AI助手，可以为您介绍他的项目、研究经历和专业技能。有什么想了解的吗？' :
+                    'Hello! Nice to meet you! I am Li Lei\'s AI assistant and can introduce you to his projects, research experience and professional skills. What would you like to know?';
             }
             
             // 关于李磊
             if (message.includes('李磊') || message.includes('介绍') || message.includes('背景')) {
-                return '李磊是一位AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学。他具备从前沿研究到产品落地的全链路能力，擅长以产品化方法探索和驱动AI技术的商业价值。';
+                return isChinese ? 
+                    '李磊是一位AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学。他具备从前沿研究到产品落地的全链路能力，擅长以产品化方法探索和驱动AI技术的商业价值。' :
+                    'Li Lei is an AI Product Manager who graduated with a Master\'s degree from the University of Hong Kong and a Bachelor\'s degree from Changsha University of Science and Technology. He has comprehensive capabilities from cutting-edge research to product implementation, specializing in exploring and driving the commercial value of AI technology through product-oriented methodologies.';
             }
             
             // 项目相关
             if (message.includes('项目') || message.includes('云秒搭') || message.includes('智能体')) {
-                return '李磊主导了云秒搭智能体平台的0-1建设，基于"垂直行业解决方案工厂"的核心战略。通过深度竞品分析与用户访谈，将识别准确率做到领先竞品15%，同时降低了20%的推理成本。';
+                return isChinese ? 
+                    '李磊主导了云秒搭智能体平台的0-1建设，基于"垂直行业解决方案工厂"的核心战略。通过深度竞品分析与用户访谈，将识别准确率做到领先竞品15%，同时降低了20%的推理成本。' :
+                    'Li Lei led the 0-to-1 development of the Yunmiaoda AI Agent platform, based on the core strategy of "Vertical Industry Solution Factory". Through in-depth competitive analysis and user interviews, he achieved 15% higher recognition accuracy than competitors while reducing inference costs by 20%.';
             }
             
             // 研究相关
             if (message.includes('研究') || message.includes('论文') || message.includes('caad')) {
-                return '李磊在香港大学担任研究助理期间，将产品化方法应用于AIGC赋能建筑设计的研究。他的研究成果以第一作者身份发表于CAAD FUTURES 2025，将设计方案的整体产出效率提升了7倍。';
+                return isChinese ? 
+                    '李磊在香港大学担任研究助理期间，将产品化方法应用于AIGC赋能建筑设计的研究。他的研究成果以第一作者身份发表于CAAD FUTURES 2025，将设计方案的整体产出效率提升了7倍。' :
+                    'During his tenure as a Research Assistant at the University of Hong Kong, Li Lei applied product-oriented methodologies to AIGC-enabled architectural design research. His research findings were published as the first author at CAAD FUTURES 2025, improving overall design output efficiency by 7 times.';
             }
             
             // 技能相关
             if (message.includes('技能') || message.includes('技术') || message.includes('能力')) {
-                return '李磊具备AI产品设计、市场分析、用户研究、技术选型等核心能力。熟练掌握Python、React、GPT-4V、Unity等技术栈，在AI Agent、计算机视觉、机器学习等领域有丰富经验。';
+                return isChinese ? 
+                    '李磊具备AI产品设计、市场分析、用户研究、技术选型等核心能力。熟练掌握Python、React、GPT-4V、Unity等技术栈，在AI Agent、计算机视觉、机器学习等领域有丰富经验。' :
+                    'Li Lei possesses core capabilities in AI product design, market analysis, user research, and technical selection. He is proficient in Python, React, GPT-4V, Unity and other tech stacks, with rich experience in AI Agent, computer vision, machine learning and other fields.';
             }
             
             // 联系方式
             if (message.includes('联系') || message.includes('邮箱') || message.includes('电话')) {
-                return '您可以通过以下方式联系李磊：\n📧 邮箱：lileiaad@connect.hku.hk\n📱 电话：(86) 15243684038\n💼 LinkedIn：linkedin.com/in/lilei\n💻 GitHub：github.com/lilei';
+                return isChinese ? 
+                    '您可以通过以下方式联系李磊：\n📧 邮箱：lileiaad@connect.hku.hk\n📱 电话：(86) 15243684038\n💼 LinkedIn：linkedin.com/in/lilei\n💻 GitHub：github.com/lilei' :
+                    'You can contact Li Lei through the following ways:\n📧 Email: lileiaad@connect.hku.hk\n📱 Phone: (86) 15243684038\n💼 LinkedIn: linkedin.com/in/lilei\n💻 GitHub: github.com/lilei';
             }
             
             // 工作经验
             if (message.includes('工作') || message.includes('经验') || message.includes('云鲸致')) {
-                return '李磊在云鲸致人工智能担任AI产品经理，作为初创团队核心成员，主导了云秒搭智能体平台从0到1的建设。在深圳市建筑设计研究总院担任建筑师期间，开发了参数化协同设计平台，将协同周期缩短37%。';
+                return isChinese ? 
+                    '李磊在云鲸致人工智能担任AI产品经理，作为初创团队核心成员，主导了云秒搭智能体平台从0到1的建设。在深圳市建筑设计研究总院担任建筑师期间，开发了参数化协同设计平台，将协同周期缩短37%。' :
+                    'Li Lei served as an AI Product Manager at YunJingZhi AI, as a core member of the startup team, leading the 0-to-1 development of the Yunmiaoda AI Agent platform. During his tenure as an architect at SZADI, he developed a parametric collaborative design platform that reduced collaboration cycles by 37%.';
             }
             
             // 教育背景
             if (message.includes('教育') || message.includes('学历') || message.includes('大学')) {
-                return '李磊硕士毕业于香港大学，本科毕业于长沙理工大学，曾获评湖南省优秀毕业生（前1%）。在香港大学期间专注于AIGC赋能建筑设计的研究。';
+                return isChinese ? 
+                    '李磊硕士毕业于香港大学，本科毕业于长沙理工大学，曾获评湖南省优秀毕业生（前1%）。在香港大学期间专注于AIGC赋能建筑设计的研究。' :
+                    'Li Lei graduated with a Master\'s degree from the University of Hong Kong and a Bachelor\'s degree from Changsha University of Science and Technology, where he was honored as a Top 1% Outstanding Graduate of Hunan Province. During his time at HKU, he focused on AIGC-enabled architectural design research.';
             }
             
             // 默认回复
-            const defaultResponses = [
+            const defaultResponses = isChinese ? [
                 '这是一个很有趣的问题！李磊在AI产品管理方面有很多经验，您想了解他的哪个项目呢？',
                 '让我为您介绍一下李磊的专业背景。他是AI产品经理，在智能体平台、建筑参数化设计、数据科学等领域都有丰富经验。',
                 '您想了解李磊的哪个方面呢？我可以为您介绍他的项目经历、研究背景、专业技能或联系方式。',
                 '李磊是一位很有才华的AI产品经理，在多个领域都有出色表现。您对哪个方面比较感兴趣？'
+            ] : [
+                'That\'s a very interesting question! Li Lei has a lot of experience in AI product management. Which of his projects would you like to know about?',
+                'Let me introduce Li Lei\'s professional background. He is an AI Product Manager with rich experience in AI Agent platforms, parametric design, data science and other fields.',
+                'What aspect of Li Lei would you like to know about? I can introduce you to his project experience, research background, professional skills or contact information.',
+                'Li Lei is a very talented AI Product Manager with outstanding performance in multiple fields. Which aspect are you most interested in?'
             ];
             
             return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];

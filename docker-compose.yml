@@ -1,0 +1,30 @@
+# 李磊个人网站 - Docker Compose配置
+version: '3.8'
+
+services:
+  lilei-portfolio:
+    build: .
+    container_name: lilei-portfolio-website
+    restart: unless-stopped
+    ports:
+      - "8000:8000"  # 静态文件服务器
+      - "8001:8001"  # API服务器
+    environment:
+      - OPENAI_API_KEY=sk-u8uCPPzw8TXmcBHJ1pMOaBlI27AJMO4zlREVc4oNeBkHExLE
+      - OPENAI_API_BASE=https://turingai.plus/v1/chat/completions
+      - OPENAI_MODEL=gpt-4o-mini
+      - OPENAI_MAX_TOKENS=500
+      - OPENAI_TEMPERATURE=0.7
+    volumes:
+      - ./logs:/app/logs  # 挂载日志目录
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lilei-portfolio.rule=Host(`lilei.local`)"
+      - "traefik.http.services.lilei-portfolio.loadbalancer.server.port=8000"
+

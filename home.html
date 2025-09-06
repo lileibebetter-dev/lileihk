@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="chatbot.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='12' y='32' font-size='34' fill='%239CA3AF'%3E%E2%98%85%3C/text%3E%3Ctext x='44' y='20' font-size='18' fill='%239CA3AF'%3E%E2%98%85%3C/text%3E%3Ctext x='66' y='40' font-size='12' fill='%239CA3AF'%3E%E2%98%85%3C/text%3E%3Ctext x='28' y='62' font-size='14' fill='%239CA3AF'%3E%E2%98%85%3C/text%3E%3Ctext x='60' y='70' font-size='20' fill='%219CA3AF'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
     <script>
         tailwind.config = {
@@ -69,175 +70,9 @@
                 padding: 4rem 0;
             }
         }
-        /* 小精灵聊天机器人样式 */
-        .chatbot-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            z-index: 9999;
-            animation: float 3s ease-in-out infinite;
-        }
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-        }
-        .chatbot-toggle i {
-            color: white;
-            font-size: 24px;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .chatbot-window {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            display: none;
-            flex-direction: column;
-            z-index: 9998;
-            overflow: hidden;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .chatbot-window.show {
-            display: flex;
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .chatbot-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .chatbot-header h3 {
-            margin: 0;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 5px;
-            border-radius: 50%;
-            transition: background-color 0.2s;
-        }
-        .chatbot-close:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .chatbot-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .message {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        .message.user {
-            background: #e3f2fd;
-            color: #1976d2;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-        .message.bot {
-            background: #f5f5f5;
-            color: #333;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-        .chatbot-input {
-            padding: 15px 20px;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 10px;
-        }
-        .chatbot-input input {
-            flex: 1;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 10px 15px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .chatbot-input input:focus {
-            border-color: #667eea;
-        }
-        .chatbot-send {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-        .chatbot-send:hover {
-            transform: scale(1.05);
-        }
-        .typing-indicator {
-            display: none;
-            align-items: center;
-            gap: 5px;
-            padding: 12px 16px;
-            background: #f5f5f5;
-            border-radius: 18px;
-            border-bottom-left-radius: 5px;
-            max-width: 80px;
-        }
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: #999;
-            border-radius: 50%;
-            animation: typing 1.4s infinite;
-        }
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-10px); }
-        }
-        @media (max-width: 480px) {
-            .chatbot-window {
-                width: calc(100vw - 40px);
-                right: 20px;
-                left: 20px;
-            }
-        }
+
+
+
     </style>
 </head>
 <body class="bg-white text-dark-text">
@@ -960,31 +795,39 @@
         </div>
     </footer>
 
-    <!-- 小精灵聊天机器人 -->
-    <div class="chatbot-toggle" id="chatbotToggle" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); z-index: 99999;">
-        <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
+    <!-- 智能聊天机器人 -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-robot"></i>
+        <div class="chatbot-status"></div>
     </div>
 
-    <div id="chatbotWindow" style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); display: none; flex-direction: column; z-index: 99998; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between;">
-            <h3 style="margin: 0; font-size: 16px; font-weight: 600;">🤖 AI助手</h3>
-            <button class="chatbot-close" onclick="closeChatbot()" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px; padding: 5px; border-radius: 50%;">
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h3>🤖 AI助手</h3>
+            <button class="chatbot-close" id="chatbotCloseBtn">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="chatbot-messages" id="chatbotMessages" style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;">
-            <div style="max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.4; background: #f5f5f5; color: #333; align-self: flex-start; border-bottom-left-radius: 5px;">
-                你好！我是李磊的智能AI助手，基于GPT-5-nano模型为您提供服务！我可以详细介绍李磊的项目经历、研究背景、专业技能等信息。有什么想了解的吗？
+        
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot">
+                你好！我是李磊的智能AI助手！我可以详细介绍李磊的项目经历、研究背景、专业技能等信息。有什么想了解的吗？
+                <div id="protocolWarning" style="margin-top: 10px; padding: 8px; background: #fff3cd; color: #856404; border-radius: 8px; font-size: 12px; display: none;">
+                    <span>🌐 要体验GPT功能，请访问：</span>
+                    <a href="http://localhost:8000" style="color: #007bff; text-decoration: none; font-weight: bold;">http://localhost:8000</a>
+                </div>
             </div>
         </div>
-        <div class="typing-indicator" id="typingIndicator" style="display: none; align-items: center; gap: 5px; padding: 12px 16px; background: #f5f5f5; border-radius: 18px; border-bottom-left-radius: 5px; max-width: 80px; margin-left: 20px;">
-            <div style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite;"></div>
-            <div style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite; animation-delay: 0.2s;"></div>
-            <div style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite; animation-delay: 0.4s;"></div>
+        
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
         </div>
-        <div style="padding: 15px 20px; border-top: 1px solid #eee; display: flex; gap: 10px;">
-            <input type="text" id="chatbotInput" placeholder="输入您的问题..." onkeypress="if(event.key==='Enter')sendMessage()" style="flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; font-size: 14px; outline: none;">
-            <button onclick="sendMessage()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="输入您的问题...">
+            <button class="chatbot-send" id="chatbotSendBtn">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
@@ -1362,13 +1205,23 @@
                     link.classList.add('active');
                 }
             });
+            
+            // Also handle mobile menu links
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href && href.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
         }
 
-        // 初始化对话历史数组
-        let conversationHistory = [];
+
         
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language first
             updateLanguageDisplay();
             setActiveNavLink();
             
@@ -1385,18 +1238,6 @@
             if (langToggleMobile) {
                 langToggleMobile.addEventListener('click', toggleLanguage);
             }
-            
-            // Add event listener for chatbot toggle
-            const chatbotToggle = document.getElementById('chatbotToggle');
-            if (chatbotToggle) {
-                chatbotToggle.addEventListener('click', function() {
-                    console.log('Chatbot clicked!');
-                    toggleChatbot();
-                });
-                console.log('Chatbot toggle event listener added');
-            } else {
-                console.error('Chatbot toggle element not found');
-            }
         });
 
         // PDF Viewer functionality
@@ -1406,7 +1247,7 @@
         let pageNumIsPending = null;
         let scale = 1.2;
         const canvas = document.getElementById('pdfCanvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas ? canvas.getContext('2d') : null;
 
         // Configure PDF.js worker
         if (typeof pdfjsLib !== 'undefined') {
@@ -1507,302 +1348,15 @@
             document.body.style.overflow = 'auto';
         }
 
-        // 聊天机器人功能
-        let chatbotOpen = false;
 
-        function toggleChatbot() {
-            console.log('toggleChatbot called');
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            if (!chatbotWindow) {
-                console.error('chatbotWindow not found');
-                return;
-            }
-            
-            // 检查当前状态
-            const isVisible = chatbotWindow.style.display === 'flex';
-            
-            if (isVisible) {
-                chatbotWindow.style.display = 'none';
-            } else {
-                chatbotWindow.style.display = 'flex';
-                const input = document.getElementById('chatbotInput');
-                if (input) {
-                    setTimeout(() => input.focus(), 100);
-                }
-            }
-        }
 
-        function closeChatbot() {
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            if (chatbotWindow) {
-                chatbotWindow.style.display = 'none';
-            }
-        }
 
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
 
-        async function sendMessage() {
-            console.log('sendMessage 函数被调用');
-            const input = document.getElementById('chatbotInput');
-            const message = input.value.trim();
-            console.log('用户输入的消息:', message);
-            
-            if (message === '') {
-                console.log('消息为空，返回');
-                return;
-            }
-            
-            // 添加用户消息
-            console.log('添加用户消息到界面');
-            addMessage(message, 'user');
-            input.value = '';
-            
-            // 显示打字指示器
-            console.log('显示打字指示器');
-            showTypingIndicator();
-            
-            try {
-                // 调用真实的OpenAI API
-                console.log('开始调用 OpenAI API');
-                const response = await callOpenAI(message);
-                console.log('API调用成功，响应:', response);
-                hideTypingIndicator();
-                addMessage(response, 'bot');
-            } catch (error) {
-                console.error('API调用失败:', error);
-                console.error('错误详情:', error.message);
-                hideTypingIndicator();
-                // 如果API失败，回退到本地回复
-                console.log('使用本地回复作为备用');
-                const fallbackResponse = generateResponse(message);
-                console.log('本地回复:', fallbackResponse);
-                addMessage(fallbackResponse, 'bot');
-            }
-        }
 
-        async function callOpenAI(message) {
-            console.log('callOpenAI 函数开始执行');
-            const API_KEY = 'sk-u8uCPPzw8TXmcBHJ1pMOaBlI27AJMO4zlREVc4oNeBkHExLE';
-            const API_URL = 'https://turingai.plus/v1/chat/completions';
-            console.log('API配置 - URL:', API_URL);
-            console.log('API配置 - Key前缀:', API_KEY.substring(0, 10) + '...');
-            
-            const systemPrompt = `你是李磊的AI助手，专门为访问他个人网站的用户提供服务。
-
-关于李磊的基本信息：
-- AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学
-- 曾获评湖南省优秀毕业生（前1%）
-- 在云鲸致人工智能担任AI产品经理，主导云秒搭智能体平台0-1建设
-- 在香港大学担任研究助理，研究AIGC赋能建筑设计
-- 研究成果发表于CAAD FUTURES 2025国际会议（第一作者）
-
-主要项目经历：
-1. 云秒搭智能体平台 - 基于"垂直行业解决方案工厂"战略，识别准确率领先竞品15%
-2. 建筑参数化协同设计平台 - 将协同周期缩短37%
-3. AR/VR建筑设计应用 - 基于Unity开发的沉浸式平台
-4. 深圳房价与微博情绪关系研究 - 与MIT学者合作的数据科学项目
-
-技能领域：AI产品设计、市场分析、用户研究、Python、React、GPT-4V、Unity、机器学习
-
-联系方式：
-- 邮箱：lileiaad@connect.hku.hk
-- 电话：(86) 15243684038
-- LinkedIn：linkedin.com/in/lilei
-- GitHub：github.com/lilei
-
-请以友好、专业的语气回答用户问题，重点介绍李磊的专业能力和项目经验。`;
-
-            console.log('准备发送API请求，消息内容:', message);
-            
-            const requestBody = {
-                model: 'gpt-5-nano-2025-08-07',
-                messages: [
-                    {
-                        role: 'system',
-                        content: systemPrompt
-                    },
-                    {
-                        role: 'user',
-                        content: message
-                    }
-                ],
-                max_tokens: 500,
-                temperature: 0.7,
-                stream: false
-            };
-            
-            console.log('请求体:', JSON.stringify(requestBody, null, 2));
-
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${API_KEY}`
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            console.log('收到响应，状态码:', response.status);
-            console.log('响应头:', response.headers);
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.error('API响应错误内容:', errorText);
-                throw new Error(`API请求失败: ${response.status} - ${errorText}`);
-            }
-
-            const data = await response.json();
-            console.log('API响应数据:', data);
-            console.log('响应数据类型:', typeof data);
-            console.log('choices存在:', !!data.choices);
-            
-            if (data.choices && data.choices.length > 0) {
-                console.log('第一个choice:', data.choices[0]);
-                console.log('message存在:', !!data.choices[0].message);
-                if (data.choices[0].message) {
-                    console.log('message内容:', data.choices[0].message);
-                    console.log('content内容:', data.choices[0].message.content);
-                }
-            }
-            
-            if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-                console.error('API响应格式异常:', data);
-                throw new Error('API响应格式异常');
-            }
-            
-            let content = data.choices[0].message.content;
-            console.log('提取的content:', content);
-            console.log('content类型:', typeof content);
-            console.log('content长度:', content ? content.length : 'null/undefined');
-            
-            // 如果content为空，尝试其他可能的字段
-            if (!content || content.trim() === '') {
-                console.log('content为空，检查其他字段...');
-                console.log('完整的message对象:', JSON.stringify(data.choices[0].message));
-                
-                // 尝试其他可能的字段名
-                if (data.choices[0].message.text) {
-                    content = data.choices[0].message.text;
-                    console.log('使用text字段:', content);
-                } else if (data.choices[0].text) {
-                    content = data.choices[0].text;
-                    console.log('使用choices[0].text字段:', content);
-                } else {
-                    content = '抱歉，我暂时无法回复您的问题。请稍后再试。';
-                    console.log('使用默认回复');
-                }
-            }
-            
-            return content;
-        }
-
-        function addMessage(text, sender) {
-            console.log(`addMessage 被调用: sender=${sender}, text=${text}`);
-            const messagesContainer = document.getElementById('chatbotMessages');
-            
-            if (!messagesContainer) {
-                console.error('无法找到 chatbotMessages 容器');
-                return;
-            }
-            
-            const messageDiv = document.createElement('div');
-            
-            if (sender === 'user') {
-                messageDiv.style.cssText = 'max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.4; background: #e3f2fd; color: #1976d2; align-self: flex-end; border-bottom-right-radius: 5px; margin-bottom: 10px;';
-            } else {
-                messageDiv.style.cssText = 'max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.4; background: #f5f5f5; color: #333; align-self: flex-start; border-bottom-left-radius: 5px; margin-bottom: 10px;';
-            }
-            
-            messageDiv.textContent = text;
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            console.log('消息已添加到界面');
-            
-            // 保存对话历史
-            conversationHistory.push({ text, sender, timestamp: new Date() });
-        }
-
-        function showTypingIndicator() {
-            document.getElementById('typingIndicator').style.display = 'flex';
-            const messagesContainer = document.getElementById('chatbotMessages');
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function hideTypingIndicator() {
-            document.getElementById('typingIndicator').style.display = 'none';
-        }
-
-        function generateResponse(userMessage) {
-            const message = userMessage.toLowerCase();
-            
-            // 问候语
-            if (message.includes('你好') || message.includes('hi') || message.includes('hello')) {
-                return '你好！很高兴见到你！我是李磊的AI助手，可以为您介绍他的项目、研究经历和专业技能。有什么想了解的吗？';
-            }
-            
-            // 关于李磊
-            if (message.includes('李磊') || message.includes('介绍') || message.includes('背景')) {
-                return '李磊是一位AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学。他具备从前沿研究到产品落地的全链路能力，擅长以产品化方法探索和驱动AI技术的商业价值。';
-            }
-            
-            // 项目相关
-            if (message.includes('项目') || message.includes('云秒搭') || message.includes('智能体')) {
-                return '李磊主导了云秒搭智能体平台的0-1建设，基于"垂直行业解决方案工厂"的核心战略。通过深度竞品分析与用户访谈，将识别准确率做到领先竞品15%，同时降低了20%的推理成本。';
-            }
-            
-            // 研究相关
-            if (message.includes('研究') || message.includes('论文') || message.includes('caad')) {
-                return '李磊在香港大学担任研究助理期间，将产品化方法应用于AIGC赋能建筑设计的研究。他的研究成果以第一作者身份发表于CAAD FUTURES 2025，将设计方案的整体产出效率提升了7倍。';
-            }
-            
-            // 技能相关
-            if (message.includes('技能') || message.includes('技术') || message.includes('能力')) {
-                return '李磊具备AI产品设计、市场分析、用户研究、技术选型等核心能力。熟练掌握Python、React、GPT-4V、Unity等技术栈，在AI Agent、计算机视觉、机器学习等领域有丰富经验。';
-            }
-            
-            // 联系方式
-            if (message.includes('联系') || message.includes('邮箱') || message.includes('电话')) {
-                return '您可以通过以下方式联系李磊：\n📧 邮箱：lileiaad@connect.hku.hk\n📱 电话：(86) 15243684038\n💼 LinkedIn：linkedin.com/in/lilei\n💻 GitHub：github.com/lilei';
-            }
-            
-            // 工作经验
-            if (message.includes('工作') || message.includes('经验') || message.includes('云鲸致')) {
-                return '李磊在云鲸致人工智能担任AI产品经理，作为初创团队核心成员，主导了云秒搭智能体平台从0到1的建设。在深圳市建筑设计研究总院担任建筑师期间，开发了参数化协同设计平台，将协同周期缩短37%。';
-            }
-            
-            // 教育背景
-            if (message.includes('教育') || message.includes('学历') || message.includes('大学')) {
-                return '李磊硕士毕业于香港大学，本科毕业于长沙理工大学，曾获评湖南省优秀毕业生（前1%）。在香港大学期间专注于AIGC赋能建筑设计的研究。';
-            }
-            
-            // 默认回复
-            const defaultResponses = [
-                '这是一个很有趣的问题！李磊在AI产品管理方面有很多经验，您想了解他的哪个项目呢？',
-                '让我为您介绍一下李磊的专业背景。他是AI产品经理，在智能体平台、建筑参数化设计、数据科学等领域都有丰富经验。',
-                '您想了解李磊的哪个方面呢？我可以为您介绍他的项目经历、研究背景、专业技能或联系方式。',
-                '李磊是一位很有才华的AI产品经理，在多个领域都有出色表现。您对哪个方面比较感兴趣？'
-            ];
-            
-            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-        }
-
-        // 点击外部关闭聊天窗口
-        document.addEventListener('click', function(event) {
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            const chatbotToggle = document.getElementById('chatbotToggle');
-            
-            if (chatbotWindow && chatbotToggle &&
-                chatbotWindow.style.display === 'flex' && 
-                !chatbotWindow.contains(event.target) && 
-                !chatbotToggle.contains(event.target)) {
-                closeChatbot();
-            }
-        });
 
     </script>
+    
+    <!-- 聊天机器人模块 -->
+    <script src="chatbot.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+# 李磊个人网站依赖包
+aiohttp==3.12.15
+attrs>=17.3.0
+async-timeout<6.0,>=4.0
+aiosignal>=1.4.0
+multidict<7.0,>=4.5
+yarl<2.0,>=1.17.0
+frozenlist>=1.1.1
+propcache>=0.2.0
+aiohappyeyeballs>=2.5.0
+
