@@ -320,8 +320,8 @@ class Chatbot {
         if (message.includes('李磊') || message.includes('介绍') || message.includes('背景') || 
             message.includes('是谁') || message.includes('简介') || message.includes('个人资料')) {
             return isChinese ? 
-                '李磊是一位优秀的AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学，曾获评湖南省优秀毕业生（前1%）。他具备从前沿研究到产品落地的全链路能力，擅长以产品化方法探索和驱动AI技术的商业价值。在云鲸致人工智能和香港大学都有出色表现。' :
-                'Li Lei is an excellent AI Product Manager who graduated with a Master\'s degree from the University of Hong Kong and a Bachelor\'s degree from Changsha University of Science and Technology, where he was honored as a Top 1% Outstanding Graduate of Hunan Province. He has comprehensive capabilities from cutting-edge research to product implementation, specializing in exploring and driving the commercial value of AI technology through product-oriented methodologies. He has performed excellently at both YunJingZhi AI and the University of Hong Kong.';
+                '李磊是一位优秀的AI产品经理，硕士毕业于香港大学，本科毕业于长沙理工大学，曾获评湖南省优秀毕业生（前1%）。他具备从前沿研究到产品落地的全链路能力，擅长以产品化方法探索和驱动AI技术的商业价值。在云鲸致人工智能主导了云秒搭智能体平台从0到1的建设，在香港大学将产品化方法创新性地应用于AIGC赋能建筑设计研究。' :
+                'Li Lei is an excellent AI Product Manager who graduated with a Master\'s degree from the University of Hong Kong and a Bachelor\'s degree from Changsha University of Science and Technology, where he was honored as a Top 1% Outstanding Graduate of Hunan Province. He has comprehensive capabilities from cutting-edge research to product implementation, specializing in exploring and driving the commercial value of AI technology through product-oriented methodologies. He led the development of Yunmiaoda AI Agent platform from 0 to 1 at Cloudzai AI, and innovatively applied product-oriented methodologies to AIGC-enabled architectural design research at the University of Hong Kong.';
         }
         
         // 项目相关 - 更详细分类
