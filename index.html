@@ -1,18 +1,266 @@
-<!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>李磊 LI Lei - AI Product Manager</title>
-    <script>
-        // 自动重定向到home.html
-        window.location.href = 'home.html';
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="李磊，AI 产品负责人。聚焦智能硬件、智能客服、招聘与政务 AI 产品的设计和落地。">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>李磊 LI LEI | AI 产品负责人</title>
+  <link rel="preload" href="material/portfolio-2026/portrait-hero.jpg" as="image">
+  <link rel="stylesheet" href="site.css?v=20260719h">
+  <script src="site.js?v=20260719h" defer></script>
 </head>
 <body>
-    <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
-        <h1>正在跳转...</h1>
-        <p>如果页面没有自动跳转，请点击 <a href="home.html">这里</a></p>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#hero" aria-label="返回首页">LI LEI</a>
+    <nav class="desktop-nav" aria-label="主要导航">
+      <a href="#work">项目</a>
+      <a href="#research">研究</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <div class="header-actions">
+      <div class="availability"><span aria-hidden="true"></span> Shanghai / Open to work</div>
+      <a class="header-resume" href="material/portfolio-2026/resume-li-lei-2026.md" download>简历 <span aria-hidden="true">↓</span></a>
+    </div>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="打开导航" data-menu-button>
+      <span></span><span></span>
+    </button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="移动导航" data-mobile-nav>
+      <a href="#work">项目</a>
+      <a href="#research">研究</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+      <a href="material/portfolio-2026/resume-li-lei-2026.md" download>下载简历</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="material/portfolio-2026/portrait-hero.jpg" alt="李磊肖像" width="1467" height="2200">
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <canvas class="hero-grid-canvas" data-hero-grid aria-hidden="true"></canvas>
+      <canvas class="hero-type-canvas" data-hero-type aria-hidden="true"></canvas>
+      <div class="hero-content shell">
+        <p class="eyebrow hero-kicker">李磊 · AI PRODUCT LEAD · PRODUCT DESIGN</p>
+        <h1 class="hero-title-fallback" id="hero-title"><span>李磊</span><span>LI LEI</span></h1>
+        <div class="hero-bottom">
+          <p>把复杂的 AI 能力，做成用户能理解、团队能交付、业务真正用得起来的产品。</p>
+          <a class="text-link light" href="#work">查看落地项目 <span aria-hidden="true">↓</span></a>
         </div>
+      </div>
+    </section>
+
+    <section class="statement section-dark" aria-labelledby="statement-title">
+      <div class="shell statement-grid">
+        <p class="eyebrow">WHAT I DO</p>
+        <div>
+          <h2 id="statement-title">我的主要工作是产品设计，<br>也是把产品推到交付现场。</h2>
+          <p class="statement-copy">现任云脑智联产品负责人，负责 AI 智能硬件、智能客服、招聘与政务产品。从需求研究、产品架构和交互原型，到研发协同、验收与客户交付，我持续跟进完整链路。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work section-dark" id="work" aria-labelledby="work-title">
+      <div class="shell section-heading">
+        <p class="eyebrow">SELECTED WORK · 2025—2026</p>
+        <h2 id="work-title">落地中的产品</h2>
+      </div>
+
+      <article class="project shell" id="jiangsu-hr">
+        <div class="project-number">01</div>
+        <div class="project-intro">
+          <div class="project-title-row">
+            <h3>江苏人社求职招聘智能 APP</h3>
+            <p>2026.06—至今</p>
+          </div>
+          <div class="project-details">
+            <p class="project-lead">为求职者、企业与服务机构搭建可信的求职招聘入口，让政策、简历、岗位和面试能力在一个任务链路中协同。</p>
+            <dl>
+              <div><dt>角色</dt><dd>产品负责人</dd></div>
+              <div><dt>负责</dt><dd>产品架构 / 多角色流程 / 移动端交互 / 跨系统衔接</dd></div>
+              <div><dt>交付</dt><dd>10 类智能体场景、任务中心与求职招聘主流程</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="rail-wrap phone-rail">
+          <div class="media-rail" data-rail tabindex="0" aria-label="江苏人社项目界面">
+            <figure class="phone-shot"><img src="material/portfolio-2026/hr-home.png" alt="江苏人社 APP 首页" loading="lazy"><figcaption>统一服务首页</figcaption></figure>
+            <figure class="phone-shot"><img src="material/portfolio-2026/hr-chat.png" alt="江苏人社 APP 对话界面" loading="lazy"><figcaption>对话式任务入口</figcaption></figure>
+            <figure class="phone-shot"><img src="material/portfolio-2026/hr-agents.png" alt="江苏人社 APP 智能体广场" loading="lazy"><figcaption>多角色智能体体系</figcaption></figure>
+          </div>
+          <div class="rail-actions" aria-label="滚动项目图片">
+            <button type="button" data-scroll="-1" aria-label="向左滚动">←</button>
+            <button type="button" data-scroll="1" aria-label="向右滚动">→</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project shell" id="best-ai">
+        <div class="project-number">02</div>
+        <div class="project-intro">
+          <div class="project-title-row">
+            <h3>倍斯特 AI 智能柜机与智能客服</h3>
+            <p>2026.03—至今</p>
+          </div>
+          <div class="project-details">
+            <p class="project-lead">把线下共享充电设备、云端运维和客服服务串成一个闭环，让柜机能感知现场，让 AI 先解决高频问题，让人工接住复杂情况。</p>
+            <dl>
+              <div><dt>角色</dt><dd>产品负责人</dd></div>
+              <div><dt>负责</dt><dd>端云架构 / PRD / 数据边界 / 交付与验收</dd></div>
+              <div><dt>交付</dt><dd>智能柜机方案、客服工作台、知识与案例运营系统</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="rail-wrap">
+          <div class="media-rail" data-rail tabindex="0" aria-label="倍斯特项目界面">
+            <figure class="landscape-shot"><img src="material/portfolio-2026/best-workbench.png" alt="倍斯特智能客服工作台" loading="lazy"><figcaption>AI 优先响应，复杂问题协同转人工</figcaption></figure>
+            <figure class="landscape-shot"><img src="material/portfolio-2026/best-dashboard.png" alt="倍斯特客服数据看板" loading="lazy"><figcaption>服务质量与问题分布可视化</figcaption></figure>
+            <figure class="landscape-shot visual-shot"><img src="material/portfolio-2026/best-cabinet.png" alt="倍斯特智能柜机视觉概念" loading="lazy"><figcaption>柜机端语音服务与状态反馈</figcaption></figure>
+          </div>
+          <div class="rail-actions" aria-label="滚动项目图片">
+            <button type="button" data-scroll="-1" aria-label="向左滚动">←</button>
+            <button type="button" data-scroll="1" aria-label="向右滚动">→</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project shell" id="ai-interview">
+        <div class="project-number">03</div>
+        <div class="project-intro">
+          <div class="project-title-row">
+            <h3>AI 面试机</h3>
+            <p>2025.12—2026.03</p>
+          </div>
+          <div class="project-details">
+            <p class="project-lead">面向制造业和蓝领批量招聘，将身份核验、数字人问答、基础能力测试、报告评估与 HR 复核做成可重复部署的标准化产品。</p>
+            <dl>
+              <div><dt>角色</dt><dd>产品负责人</dd></div>
+              <div><dt>负责</dt><dd>面试流程 / 交互原型 / 管理规则 / 多端协同</dd></div>
+              <div><dt>交付</dt><dd>候选人终端、HR 后台与服务端三端闭环</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="rail-wrap">
+          <div class="media-rail" data-rail tabindex="0" aria-label="AI 面试机项目界面">
+            <figure class="landscape-shot"><img src="material/portfolio-2026/interview-standby.jpg" alt="AI 面试机待机界面" loading="lazy"><figcaption>面向现场设备的低门槛入口</figcaption></figure>
+            <figure class="landscape-shot"><img src="material/portfolio-2026/interview-guide.jpg" alt="AI 面试机流程说明" loading="lazy"><figcaption>可配置的结构化面试流程</figcaption></figure>
+            <figure class="landscape-shot"><img src="material/portfolio-2026/interview-report.png" alt="AI 面试结果报告" loading="lazy"><figcaption>AI 建议与 HR 人工复核</figcaption></figure>
+          </div>
+          <div class="rail-actions" aria-label="滚动项目图片">
+            <button type="button" data-scroll="-1" aria-label="向左滚动">←</button>
+            <button type="button" data-scroll="1" aria-label="向右滚动">→</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project project-compact shell" id="miaoda">
+        <div class="project-number">04</div>
+        <div class="project-intro">
+          <div class="project-title-row">
+            <h3>云秒搭智能体平台</h3>
+            <p>2025.07—2025.11</p>
+          </div>
+          <div class="project-details">
+            <p class="project-lead">参与公司 AI Agent 平台前期建设，明确行业解决方案定位，规划应用、工作流和智能体资产，为后续行业项目建立可复用的平台基础。</p>
+            <dl>
+              <div><dt>角色</dt><dd>AI 产品经理</dd></div>
+              <div><dt>负责</dt><dd>竞品研究 / 客户访谈 / V1.0 架构与 PRD</dd></div>
+              <div><dt>交付</dt><dd>智能体资产体系与可视化工作流编排</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="rail-wrap">
+          <div class="media-rail" data-rail tabindex="0" aria-label="云秒搭项目界面">
+            <figure class="landscape-shot"><img src="material/portfolio-2026/miaoda-workflow.png" alt="云秒搭工作流配置平台" loading="lazy"><figcaption>可视化工作流编排</figcaption></figure>
+            <figure class="landscape-shot"><img src="material/portfolio-2026/miaoda-agent.png" alt="云秒搭智能体拖拽创建平台" loading="lazy"><figcaption>智能体资产创建与配置</figcaption></figure>
+          </div>
+          <div class="rail-actions" aria-label="滚动项目图片">
+            <button type="button" data-scroll="-1" aria-label="向左滚动">←</button>
+            <button type="button" data-scroll="1" aria-label="向右滚动">→</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="earlier" aria-labelledby="earlier-title">
+      <div class="shell section-heading dark-text">
+        <p class="eyebrow">EARLIER PRACTICE · 2019—2022</p>
+        <h2 id="earlier-title">产品思维，始于跨专业协同</h2>
+      </div>
+      <div class="shell earlier-grid">
+        <div class="earlier-copy">
+          <p class="eyebrow">SHENZHEN GENERAL INSTITUTE OF ARCHITECTURAL DESIGN</p>
+          <h3>建筑参数化协同设计平台</h3>
+          <p>从建筑、结构与幕墙的真实协作问题出发，梳理角色、数据依赖和版本关系，规划统一数据模型与五类核心模块。协同周期由 8 天缩短至 5 天，并复用于多个大型项目。</p>
+          <p class="role-line">建筑师 · 产品设计 / 参数化系统 / Python</p>
+        </div>
+        <figure class="earlier-visual"><img src="material/portfolio-2026/parametric-tower.jpg" alt="超高层建筑参数化设计项目" loading="lazy"></figure>
+        <figure class="earlier-visual wide"><img src="material/portfolio-2026/parametric-system.jpg" alt="参数化协同设计系统" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="research" id="research" aria-labelledby="research-title">
+      <div class="shell section-heading dark-text">
+        <p class="eyebrow">RESEARCH PRACTICE</p>
+        <h2 id="research-title">研究不是旁支，<br>而是产品判断的另一种训练。</h2>
+      </div>
+      <div class="research-feature">
+        <div class="shell research-grid">
+          <div class="research-copy">
+            <p class="research-index">R.01 · 2026.06—至今</p>
+            <h3>LLM 多智能体社会中的<br>信息传播与可信记忆</h3>
+            <p>独立构建 25 智能体可控社会仿真环境，量化信息传播中的遗忘、陈旧坚持和内容漂移；设计携带来源与版本信息的可信记忆机制。重复实验中，真值保持率由基线的 22% 提升至 57%。</p>
+            <ul class="tag-list" aria-label="研究关键词"><li>Multi-agent</li><li>Provenance</li><li>Memory</li><li>Evaluation</li></ul>
+          </div>
+          <figure class="research-visual"><img src="material/portfolio-2026/research-setup.png" alt="多智能体信息传播实验设置" loading="lazy"></figure>
+          <figure class="research-visual"><img src="material/portfolio-2026/research-architecture.png" alt="可信记忆机制架构" loading="lazy"></figure>
+        </div>
+      </div>
+      <div class="shell research-list">
+        <article>
+          <p class="research-index">R.02 · HKU · 2024—2025</p>
+          <div><h3>Zero-Shot 建筑风格分类</h3><p>设计四种 GPT-4o 零样本工作流，完成 10 类与 25 类任务对比评测；第一作者成果发表于 CAAD FUTURES 2025。</p></div>
+          <figure><img src="material/portfolio-2026/research-poster.png" alt="Zero-Shot 建筑风格分类研究海报" loading="lazy"></figure>
+        </article>
+        <article>
+          <p class="research-index">R.03 · HKU · 2024—2025</p>
+          <div><h3>AIGC 建筑设计工作流原型</h3><p>使用 Coze、Midjourney、Claude 与 Rhino 搭建从自然语言意图、视觉草稿到参数化模型的自动化流程，并以 Web MVP 验证生成与分析能力。</p></div>
+          <p class="research-mark" aria-hidden="true">AIGC<br>→<br>MVP</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section-dark" id="about" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <div class="about-copy">
+          <p class="eyebrow">ABOUT</p>
+          <h2 id="about-title">在产品、技术与现场之间工作。</h2>
+          <p>香港大学硕士，现任云脑智联产品负责人。我的核心能力不是堆叠功能，而是把模糊需求转成可验证的产品结构，并持续推进到真实交付。</p>
+          <p>我会使用 Codex、Claude Code、Figma、Python 与 Git 快速完成原型和功能验证。建筑训练让我关注系统、尺度与协作；摄影则让我保持对人和具体场景的观察。</p>
+          <div class="about-facts">
+            <p><span>Base</span>上海 / 可出差</p>
+            <p><span>Education</span>香港大学 M.Sc.</p>
+            <p><span>Languages</span>中文 / English</p>
+          </div>
+        </div>
+        <figure class="about-image"><img src="material/portfolio-2026/portrait-about.jpg" alt="李磊在建筑展览现场" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="shell">
+        <p class="eyebrow">CONTACT</p>
+        <h2 id="contact-title">一起把复杂问题，<br>做成真正可用的产品。</h2>
+        <a class="contact-mail" href="mailto:lileiaad@connect.hku.hk">lileiaad@connect.hku.hk <span aria-hidden="true">↗</span></a>
+        <div class="contact-meta">
+          <a href="tel:+8615243684038">+86 152 4368 4038</a>
+          <p>© <span data-year>2026</span> LI LEI</p>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
