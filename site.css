@@ -91,7 +91,7 @@ dd {
   padding: 0 var(--gutter);
   color: var(--white);
   border-bottom: 1px solid transparent;
-  transition: background-color 200ms ease, border-color 200ms ease;
+  transition: background-color 200ms ease, border-color 200ms ease, opacity 500ms ease;
 }
 
 .site-header.is-scrolled,
@@ -194,7 +194,7 @@ dd {
   position: relative;
   min-height: min(92svh, 980px);
   overflow: hidden;
-  background: #302a24;
+  background: #000;
 }
 
 .hero-image,
@@ -212,6 +212,7 @@ dd {
   object-position: 50% 38%;
   opacity: 0.2;
   filter: grayscale(1) contrast(1.12);
+  transition: opacity 900ms ease;
 }
 
 .hero-scrim {
@@ -223,6 +224,10 @@ dd {
 .hero-type-canvas {
   z-index: 2;
   pointer-events: none;
+}
+
+.hero-grid-canvas {
+  transition: opacity 800ms ease;
 }
 
 .hero-type-canvas {
@@ -249,6 +254,39 @@ dd {
 
 .hero-kicker {
   max-width: 260px;
+}
+
+.hero-kicker,
+.hero-bottom {
+  transition: opacity 500ms ease;
+}
+
+.hero-intro-pending .site-header,
+.hero-intro-pending .hero-image,
+.hero-intro-pending .hero-grid-canvas,
+.hero-intro-pending .hero-type-canvas,
+.hero-intro-pending .hero-kicker,
+.hero-intro-pending .hero-bottom,
+.hero-intro-active .site-header,
+.hero-intro-active .hero-image,
+.hero-intro-active .hero-grid-canvas,
+.hero-intro-active .hero-kicker,
+.hero-intro-active .hero-bottom {
+  opacity: 0;
+}
+
+.hero-intro-active.hero-intro-reveal .hero-image {
+  opacity: 0.2;
+}
+
+.hero-intro-active.hero-intro-reveal .hero-grid-canvas {
+  opacity: 1;
+}
+
+.hero-intro-active.hero-intro-ui .site-header,
+.hero-intro-active.hero-intro-ui .hero-kicker,
+.hero-intro-active.hero-intro-ui .hero-bottom {
+  opacity: 1;
 }
 
 .hero h1 {

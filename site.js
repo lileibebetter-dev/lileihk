@@ -19,6 +19,23 @@ const initHeroMotion = () => {
   let typeDots = [];
   let frame = 0;
   let visible = true;
+  let introComplete = reducedMotion;
+  let introStartedAt = 0;
+
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const mix = (from, to, progress) => from + (to - from) * progress;
+  const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
+  const easeInOutCubic = (value) => value < 0.5
+    ? 4 * value * value * value
+    : 1 - Math.pow(-2 * value + 2, 3) / 2;
+  const seeded = (x, y, salt = 0) => {
+    const value = Math.sin(x * 12.9898 + y * 78.233 + salt * 37.719) * 43758.5453;
+    return value - Math.floor(value);
+  };
+
+  const timing = () => width <= 640
+    ? { black: 240, burst: 820, title: 1580, subtitle: 2050 }
+    : { black: 380, burst: 1320, title: 2600, subtitle: 3200 };
 
   const setCanvasSize = (canvas, context, pixelRatio) => {
     canvas.width = Math.round(width * pixelRatio);
@@ -40,6 +57,26 @@ const initHeroMotion = () => {
     if (width > 900) return 30;
     if (width > 640) return 24;
     return 18;
+  };
+
+  const createTypeDot = (x, y, kind) => {
+    const centerX = width / 2;
+    const centerY = height * 0.46;
+    const angle = seeded(x, y, 1) * Math.PI * 2;
+    const reach = Math.hypot(width, height) * (0.18 + seeded(x, y, 2) * 0.48);
+
+    return {
+      baseX: x,
+      baseY: y,
+      burstX: centerX + Math.cos(angle) * reach,
+      burstY: centerY + Math.sin(angle) * reach,
+      x: centerX,
+      y: centerY,
+      kind,
+      delay: seeded(x, y, 3) * 0.18,
+      green: seeded(x, y, 4) > 0.86,
+      phase: seeded(x, y, 5) * Math.PI * 2
+    };
   };
 
   const rebuild = () => {
@@ -97,7 +134,7 @@ const initHeroMotion = () => {
     for (let y = minY; y < maxY; y += sampleGap) {
       for (let x = 0; x < width; x += sampleGap) {
         if (pixels[(y * width + x) * 4 + 3] > 100) {
-          typeDots.push({ baseX: x, baseY: y, x, y, kind: 'title' });
+          typeDots.push(createTypeDot(x, y, 'title'));
         }
       }
     }
@@ -112,26 +149,32 @@ const initHeroMotion = () => {
     for (let y = subtitleMinY; y < subtitleMaxY; y += subtitleGap) {
       for (let x = 20; x < width - 20; x += subtitleGap) {
         if (pixels[(y * width + x) * 4 + 3] > 100) {
-          typeDots.push({ baseX: x, baseY: y, x, y, kind: 'subtitle' });
+          typeDots.push(createTypeDot(x, y, 'subtitle'));
         }
       }
     }
 
     document.documentElement.classList.add('hero-motion-ready');
-    draw();
+    if (introComplete) {
+      typeDots.forEach((dot) => {
+        dot.x = dot.baseX;
+        dot.y = dot.baseY;
+      });
+      draw();
+    }
   };
 
-  const drawGrid = () => {
+  const drawGrid = (opacity = 1) => {
     gridContext.clearRect(0, 0, width, height);
     const radius = width <= 640 ? 92 : 150;
 
     for (const dot of gridDots) {
       let x = dot.x;
       let y = dot.y;
-      let fill = 'rgba(244, 242, 236, 0.1)';
+      let fill = `rgba(244, 242, 236, ${0.1 * opacity})`;
       let size = 0.65;
 
-      if (pointer.active) {
+      if (pointer.active && introComplete) {
         const dx = dot.x - pointer.x;
         const dy = dot.y - pointer.y;
         const distance = Math.hypot(dx, dy) || 1;
@@ -140,7 +183,7 @@ const initHeroMotion = () => {
           x += (dx / distance) * strength * 8;
           y += (dy / distance) * strength * 8;
           size = 0.8 + strength * 0.85;
-          fill = `rgba(199, 255, 61, ${0.2 + strength * 0.62})`;
+          fill = `rgba(199, 255, 61, ${(0.2 + strength * 0.62) * opacity})`;
         }
       }
 
@@ -150,7 +193,7 @@ const initHeroMotion = () => {
       gridContext.fill();
     }
 
-    if (pointer.active) {
+    if (pointer.active && introComplete) {
       gridContext.beginPath();
       gridContext.arc(pointer.x, pointer.y, 18, 0, Math.PI * 2);
       gridContext.strokeStyle = 'rgba(199, 255, 61, 0.55)';
@@ -191,46 +234,208 @@ const initHeroMotion = () => {
     }
   };
 
+  const drawIntroPixel = (dot, x, y, alpha, size) => {
+    if (alpha <= 0) return;
+    typeContext.fillStyle = dot.green
+      ? `rgba(199, 255, 61, ${alpha})`
+      : `rgba(244, 242, 236, ${alpha})`;
+    typeContext.fillRect(x - size, y - size, size * 2, size * 2);
+  };
+
+  const drawBurstRings = (progress) => {
+    const centerX = width / 2;
+    const centerY = height * 0.46;
+    const maxRadius = Math.min(width, height) * 0.42;
+
+    typeContext.save();
+    typeContext.globalCompositeOperation = 'lighter';
+    for (let index = 0; index < 3; index += 1) {
+      const local = clamp((progress - index * 0.12) / (1 - index * 0.12));
+      if (local <= 0 || local >= 1) continue;
+      typeContext.beginPath();
+      typeContext.arc(centerX, centerY, maxRadius * easeOutCubic(local), 0, Math.PI * 2);
+      typeContext.strokeStyle = index === 1
+        ? `rgba(199, 255, 61, ${(1 - local) * 0.42})`
+        : `rgba(244, 242, 236, ${(1 - local) * 0.24})`;
+      typeContext.lineWidth = 1;
+      typeContext.stroke();
+    }
+    typeContext.restore();
+  };
+
+  const settleIntro = () => {
+    if (introComplete) return;
+    introComplete = true;
+    pointer.active = false;
+    hero.dataset.introStage = 'interactive';
+    typeDots.forEach((dot) => {
+      dot.x = dot.baseX;
+      dot.y = dot.baseY;
+    });
+    document.documentElement.classList.remove(
+      'hero-intro-pending',
+      'hero-intro-active',
+      'hero-intro-reveal',
+      'hero-intro-ui'
+    );
+    document.documentElement.classList.add('hero-intro-settled');
+    draw();
+  };
+
+  const drawIntro = (now) => {
+    const stages = timing();
+    const elapsed = now - introStartedAt;
+    const centerX = width / 2;
+    const centerY = height * 0.46;
+
+    typeContext.clearRect(0, 0, width, height);
+
+    if (elapsed < stages.black) {
+      hero.dataset.introStage = 'black';
+      gridContext.clearRect(0, 0, width, height);
+      return;
+    }
+
+    if (elapsed < stages.burst) {
+      hero.dataset.introStage = 'burst';
+      gridContext.clearRect(0, 0, width, height);
+      const progress = clamp((elapsed - stages.black) / (stages.burst - stages.black));
+      drawBurstRings(progress);
+      typeContext.save();
+      typeContext.globalCompositeOperation = 'lighter';
+      typeDots.forEach((dot, index) => {
+        const local = clamp((progress - dot.delay) / (1 - dot.delay));
+        const travel = easeOutCubic(local);
+        const x = mix(centerX, dot.burstX, travel);
+        const y = mix(centerY, dot.burstY, travel);
+        const alpha = clamp(local * 4) * (0.82 - progress * 0.28);
+        const size = dot.kind === 'subtitle' ? 0.7 : 0.85;
+        drawIntroPixel(dot, x, y, alpha, size);
+
+        if (index % 24 === 0 && local > 0.08) {
+          const tail = 10 + local * 18;
+          const angle = Math.atan2(dot.burstY - centerY, dot.burstX - centerX);
+          typeContext.beginPath();
+          typeContext.moveTo(x, y);
+          typeContext.lineTo(x - Math.cos(angle) * tail, y - Math.sin(angle) * tail);
+          typeContext.strokeStyle = dot.green
+            ? `rgba(199, 255, 61, ${alpha * 0.28})`
+            : `rgba(244, 242, 236, ${alpha * 0.18})`;
+          typeContext.lineWidth = 0.7;
+          typeContext.stroke();
+        }
+      });
+      typeContext.restore();
+      return;
+    }
+
+    document.documentElement.classList.add('hero-intro-reveal');
+
+    if (elapsed < stages.title) {
+      hero.dataset.introStage = 'title';
+      const progress = clamp((elapsed - stages.burst) / (stages.title - stages.burst));
+      drawGrid(easeOutCubic(progress));
+      typeDots.forEach((dot) => {
+        const isSubtitle = dot.kind === 'subtitle';
+        const delayed = clamp((progress - dot.delay * 0.42) / (1 - dot.delay * 0.42));
+        const travel = easeInOutCubic(delayed);
+        const float = Math.sin(now * 0.002 + dot.phase) * 3;
+        const x = isSubtitle ? dot.burstX + float : mix(dot.burstX, dot.baseX, travel);
+        const y = isSubtitle ? dot.burstY - float : mix(dot.burstY, dot.baseY, travel);
+        dot.x = x;
+        dot.y = y;
+        drawIntroPixel(dot, x, y, isSubtitle ? 0.12 * (1 - progress) : 0.3 + travel * 0.62, isSubtitle ? 0.65 : 1.02);
+      });
+      return;
+    }
+
+    document.documentElement.classList.add('hero-intro-ui');
+    hero.dataset.introStage = 'subtitle';
+    const progress = clamp((elapsed - stages.title) / (stages.subtitle - stages.title));
+    drawGrid(1);
+    typeDots.forEach((dot) => {
+      const isSubtitle = dot.kind === 'subtitle';
+      const delayed = clamp((progress - dot.delay * 0.3) / (1 - dot.delay * 0.3));
+      const travel = easeInOutCubic(delayed);
+      const x = isSubtitle ? mix(dot.burstX, dot.baseX, travel) : dot.baseX;
+      const y = isSubtitle ? mix(dot.burstY, dot.baseY, travel) : dot.baseY;
+      dot.x = x;
+      dot.y = y;
+      drawIntroPixel(dot, x, y, isSubtitle ? 0.25 + travel * 0.67 : 0.9, isSubtitle ? 0.95 : 1.1);
+    });
+
+    if (elapsed >= stages.subtitle) settleIntro();
+  };
+
   const draw = () => {
     drawGrid();
     drawType();
   };
 
-  const animate = () => {
+  const animate = (now) => {
     if (!visible) {
       frame = 0;
       return;
     }
-    draw();
+    if (introComplete) draw();
+    else drawIntro(now);
     frame = window.requestAnimationFrame(animate);
   };
 
+  const startLoop = () => {
+    if (!frame && visible && !reducedMotion) {
+      frame = window.requestAnimationFrame(animate);
+    }
+  };
+
   const updatePointer = (event) => {
+    if (!introComplete || reducedMotion) return;
     const bounds = hero.getBoundingClientRect();
     pointer.x = event.clientX - bounds.left;
     pointer.y = event.clientY - bounds.top;
     pointer.active = true;
-    if (reducedMotion) draw();
   };
 
   hero.addEventListener('pointermove', updatePointer, { passive: true });
-  hero.addEventListener('pointerdown', updatePointer, { passive: true });
+  hero.addEventListener('pointerdown', (event) => {
+    if (!introComplete) {
+      settleIntro();
+      return;
+    }
+    updatePointer(event);
+  }, { passive: true });
   hero.addEventListener('pointerleave', () => {
     pointer.active = false;
-    if (reducedMotion) draw();
   }, { passive: true });
+
+  const skipOnIntent = () => {
+    if (!introComplete) settleIntro();
+  };
+  window.addEventListener('keydown', skipOnIntent, { passive: true });
+  window.addEventListener('wheel', skipOnIntent, { passive: true });
+  window.addEventListener('touchstart', skipOnIntent, { passive: true });
 
   const resizeObserver = new ResizeObserver(rebuild);
   resizeObserver.observe(hero);
 
   const intersectionObserver = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
-    if (visible && !reducedMotion && !frame) animate();
+    if (visible) startLoop();
   }, { threshold: 0.01 });
   intersectionObserver.observe(hero);
 
   rebuild();
-  if (!reducedMotion) animate();
+  document.documentElement.classList.remove('hero-intro-pending');
+  if (reducedMotion) {
+    hero.dataset.introStage = 'interactive';
+    document.documentElement.classList.add('hero-intro-settled');
+    draw();
+  } else {
+    hero.dataset.introStage = 'black';
+    document.documentElement.classList.add('hero-intro-active');
+    introStartedAt = performance.now();
+    startLoop();
+  }
 };
 
 initHeroMotion();
