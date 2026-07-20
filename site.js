@@ -17,6 +17,7 @@ const initHeroMotion = () => {
   let height = 0;
   let gridDots = [];
   let typeDots = [];
+  let coreDots = [];
   let frame = 0;
   let visible = true;
   let introComplete = reducedMotion;
@@ -154,6 +155,39 @@ const initHeroMotion = () => {
       }
     }
 
+    const centerX = width / 2;
+    const centerY = height * 0.46;
+    const coreFontSize = width <= 640 ? 64 : 96;
+    const coreGap = width <= 640 ? 2 : 3;
+    samplerContext.clearRect(0, 0, width, height);
+    samplerContext.font = `800 ${coreFontSize}px Inter, Helvetica Neue, Arial, sans-serif`;
+    samplerContext.textAlign = 'center';
+    samplerContext.textBaseline = 'middle';
+    samplerContext.fillText('AI', centerX, centerY);
+
+    const corePixels = samplerContext.getImageData(0, 0, width, height).data;
+    const coreMinX = Math.max(0, Math.floor(centerX - coreFontSize * 0.7));
+    const coreMaxX = Math.min(width, Math.ceil(centerX + coreFontSize * 0.7));
+    const coreMinY = Math.max(0, Math.floor(centerY - coreFontSize * 0.65));
+    const coreMaxY = Math.min(height, Math.ceil(centerY + coreFontSize * 0.65));
+    coreDots = [];
+
+    for (let y = coreMinY; y < coreMaxY; y += coreGap) {
+      for (let x = coreMinX; x < coreMaxX; x += coreGap) {
+        if (corePixels[(y * width + x) * 4 + 3] > 100) {
+          coreDots.push({
+            baseX: x,
+            baseY: y,
+            green: seeded(x, y, 11) > 0.8,
+            phase: seeded(x, y, 12) * Math.PI * 2,
+            scatterAngle: seeded(x, y, 13) * Math.PI * 2,
+            scatterDistance: (width <= 640 ? 20 : 28)
+              + seeded(x, y, 14) * (width <= 640 ? 52 : 82)
+          });
+        }
+      }
+    }
+
     document.documentElement.classList.add('hero-motion-ready');
     if (introComplete) {
       typeDots.forEach((dot) => {
@@ -246,7 +280,7 @@ const initHeroMotion = () => {
     if (opacity <= 0) return;
     const centerX = width / 2;
     const centerY = height * 0.46;
-    const coreRadius = width <= 640 ? 28 : 34;
+    const coreRadius = width <= 640 ? 50 : 72;
 
     typeContext.save();
     typeContext.globalCompositeOperation = 'lighter';
@@ -261,11 +295,23 @@ const initHeroMotion = () => {
     typeContext.strokeStyle = `rgba(244, 242, 236, ${opacity * 0.28})`;
     typeContext.stroke();
 
-    typeContext.fillStyle = `rgba(244, 242, 236, ${opacity})`;
-    typeContext.font = `700 ${width <= 640 ? 18 : 22}px Inter, Helvetica Neue, Arial, sans-serif`;
-    typeContext.textAlign = 'center';
-    typeContext.textBaseline = 'middle';
-    typeContext.fillText('AI', centerX, centerY + 1);
+    const particleSize = width <= 640 ? 1.05 : 1.25;
+    const scatterProgress = easeOutCubic(expansion);
+    for (const dot of coreDots) {
+      const scatter = scatterProgress * dot.scatterDistance;
+      const x = dot.baseX + Math.cos(dot.scatterAngle) * scatter;
+      const y = dot.baseY + Math.sin(dot.scatterAngle) * scatter;
+      const alpha = clamp(opacity * (0.88 + Math.sin(dot.phase + expansion * 7) * 0.12));
+      typeContext.fillStyle = dot.green
+        ? `rgba(199, 255, 61, ${alpha})`
+        : `rgba(244, 242, 236, ${alpha})`;
+      typeContext.fillRect(
+        x - particleSize,
+        y - particleSize,
+        particleSize * 2,
+        particleSize * 2
+      );
+    }
     typeContext.restore();
   };
 
