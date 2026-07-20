@@ -242,6 +242,33 @@ const initHeroMotion = () => {
     typeContext.fillRect(x - size, y - size, size * 2, size * 2);
   };
 
+  const drawAiCore = (opacity, expansion = 0) => {
+    if (opacity <= 0) return;
+    const centerX = width / 2;
+    const centerY = height * 0.46;
+    const coreRadius = width <= 640 ? 28 : 34;
+
+    typeContext.save();
+    typeContext.globalCompositeOperation = 'lighter';
+    typeContext.beginPath();
+    typeContext.arc(centerX, centerY, coreRadius + expansion * 7, 0, Math.PI * 2);
+    typeContext.strokeStyle = `rgba(199, 255, 61, ${opacity * 0.72})`;
+    typeContext.lineWidth = 1;
+    typeContext.stroke();
+
+    typeContext.beginPath();
+    typeContext.arc(centerX, centerY, coreRadius + 10 + expansion * 16, 0, Math.PI * 2);
+    typeContext.strokeStyle = `rgba(244, 242, 236, ${opacity * 0.28})`;
+    typeContext.stroke();
+
+    typeContext.fillStyle = `rgba(244, 242, 236, ${opacity})`;
+    typeContext.font = `700 ${width <= 640 ? 18 : 22}px Inter, Helvetica Neue, Arial, sans-serif`;
+    typeContext.textAlign = 'center';
+    typeContext.textBaseline = 'middle';
+    typeContext.fillText('AI', centerX, centerY + 1);
+    typeContext.restore();
+  };
+
   const drawBurstRings = (progress) => {
     const centerX = width / 2;
     const centerY = height * 0.46;
@@ -293,6 +320,7 @@ const initHeroMotion = () => {
     if (elapsed < stages.black) {
       hero.dataset.introStage = 'black';
       gridContext.clearRect(0, 0, width, height);
+      drawAiCore(easeOutCubic(clamp(elapsed / stages.black)));
       return;
     }
 
@@ -300,6 +328,7 @@ const initHeroMotion = () => {
       hero.dataset.introStage = 'burst';
       gridContext.clearRect(0, 0, width, height);
       const progress = clamp((elapsed - stages.black) / (stages.burst - stages.black));
+      drawAiCore(1 - easeOutCubic(progress), progress);
       drawBurstRings(progress);
       typeContext.save();
       typeContext.globalCompositeOperation = 'lighter';

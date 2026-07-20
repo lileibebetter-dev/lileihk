@@ -265,14 +265,21 @@ dd {
 .hero-intro-pending .hero-image,
 .hero-intro-pending .hero-grid-canvas,
 .hero-intro-pending .hero-type-canvas,
+.hero-intro-pending .hero-title-fallback,
 .hero-intro-pending .hero-kicker,
 .hero-intro-pending .hero-bottom,
 .hero-intro-active .site-header,
 .hero-intro-active .hero-image,
 .hero-intro-active .hero-grid-canvas,
+.hero-intro-active .hero-title-fallback,
 .hero-intro-active .hero-kicker,
 .hero-intro-active .hero-bottom {
   opacity: 0;
+}
+
+.hero-intro-pending .hero-title-fallback,
+.hero-intro-active .hero-title-fallback {
+  transition: none;
 }
 
 .hero-intro-active.hero-intro-reveal .hero-image {
